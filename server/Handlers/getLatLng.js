@@ -40,10 +40,12 @@ const getLatLng = async (req, res) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log("data", data.results[0].geometry.location);
-				const latLng = data.results[0].geometry.location;
+				// console.log("data", data.results[0].geometry.location);
+				const lat = data.results[0].geometry.location.lat;
+                const lng = data.results[0].geometry.location.lng;
 				res.status(200).json({
-					data: latLng,
+					lat: lat,
+                    lng: lng,
 				});
 			});
 

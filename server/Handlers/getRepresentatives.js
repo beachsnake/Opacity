@@ -14,10 +14,15 @@ const options = {
 const { v4: uuidv4 } = require("uuid");
 
 const getRepresentatives = async (req, res) => {
-	fetch("https://represent.opennorth.ca/representatives/?point=45.524,-73.596")
+	const { lat, lng } = req.query;
+	console.log("req.query", req.query);
+	// fetch(
+	// 	"https://represent.opennorth.ca/representatives/?point=45.5279592,-73.6145719"
+	// )
+	fetch(`https://represent.opennorth.ca/representatives/?point=${lat},${lng}`)
 		.then((res) => res.json())
 		.then((data) => {
-			console.log("data",data);
+			console.log("get Representatives data", data);
 			const representatives = data;
 			res.status(200).json({
 				data: representatives,
