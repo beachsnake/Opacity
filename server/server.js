@@ -23,7 +23,7 @@ express()
 	// ---------------------------------
 
 	//GET lat/long by Postalcode OR address.
-	.get("/api/get-latlong", getLatLng)
+	.post("/api/get-latlong", getLatLng)
 	//GET electoral boundaries
 	.get("/api/get-boundaries", getBoundaries)
 	//GET Representatives by lat/long
