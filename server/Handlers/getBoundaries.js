@@ -11,7 +11,6 @@ const options = {
 //USE UUID TO GENERATE ID NUMBERS FOR RESPONSES
 const { v4: uuidv4 } = require("uuid");
 
-const getLatLong = async () => {};
 
 const getBoundaries = async (req, res) => {
 
@@ -28,16 +27,5 @@ const getBoundaries = async (req, res) => {
         })
 
 };
-const getRepresentatives = async (req, res) => {
-    fetch("https://represent.opennorth.ca/representatives/?point=45.524,-73.596")
-    .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-         const boundaries = data
-         res.status(200).json({
-            data: boundaries
-         })
-        })
-};
 
-module.exports = { getBoundaries, getRepresentatives, getLatLong };
+module.exports = {getBoundaries}

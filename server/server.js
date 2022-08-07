@@ -4,7 +4,10 @@
 const express = require("express");
 const morgan = require("morgan");
 
-const { getBoundaries, getRepresentatives, getLatLong } = require("./handlers");
+//REQUIRE/IMPORT HANDLERS
+const { getRepresentatives } = require("./Handlers/getRepresentatives");
+const { getBoundaries } = require("./Handlers/getBoundaries.js");
+const { getLatLng } = require("./Handlers/getLatLng.js");
 
 express()
 	// Below are methods that are included in express(). We chain them for convenience.
@@ -20,7 +23,7 @@ express()
 	// ---------------------------------
 
 	//GET lat/long by Postalcode OR address.
-	.get("/api/get-latlong", getLatLong)
+	.get("/api/get-latlong", getLatLng)
 	//GET electoral boundaries
 	.get("/api/get-boundaries", getBoundaries)
 	//GET Representatives by lat/long
