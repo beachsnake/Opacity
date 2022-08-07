@@ -11,7 +11,7 @@ const { getLatLng } = require("./Handlers/getLatLng.js");
 
 express()
 	// Below are methods that are included in express(). We chain them for convenience.
-	// --------------------------------------------------------------------------------
+	// -------------------------------------------------------------------------------
 
 	// This will give us will log more info to the console. see https://www.npmjs.com/package/morgan
 	.use(morgan("tiny"))
