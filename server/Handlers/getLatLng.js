@@ -25,14 +25,17 @@ const getLatLng = async (req, res) => {
 		// fetch(
 		// 	`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyBkVnkDdCXLFa1LVHt6toeEPtpbmJNXuOI`
 		// )
-		// .then((res) => res.json())
+		// 	.then((res) => res.json())
 		// 	.then((data) => {
-		// 		console.log("data", data.results[0].geometry.location);
+		// 		console.log("data", data.results[0]);
 		// 		const latLng = data.results[0].geometry.location;
+		// 		const lat = data.results[0].geometry.location.lat;
+		// 		const lng = data.results[0].geometry.location.lng;
 		// 		res.status(200).json({
-		// 			data: latLng,
+		// 						lat: lat,
+		// 			            lng: lng,
 		// 		});
-		//     });
+		// 	});
 
 		//*get lat/lng from google maps using postal code from frontend(Less precise location)
 		fetch(
@@ -40,12 +43,18 @@ const getLatLng = async (req, res) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				// console.log("data", data.results[0].geometry.location);
+				// console.log("data", data.results[0].formatted_address.split(" "));
+				//save lat, lng, and province data into variables
 				const lat = data.results[0].geometry.location.lat;
-                const lng = data.results[0].geometry.location.lng;
+				const lng = data.results[0].geometry.location.lng;
+				//We only need the two letter province code in the frontend, so we'll split the formatted_address and take only the two letter province code for our response.
+				const addressArr = data.results[0].formatted_address.split(" ");
+				const province = addressArr[1];
+				console.log("province", province);
 				res.status(200).json({
 					lat: lat,
-                    lng: lng,
+					lng: lng,
+					province: province,
 				});
 			});
 
