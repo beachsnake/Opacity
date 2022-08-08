@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import { useNavigate } from "react-router-dom";
 
