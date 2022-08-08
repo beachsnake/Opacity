@@ -13,7 +13,7 @@ const getRepsByName = async (req, res) => {
 
 	try {
 		//use lat & lng to get representatives data from Represent API and send back to frontend
-		fetch(`https://represent.opennorth.ca/representatives/?first_name=Sidney
+		fetch(`https://represent.opennorth.ca/representatives/?last_name=Stewart
 
         `)
 			.then((res) => res.json())
