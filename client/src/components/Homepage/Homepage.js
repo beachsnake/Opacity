@@ -11,8 +11,8 @@ console.log("repsByLocation",repsByLocation)
   return (
     <Wrapper>
         <Map></Map>
-        {repsByLocation.map((rep) => {
-    })} 
+        {/* {repsByLocation.map((rep) => {
+    })}  */}
             <>
             <Municipal></Municipal>
         <Provincial>
