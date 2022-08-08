@@ -5,11 +5,11 @@ import { useNavigate, Link } from "react-router-dom";
 const Header = () => {
 	return (
 		<Wrapper>
-			<CompanyLogo to="/"></CompanyLogo>
+			<CompanyLogo to="/">Opacity</CompanyLogo>
 			<NavBar>
-				<SignUp to="/sign-up"></SignUp>
-				<LogIn to="log-in"></LogIn>
-				<About to="about"></About>
+				<StyledLink to="/sign-up">Sign-up</StyledLink>
+				<StyledLink to="log-in">Log-in</StyledLink>
+				<StyledLink to="about">About</StyledLink>
 			</NavBar>
 		</Wrapper>
 	);
@@ -18,15 +18,22 @@ const Header = () => {
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 	align-items: center;
+	padding-left: 20px;
+	padding-right: 20px;
 	background-color: var(--color-green);
-	height: 100px;
-	width: 60%;
+	min-height: 100px;
+	min-width: 60%;
+	border-radius: 4px;
 `;
-const CompanyLogo = styled(Link)``;
+const CompanyLogo = styled(Link)`
+	font-size: 24px;
+	font-weight: bold;
+`;
 const NavBar = styled.div``;
-const SignUp = styled(Link)``;
-const LogIn = styled(Link)``;
-const About = styled(Link)``;
+const StyledLink = styled(Link)`
+	margin-left: 10px;
+`;
 
 export default Header;

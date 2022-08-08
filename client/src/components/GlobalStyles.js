@@ -8,7 +8,7 @@ export default createGlobalStyle`
   */
 
       :root{
-    --color-white: #F7FAFD;
+    --color-white: #FEFEFF;
     --color-green: #6fceb0;
     --color-red: #f85b74;
     --color-orange: #F79D00;
@@ -86,11 +86,14 @@ blockquote,
 input {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
+  text-decoration: none;
+  color: var(--color-white)
 }
   #root{
     height: 100vh;
   }
   .font-link {
     font-family: 'Molle', cursive;
+    text-decoration: none;
 }
 `;
