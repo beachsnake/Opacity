@@ -8,6 +8,9 @@ const morgan = require("morgan");
 const { getRepresentatives } = require("./Handlers/getRepresentatives");
 const { getBoundaries } = require("./Handlers/getBoundaries.js");
 const { getLatLng } = require("./Handlers/getLatLng.js");
+const { getRepsByName } = require("./Handlers/getRepsByName.js");
+const { getPremiers } = require("./Handlers/getPremiers.js");
+const { getMayors } = require("./Handlers/getMayors.js");
 
 express()
 	// Below are methods that are included in express(). We chain them for convenience.
@@ -22,13 +25,21 @@ express()
 
 	// ---------------------------------
 
-	//GET lat/long by Postalcode OR address.
-	.get("/api/get-latlong", getLatLng)
+	//* GET
 	//GET electoral boundaries
 	.get("/api/get-boundaries", getBoundaries)
 	//GET Representatives by lat/long
 	.get("/api/get-representatives", getRepresentatives)
+	//GET Representatives by name
+	.get("/api/get-representatives-by-name", getRepsByName)
+	//GET Premiers from MongoDB
+	.get("/api/get-premiers", getPremiers)
+	//GET Mayors from MongoDB
+	.get("/api/get-mayors", getMayors)
 
+	//*POST
+	//find lat/long by Postalcode OR address.
+	.post("/api/get-latlong", getLatLng)
 	// .post("/api/add-user", createUser)
 
 	// .get("/api/get-user", getUserInfo)
