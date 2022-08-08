@@ -41,7 +41,7 @@ export const RepresentativesProvider = ({ children }) => {
 				);
 				const repsData = await getRepsByLocaiton.json();
 				console.log("repsData", repsData);
-				setRepsByLocation(repsData);
+				setRepsByLocation(repsData.data.objects);
 				setRepsStatus("Idle");
 			} catch (err) {
 				setRepsStatus("Error");
