@@ -17,7 +17,11 @@ export const RepProfileComponent = (rep) => {
 		<Wrapper>
 			<RepType>
 				{rep.rep.elected_office}
-				{rep.rep.district_name}
+				{rep.rep.name === "Justin Trudeau" ? (
+					<p></p>
+				) : (
+					<>{rep.rep.district_name}</>
+				)}
 			</RepType>
 			<ImgWrap>
 				<Img src={rep.rep.photo_url} alt={rep.rep.name} />

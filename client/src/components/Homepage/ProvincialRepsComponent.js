@@ -13,7 +13,8 @@ const ProvincialRepsComponent = () => {
 		return (
 			rep.elected_office === "MNA" ||
 			rep.elected_office === "MPP" ||
-			rep.elected_office === "MLA"
+			rep.elected_office === "MLA" ||
+			rep.elected_office === "MHA"
 		);
 	});
 	// console.log("provincialReps",provincialReps);
