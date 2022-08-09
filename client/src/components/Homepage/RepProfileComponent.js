@@ -9,15 +9,22 @@ import {
 } from "react-icons/fa";
 import { v4 as uuidv4, v4 } from "uuid";
 
-//MPP, MNA, MLA
+//TODO conditionally render rep.rep.district_name if not premier or justin trudeau.
 
 export const RepProfileComponent = (rep) => {
-	// console.log("rep", rep.rep.extra.facebook);
 	return (
 		<Wrapper>
 			<RepType>
 				{rep.rep.elected_office}
-				{rep.rep.district_name}
+				{rep.rep.elected_office.includes("Premier") ||
+				rep.rep.elected_office.includes("Prime") ? (
+					<></>
+				) : (
+					<>
+						<RepSpan> of </RepSpan>
+						{rep.rep.district_name}
+					</>
+				)}
 			</RepType>
 			<ImgWrap>
 				<Img src={rep.rep.photo_url} alt={rep.rep.name} />
@@ -85,6 +92,9 @@ const RepType = styled.p`
 	width: 180px;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
+`;
+const RepSpan = styled.span`
+	color: white;
 `;
 const ImgWrap = styled.div`
 	width: 180px;
