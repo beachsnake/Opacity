@@ -3,22 +3,24 @@ import styled from "styled-components";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import { RepProfileComponent } from "./RepProfileComponent";
 
+//TODO Create profile for PM that uses info from premiers
+
 const FederalRepComponent = () => {
 	//get user's local representatives
 	const { repsByLocation, premiers } = useContext(RepresentativesContext);
 	//Filter for provincial representatives. need to iclude MPP, MNA, MLA
-	const provRep = repsByLocation.filter((rep) => {
+	const federalReps = repsByLocation.filter((rep) => {
 		return rep.elected_office === "MP";
 	});
-	console.log("provRep", provRep);
+	// console.log("federalReps", federalReps);
 	return (
 		<Wrapper>
 			<TitleBox>
 				<Title>Federal</Title>
 			</TitleBox>
 			<Container>
-				{provRep.map((rep) => {
-					console.log("rep", rep);
+				{federalReps.map((rep) => {
+					// console.log("rep", rep);
 					return <RepProfileComponent rep={rep} />;
 				})}
 			</Container>

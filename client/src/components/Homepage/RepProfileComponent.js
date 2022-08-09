@@ -12,7 +12,7 @@ import { v4 as uuidv4, v4 } from "uuid";
 //MPP, MNA, MLA
 
 export const RepProfileComponent = (rep) => {
-	console.log("rep", rep.rep.extra.facebook);
+	// console.log("rep", rep.rep.extra.facebook);
 	return (
 		<Wrapper>
 			<RepType>

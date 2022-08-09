@@ -5,6 +5,7 @@ import { RepProfileComponent } from "./RepProfileComponent";
 import ProvincialRepsComponent from "./ProvincialRepsComponent";
 import { v4 as uuidv4, v4 } from "uuid";
 import FederalRepComponent from "./FederalRepComponent";
+import MunicpalRepComponent from "./MunicpalRepComponent";
 
 //TODO
 //* Different maps for each Level of government to keep Titles/Seperators
@@ -29,15 +30,15 @@ const Homepage = () => {
 		<Wrapper>
 			<Map></Map>
 			<>
-				<Municipal>
+				<Container>
+                    <MunicpalRepComponent />
+                </Container>
+				<Container>
                    <ProvincialRepsComponent /> 
-                </Municipal>
-				<Provincial>
-					<Premier></Premier>
-				</Provincial>
-				<Federal>
+				</Container>
+				<Container>
 					<FederalRepComponent />
-				</Federal>
+				</Container>
 			</>
 		</Wrapper>
 	);
