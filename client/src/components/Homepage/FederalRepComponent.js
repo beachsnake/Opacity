@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import { RepProfileComponent } from "./RepProfileComponent";
+import { v4 as uuidv4, v4 } from "uuid";
 
 //TODO Create profile for PM that uses info from premiers
 
@@ -17,7 +18,7 @@ const FederalRepComponent = () => {
         // console.log("premier", premier)
         return premier.name === "Justin Trudeau"
     })
-    console.log(primeMinister[0])
+    // console.log(primeMinister[0])    
 	return (
 		<Wrapper>
 			<TitleBox>
@@ -26,7 +27,7 @@ const FederalRepComponent = () => {
 			<Container>
 				{federalReps.map((rep) => {
 					// console.log("rep", rep);
-					return <RepProfileComponent rep={rep} />;
+					return <RepProfileComponent key={v4()} rep={rep} />;
 				})}
                 <RepProfileComponent rep={primeMinister[0]}/>
 			</Container>
