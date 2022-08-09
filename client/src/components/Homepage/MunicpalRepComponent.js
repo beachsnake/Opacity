@@ -8,7 +8,7 @@ const MunicpalRepComponent = () => {
 	const { repsByLocation, mayors } = useContext(RepresentativesContext);
 	//Filter for municipal representatives. need to exclude MPP, MNA, MLA, and MP
 	const MunicipalReps = repsByLocation.filter((rep) => {
-		console.log("repFilter", rep.elected_office);
+		// console.log("repFilter", rep.elected_office);
 		return rep.elected_office.length > 3;
 	});
 	console.log("MunicipalReps", MunicipalReps);

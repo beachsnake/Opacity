@@ -12,7 +12,12 @@ const FederalRepComponent = () => {
 	const federalReps = repsByLocation.filter((rep) => {
 		return rep.elected_office === "MP";
 	});
-	// console.log("federalReps", federalReps);
+    //Create profile for Federal PM by filtering through premiers DB I created in MongoDB
+    const primeMinister = premiers.filter((premier) => {
+        // console.log("premier", premier)
+        return premier.name === "Justin Trudeau"
+    })
+    console.log(primeMinister[0])
 	return (
 		<Wrapper>
 			<TitleBox>
@@ -23,6 +28,7 @@ const FederalRepComponent = () => {
 					// console.log("rep", rep);
 					return <RepProfileComponent rep={rep} />;
 				})}
+                <RepProfileComponent rep={primeMinister[0]}/>
 			</Container>
 		</Wrapper>
 	);
