@@ -4,6 +4,8 @@ import { useState } from "react";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import { useNavigate } from "react-router-dom";
 
+//TODO make input display error if not formatted correctly, Or if repsByLocation is empty array
+
 const LandingPage = () => {
 	//import userLocation from Context
 	const { userLocation, setUserLocation } = useContext(RepresentativesContext);
@@ -29,14 +31,10 @@ const LandingPage = () => {
 			.then((response) => {
 				// console.log("response", response);
 				setUserLocation(response);
-				// setStatus("success");
-				// setSubmit(true);
-				// localStorage.setItem("reservation", JSON.stringify(response.data));
 				nav(`/homepage`);
 			})
 			.catch((error) => {
 				console.error("Error:", error);
-				// setStatus("error");
 			});
 	};
 
