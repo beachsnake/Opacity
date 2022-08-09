@@ -2,27 +2,40 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import { RepProfileComponent } from "./RepProfileComponent";
+import { v4 as uuidv4, v4 } from "uuid";
 
 //TODO
 //* Different maps for each Level of government to keep Titles/Seperators
+
 const Homepage = () => {
+	//import relevant data from RepresentativesContext
 	const { premiers, mayors, repsByLocation, userLocation } = useContext(
 		RepresentativesContext
 	);
 	console.log("repsByLocation", repsByLocation);
-    if(repsByLocation === null){
-        return <div>Loading..</div>
-    }
+	//Check to see if repsByLocation has not loaded, or page was reloaded.
+	if (repsByLocation === null) {
+		return (
+			<div>
+				No Representatives found. Please click on on the Opacity logo and input
+				a valid postal code, or sign up to stop seeing this message.{" "}
+			</div>
+		);
+	}
 
 	return (
 		<Wrapper>
 			<Map></Map>
-			<Container>{repsByLocation?.map((rep) => {
-                return <RepProfileComponent rep={rep}/>
-            })}</Container>
+			<Container>
+				{repsByLocation?.map((rep) => {
+					return <RepProfileComponent key={v4()} rep={rep} />;
+				})}
+			</Container>
 
 			<>
-				<Municipal></Municipal>
+				<Municipal>
+                    
+                </Municipal>
 				<Provincial>
 					<Premier></Premier>
 				</Provincial>

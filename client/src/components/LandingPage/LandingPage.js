@@ -11,13 +11,18 @@ const LandingPage = () => {
 	const { userLocation, setUserLocation } = useContext(RepresentativesContext);
 	//create state for form value:
 	const [postalCode, setPostalCode] = useState("");
+	console.log("postalCode", postalCode);
 	//declare variable for useNavigate
 	let nav = useNavigate();
+	//declare RegExp
+	const validPostal = new RegExp(
+		// /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVXY][ -]?\d[ABCEGHJKLMNPRSTVXY]\d$/i
+		/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
+	);
 
 	//create submit function to POST postal code to backend and get lat & lng, and province for Homepage
 	const submitFunc = (ev) => {
 		ev.preventDefault();
-		// navigate(`/confirmed`);
 		fetch("/api/get-latlong", {
 			method: "POST",
 			body: JSON.stringify({
@@ -29,7 +34,7 @@ const LandingPage = () => {
 		})
 			.then((res) => res.json())
 			.then((response) => {
-				// console.log("response", response);
+				console.log("response", response);
 				setUserLocation(response);
 				nav(`/homepage`);
 			})
@@ -38,6 +43,15 @@ const LandingPage = () => {
 			});
 	};
 
+	//Create a handler to check that the postal code entered is formatted correctly:
+	const handleChange = (ev, postalCode) => {
+		console.log(validPostal.test(postalCode));
+		if (validPostal.test(postalCode)) {
+			submitFunc(ev);
+		} else {
+			setPostalCode("");
+		}
+	};
 	return (
 		<Wrapper>
 			<Instructions>
@@ -49,25 +63,31 @@ const LandingPage = () => {
 				<FormTitle>
 					Please enter your postal code to find your representatives:
 				</FormTitle>
-				<AddressForm onSubmit={(ev) => submitFunc(ev)}>
+				{/* <AddressForm onSubmit={(ev) => submitFunc(ev)}> */}
+				<AddressForm onSubmit={(ev) => handleChange(ev, postalCode)}>
 					<PostalCode
 						type="text"
 						onChange={(ev) => setPostalCode(ev.target.value.toUpperCase())}
+						// onChange={(ev) => handleChange(ev.target.value)}
 						value={postalCode}
 						placeholder="ex: K1A 0A6"
+						required
 					/>
-					{postalCode === "" ? (
-						<Submit
-							type="submit"
-							disabled={true}
-							style={{ cursor: "not-allowed" }}
-						/>
-					) : (
+					{validPostal.test(postalCode) ? (
 						<Submit
 							type="submit"
 							disabled={false}
 							style={{ cursor: "pointer" }}
 						/>
+					) : (
+						<>
+							{postalCode === "" && <div>postal code is invalid</div>}
+							<Submit
+								type="submit"
+								disabled={true}
+								style={{ cursor: "not-allowed" }}
+							/>
+						</>
 					)}
 				</AddressForm>
 			</FormWrapper>

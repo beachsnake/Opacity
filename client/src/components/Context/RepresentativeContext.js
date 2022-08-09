@@ -10,7 +10,6 @@ export const RepresentativesProvider = ({ children }) => {
 	const [getRepsStatus, setRepsStatus] = useState("Loading");
 
 	//Context & fetches to retrieve information we need from Mongo
-
 	useEffect(() => {
 		const fetchFunc = async () => {
 			try {
@@ -49,6 +48,8 @@ export const RepresentativesProvider = ({ children }) => {
 		};
 		fetchFunc();
 	}, [userLocation]);
+
+	
 
 	//CONSOLE LOGS
 	// console.log("premiers", premiers);
