@@ -15,6 +15,7 @@
 //   }
 
 //TODO
+//TODO Need to find way to save userLocation on Refresh.
 
 //TODO FIND OUT HOW TO GET LIST OF PMS OR MAYORS.
 //* MAKE A GET AND SEARCH BY elected_office

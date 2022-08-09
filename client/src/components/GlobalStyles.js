@@ -39,6 +39,7 @@ export default createGlobalStyle`
       box-sizing: border-box;
       font-size: 100%;
       vertical-align: baseline;
+      color: black;
   }
   
   /* HTML5 display-role reset for older browsers */
