@@ -9,7 +9,6 @@ import {
 } from "react-icons/fa";
 import { v4 as uuidv4, v4 } from "uuid";
 
-//TODO GET SOCIAL MEDIA LINKS TO RENDER CONDITIONALLY
 //MPP, MNA, MLA
 
 export const RepProfileComponent = (rep) => {

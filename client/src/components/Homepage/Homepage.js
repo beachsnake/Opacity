@@ -2,7 +2,9 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import { RepProfileComponent } from "./RepProfileComponent";
+import ProvincialRepsComponent from "./ProvincialRepsComponent";
 import { v4 as uuidv4, v4 } from "uuid";
+import FederalRepComponent from "./FederalRepComponent";
 
 //TODO
 //* Different maps for each Level of government to keep Titles/Seperators
@@ -26,21 +28,15 @@ const Homepage = () => {
 	return (
 		<Wrapper>
 			<Map></Map>
-			<Container>
-				{repsByLocation?.map((rep) => {
-					return <RepProfileComponent key={v4()} rep={rep} />;
-				})}
-			</Container>
-
 			<>
 				<Municipal>
-                    
+                   <ProvincialRepsComponent /> 
                 </Municipal>
 				<Provincial>
 					<Premier></Premier>
 				</Provincial>
 				<Federal>
-					<PrimeMinister></PrimeMinister>
+					<FederalRepComponent />
 				</Federal>
 			</>
 		</Wrapper>

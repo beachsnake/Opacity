@@ -16,7 +16,6 @@ const LandingPage = () => {
 	let nav = useNavigate();
 	//declare RegExp
 	const validPostal = new RegExp(
-		// /^[ABCEGHJKLMNPRSTVXY]\d[ABCEGHJKLMNPRSTVXY][ -]?\d[ABCEGHJKLMNPRSTVXY]\d$/i
 		/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i
 	);
 
