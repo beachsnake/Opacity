@@ -46,6 +46,7 @@ export const RepProfileComponent = (rep) => {
 						<RepSpan> of </RepSpan>
 						{rep.rep.district_name}
 					</>
+
 				)}
 			</RepType>
 			<ImgWrap>
