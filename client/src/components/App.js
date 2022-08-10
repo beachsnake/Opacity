@@ -8,6 +8,7 @@ import SignUpPage from "./SignUpPage/SignUpPage";
 import { LogInPage } from "./LogInPage/LogInPage";
 import AboutPage from "./AboutPage/AboutPage";
 
+
 function App() {
 	return (
 		<>

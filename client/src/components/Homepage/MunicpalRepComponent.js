@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import styled from "styled-components";
 import { RepProfileComponent } from "./RepProfileComponent";
+import { v4 as uuidv4, v4 } from "uuid";
 
 const MunicpalRepComponent = () => {
 	//get user's local representatives
@@ -11,7 +12,7 @@ const MunicpalRepComponent = () => {
 		// console.log("repFilter", rep.elected_office);
 		return rep.elected_office.length > 3;
 	});
-	console.log("MunicipalReps", MunicipalReps);
+	// console.log("MunicipalReps", MunicipalReps);
 	return (
 		<Wrapper>
 			<TitleBox>
@@ -20,7 +21,7 @@ const MunicpalRepComponent = () => {
 			<Container>
 				{MunicipalReps.map((rep) => {
 					// console.log("rep", rep);
-					return <RepProfileComponent rep={rep} />;
+					return <RepProfileComponent key={v4()} rep={rep} />;
 				})}
 			</Container>
 		</Wrapper>

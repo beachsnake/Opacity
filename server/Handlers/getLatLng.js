@@ -44,29 +44,51 @@ const getLatLng = async (req, res) => {
 			.then((res) => res.json())
 			.then((data) => {
 				// console.log("data", data.results[0].formatted_address.split(" "));
+
+				//Filter through data to find name of Province. We need this string in the frontend to render the provincial premier associated with the postal code.
+
+				//create array of province names to use in .find()
+				const provArr = [
+					"Quebec",
+					"Alberta",
+					"Ontario",
+					"Nova Scotia",
+					"New Brunswick",
+					"Manitoba",
+					"British Columbia",
+					"Prince Edward Island",
+					"Saskatchewan",
+					"Newfoundland and Labrador",
+				];
+
+				//search through response data for province name
+				const findProvince = data.results[0].address_components.find(
+					(province) => {
+						return provArr.includes(province.long_name);
+					}
+				);
+
 				//save lat, lng, and province data into variables
 				const lat = data.results[0].geometry.location.lat;
 				const lng = data.results[0].geometry.location.lng;
+
+				//TODO DELETE THIS OLD CODE TO GET 2 LETTER PROVINCE CODE
 				//We only need the two letter province code in the frontend, so we'll split the formatted_address and take only the two letter province code for our response.
-				const addressArr = data.results[0].formatted_address.split(" ");
-				const province = addressArr[1];
-				console.log("province", province);
+				// const addressArr = data.results[0].formatted_address.split(" ");
+				// const province = addressArr[1];
+				// console.log("province", province);
+
 				res.status(200).json({
 					lat: lat,
 					lng: lng,
-					province: province,
+					province: findProvince.long_name,
 				});
 			});
 
 		//catch any errors and return info/message
 	} catch (err) {
 		res.status(500).json({ status: 500, Message: err.Message });
-
-		// close the connection to the database server
 	}
-	// finally {
-	// 	client.close();
-	// }
 };
 
 module.exports = { getLatLng };

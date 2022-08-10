@@ -7,6 +7,7 @@ const morgan = require("morgan");
 //REQUIRE/IMPORT HANDLERS
 const { getRepresentatives } = require("./Handlers/getRepresentatives");
 const { getBoundaries } = require("./Handlers/getBoundaries.js");
+const {getBoundaryShape} = require("./Handlers/getBoundaryShape.js")
 const { getLatLng } = require("./Handlers/getLatLng.js");
 const { getRepsByName } = require("./Handlers/getRepsByName.js");
 const { getPremiers } = require("./Handlers/getPremiers.js");
@@ -28,6 +29,8 @@ express()
 	//* GET
 	//GET electoral boundaries
 	.get("/api/get-boundaries", getBoundaries)
+	//GET electoral boundary shapes
+	.get("/api/get-boundary-shape", getBoundaryShape)
 	//GET Representatives by lat/long
 	.get("/api/get-representatives", getRepresentatives)
 	//GET Representatives by name

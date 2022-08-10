@@ -33,7 +33,7 @@ const LandingPage = () => {
 		})
 			.then((res) => res.json())
 			.then((response) => {
-				console.log("response", response);
+				// console.log("response", response);
 				setUserLocation(response);
 				nav(`/homepage`);
 			})
@@ -44,7 +44,7 @@ const LandingPage = () => {
 
 	//Create a handler to check that the postal code entered is formatted correctly:
 	const handleChange = (ev, postalCode) => {
-		console.log(validPostal.test(postalCode));
+		// console.log(validPostal.test(postalCode));
 		if (validPostal.test(postalCode)) {
 			submitFunc(ev);
 		} else {
@@ -80,7 +80,6 @@ const LandingPage = () => {
 						/>
 					) : (
 						<>
-							{postalCode === "" && <div>postal code is invalid</div>}
 							<Submit
 								type="submit"
 								disabled={true}
