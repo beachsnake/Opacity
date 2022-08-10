@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import {
 	FaFacebook,
@@ -8,10 +8,34 @@ import {
 	FaMapMarkerAlt,
 } from "react-icons/fa";
 import { v4 as uuidv4, v4 } from "uuid";
+import { RepresentativesContext } from "../Context/RepresentativeContext";
 
 export const RepProfileComponent = (rep) => {
+	//import map shapes from context
+	const { allRepsBoundaryShapes, repBoundaryShape, setRepBoundaryShape } =
+		useContext(RepresentativesContext);
+	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
+	// console.log("rep",rep.rep.district_name)
+
+	//find boundary that matches representative
+
+	if (allRepsBoundaryShapes === null) {
+		return <div>Loading...</div>;
+	}
+
+	const boundaryShape = allRepsBoundaryShapes.filter((shape) => {
+		// console.log("shape.name", shape.name);
+		return shape.name === rep.rep.district_name;
+	});
+	console.log("BoundaryShape", boundaryShape[0]);
+
+	//create onClick function that will change the map to the shape of the representative when clicked
+	// const handleClick = () => {
+	// 	setRepBoundaryShape(boundaryShape)
+	// }
+
 	return (
-		<Wrapper>
+		<Wrapper onClick={() => setRepBoundaryShape(boundaryShape[0])}>
 			<RepType>
 				{rep.rep.elected_office}
 				{rep.rep.elected_office.includes("Premier") ||
