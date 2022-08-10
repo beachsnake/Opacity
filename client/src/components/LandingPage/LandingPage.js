@@ -80,7 +80,6 @@ const LandingPage = () => {
 						/>
 					) : (
 						<>
-							{postalCode === "" && <div>postal code is invalid</div>}
 							<Submit
 								type="submit"
 								disabled={true}

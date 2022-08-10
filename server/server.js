@@ -30,7 +30,7 @@ express()
 	//GET electoral boundaries
 	.get("/api/get-boundaries", getBoundaries)
 	//GET electoral boundary shapes
-	// .get("/api/boundary-shape", getBoundaryShape)
+	.get("/api/get-boundary-shape", getBoundaryShape)
 	//GET Representatives by lat/long
 	.get("/api/get-representatives", getRepresentatives)
 	//GET Representatives by name

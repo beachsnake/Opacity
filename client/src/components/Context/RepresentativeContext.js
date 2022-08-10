@@ -7,6 +7,7 @@ export const RepresentativesProvider = ({ children }) => {
 	const [mayors, setMayors] = useState(null);
 	const [userLocation, setUserLocation] = useState(null);
 	const [repsByLocation, setRepsByLocation] = useState(null);
+	const [repsBoundarySets, setRepsBoundarySets] = useState(null);
 	const [getRepsStatus, setRepsStatus] = useState("Loading");
 
 	//Context & fetches to retrieve information we need from Mongo
@@ -30,17 +31,26 @@ export const RepresentativesProvider = ({ children }) => {
 		fetchFunc();
 	}, []);
 
-    //Second useEffect that will fetch representatives based on user's location. This is triggered when user submit's postal code on LandingPage
+	//Second useEffect that will fetch representatives based on user's location. This is triggered when user submit's postal code on LandingPage
 	useEffect(() => {
 		//get representatives based on userLocation when userLocation available
 		const fetchFunc = async () => {
 			try {
+				//get representatives by lat & lng recieved from user's postal code
 				const getRepsByLocaiton = await fetch(
 					`/api/get-representatives?lat=${userLocation.lat}&lng=${userLocation.lng}`
 				);
 				const repsData = await getRepsByLocaiton.json();
 				// console.log("repsData", repsData);
 				setRepsByLocation(repsData.data.objects);
+
+				//get representatives' electoral boundary sets by lat & lng recieved from user's postal code
+				const getRepsBoundarySets = await fetch(
+					`/api/get-boundary-shape?lat=${userLocation?.lat}&lng=${userLocation?.lng}`
+				);
+				const repsBoundaries = await getRepsBoundarySets.json();
+				// console.log("repsBoundaries", repsBoundaries);
+				setRepsBoundarySets(repsBoundaries.data.objects);
 				setRepsStatus("Idle");
 			} catch (err) {
 				setRepsStatus("Error");
@@ -49,11 +59,11 @@ export const RepresentativesProvider = ({ children }) => {
 		fetchFunc();
 	}, [userLocation]);
 
-	
-
 	//CONSOLE LOGS
 	// console.log("premiers", premiers);
 	// console.log("mayors", mayors);
+	// console.log("userLocation", userLocation?.lat)
+	console.log("repsBoundarySets", repsBoundarySets)
 
 	//Catch errors if fetch fails
 	if (setRepsStatus === "Error") {
@@ -63,7 +73,6 @@ export const RepresentativesProvider = ({ children }) => {
 	if (premiers === null || mayors === null) {
 		return <div>Loading...</div>;
 	}
-
 
 	return (
 		<RepresentativesContext.Provider
