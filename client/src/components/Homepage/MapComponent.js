@@ -62,13 +62,13 @@ const MapComponent = () => {
 		}
 	);
 
-	console.log("boundaryArr", boundaryArr);
+	// console.log("boundaryArr", boundaryArr);
 
-	console.log("repBoundary", repBoundary);
-	console.log(
-		"allRepsBoundaryShapes",
-		allRepsBoundaryShapes[0].simple_shape.coordinates[0]
-	);
+	// console.log("repBoundary", repBoundary);
+	// console.log(
+	// 	"allRepsBoundaryShapes",
+	// 	allRepsBoundaryShapes[0].simple_shape.coordinates[0]
+	// );
 
 	//define polygon styling
 	const options = {
@@ -92,8 +92,7 @@ const MapComponent = () => {
 
 	// const onUnmount = React.useCallback(function callback(map) {
 	// 	setMap(null);
-	// }, []); 
-    
+	// }, []);
 
 	return isLoaded ? (
 		<GoogleMap

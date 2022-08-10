@@ -51,7 +51,7 @@ export const RepresentativesProvider = ({ children }) => {
 					`/api/get-boundary-shape?lat=${userLocation?.lat}&lng=${userLocation?.lng}`
 				);
 				const repsBoundaries = await getRepsBoundarySets.json();
-				// console.log("repsBoundaries", repsBoundaries);
+				console.log("repsBoundaries", repsBoundaries);
 				setAllRepsBoundaryShapes(repsBoundaries.data.objects);
 				setRepBoundaryShape(repsBoundaries.data.objects);
 				setRepsStatus("Idle");
@@ -66,7 +66,7 @@ export const RepresentativesProvider = ({ children }) => {
 	// console.log("premiers", premiers);
 	// console.log("mayors", mayors);
 	// console.log("userLocation", userLocation?.lat)
-	console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
+	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
 	// console.log("repBoundaryShape", repBoundaryShape);
 
 	//Catch errors if fetch fails
