@@ -11,7 +11,7 @@ const ProvincialRepsComponent = () => {
 	const { repsByLocation, premiers, userLocation } = useContext(
 		RepresentativesContext
 	);
-	console.log("userLocation", userLocation);
+	// console.log("userLocation", userLocation);
 	//Filter for provincial representatives. need to iclude MPP, MNA, MLA
 	const provincialReps = repsByLocation.filter((rep) => {
 		return (
@@ -27,7 +27,7 @@ const ProvincialRepsComponent = () => {
 		// console.log("premier",premier)
 		return premier.elected_office.includes(userLocation.province);
 	});
-
+    console.log(premier)
 	return (
 		<Wrapper>
 			<TitleBox>

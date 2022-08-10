@@ -3,9 +3,13 @@ import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
 
 const Header = () => {
+	let nav = useNavigate();
 	return (
 		<Wrapper>
-			<CompanyLogo to="/">Opacity</CompanyLogo>
+			{/* <CompanyLogo to="/">Opacity</CompanyLogo> */}
+			<LogoDiv onClick={() => nav("/")}>
+				<CompanyLogo>Opacity</CompanyLogo>
+			</LogoDiv>
 			<NavBar>
 				<StyledLink to="/sign-up">Sign-up</StyledLink>
 				<StyledLink to="log-in">Log-in</StyledLink>
@@ -27,9 +31,47 @@ const Wrapper = styled.div`
 	min-width: 60%;
 	border-radius: 4px;
 `;
-const CompanyLogo = styled(Link)`
+// .popUpWord {
+// 	text-transform: uppercase;
+// 	font: bold 26vmax/.8 Open Sans, Impact;
+// 	background: black;
+// 	display: table;
+// 	color: white;
+//   }
+
+//   .outPop:hover {
+// 	margin: auto;
+
+//   }
+//   .outPop:hover .popUpWord{
+// 	mix-blend-mode: multiply;
+//   }
+
+//   }
+const LogoDiv = styled.div`
+	&:hover {
+		cursor: pointer;
+	}
+
+	/* @keyframes stripes {
+	to {
+	  background-size:100% 100%;
+	}
+	} */
+`;
+const CompanyLogo = styled.p`
 	font-size: 24px;
 	font-weight: bold;
+	color: white;
+	opacity: 0.2;
+	transition-duration: 1000ms;
+	transition-property: opacity;
+
+	&:hover {
+		opacity: 1;
+		cursor: pointer;
+		/* transform: */
+	}
 `;
 const NavBar = styled.div``;
 const StyledLink = styled(Link)`

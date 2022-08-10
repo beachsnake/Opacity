@@ -11,7 +11,7 @@ const getBoundaries = async (req, res) => {
 	const { lat, lng } = req.query;
 
     try{
-            fetch(`https://represent.opennorth.ca/boundaries/?contains=${lat},${lng}`)
+            fetch(`https://represent.opennorth.ca/boundaries?contains=${lat},${lng}`)
     .then((res) => res.json())
         .then((data) => {
             console.log(data)

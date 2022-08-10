@@ -9,8 +9,6 @@ import {
 } from "react-icons/fa";
 import { v4 as uuidv4, v4 } from "uuid";
 
-//TODO conditionally render rep.rep.district_name if not premier or justin trudeau.
-
 export const RepProfileComponent = (rep) => {
 	return (
 		<Wrapper>
