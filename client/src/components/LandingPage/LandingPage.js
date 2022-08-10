@@ -11,7 +11,7 @@ const LandingPage = () => {
 	const { userLocation, setUserLocation } = useContext(RepresentativesContext);
 	//create state for form value:
 	const [postalCode, setPostalCode] = useState("");
-	console.log("postalCode", postalCode);
+	// console.log("postalCode", postalCode);
 	//declare variable for useNavigate
 	let nav = useNavigate();
 	//declare RegExp

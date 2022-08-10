@@ -7,7 +7,8 @@ export const RepresentativesProvider = ({ children }) => {
 	const [mayors, setMayors] = useState(null);
 	const [userLocation, setUserLocation] = useState(null);
 	const [repsByLocation, setRepsByLocation] = useState(null);
-	const [repsBoundarySets, setRepsBoundarySets] = useState(null);
+	const [allRepsBoundaryShapes, setAllRepsBoundaryShapes] = useState(null);
+	const [repBoundaryShape, setRepBoundaryShape] = useState(null);
 	const [getRepsStatus, setRepsStatus] = useState("Loading");
 
 	//Context & fetches to retrieve information we need from Mongo
@@ -42,6 +43,7 @@ export const RepresentativesProvider = ({ children }) => {
 				);
 				const repsData = await getRepsByLocaiton.json();
 				// console.log("repsData", repsData);
+				//put data into state
 				setRepsByLocation(repsData.data.objects);
 
 				//get representatives' electoral boundary sets by lat & lng recieved from user's postal code
@@ -49,8 +51,9 @@ export const RepresentativesProvider = ({ children }) => {
 					`/api/get-boundary-shape?lat=${userLocation?.lat}&lng=${userLocation?.lng}`
 				);
 				const repsBoundaries = await getRepsBoundarySets.json();
-				// console.log("repsBoundaries", repsBoundaries);
-				setRepsBoundarySets(repsBoundaries.data.objects);
+				console.log("repsBoundaries", repsBoundaries);
+				setAllRepsBoundaryShapes(repsBoundaries.data.objects);
+				setRepBoundaryShape(repsBoundaries.data.objects);
 				setRepsStatus("Idle");
 			} catch (err) {
 				setRepsStatus("Error");
@@ -63,7 +66,8 @@ export const RepresentativesProvider = ({ children }) => {
 	// console.log("premiers", premiers);
 	// console.log("mayors", mayors);
 	// console.log("userLocation", userLocation?.lat)
-	console.log("repsBoundarySets", repsBoundarySets)
+	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
+	// console.log("repBoundaryShape", repBoundaryShape);
 
 	//Catch errors if fetch fails
 	if (setRepsStatus === "Error") {
@@ -85,6 +89,10 @@ export const RepresentativesProvider = ({ children }) => {
 				setUserLocation,
 				repsByLocation,
 				setRepsByLocation,
+				allRepsBoundaryShapes,
+				setAllRepsBoundaryShapes,
+				repBoundaryShape,
+				setRepBoundaryShape,
 			}}
 		>
 			{children}
