@@ -13,15 +13,6 @@ const MapComponent = () => {
 		RepresentativesContext
 	);
 
-	//   useEffect(() => {
-	//     const repBoundary = allRepsBoundaryShapes[0]?.simple_shape?.coordinates[0];
-	//   }, [allRepsBoundaryShapes])
-
-	// if(allRepsBoundaryShapes === null){
-	//     <>Loading..</>
-	// }
-	// console.log("userLocation", userLocation)
-
 	//*CREATE MAP
 
 	//get API key from .env
@@ -52,14 +43,36 @@ const MapComponent = () => {
 	//map though coordinates array and create new objects in this format: {lat: lat, lng: lng } and shift them into boundaryArr
 
 	// console.log("repBoundaryShape", repBoundaryShape);
+
+	//check to see if the rep clicked is a premier or not. The routing to get the map coordinates is different because the premiers are in a DB, while the other representatives come from an API
+
+	// if(repBoundaryShape.geometry.type === "MultiPolygon"){
+	// 	const repBoundary = repBoundaryShape.coordinates[0].map(
+	// 		(coordinate) => {
+	// 			// console.log("coordinate", coordinate);
+	// 			const latLngObj = { lat: coordinate[1], lng: coordinate[0] };
+	// 			// console.log("latLngObj", latLngObj);
+	// 			return boundaryArr.unshift(latLngObj);
+	// 		})
+	// } 
+	
+	// if(repBoundaryShape.name.length > 0){
+	// 	const repBoundary = repBoundaryShape?.simple_shape?.coordinates[0][0].map(
+	// 	(coordinate) => {
+	// 		// console.log("coordinate", coordinate);
+	// 		const latLngObj = { lat: coordinate[1], lng: coordinate[0] };
+	// 		// console.log("latLngObj", latLngObj);
+	// 		return boundaryArr.unshift(latLngObj);
+	// 	})
+	// }
+	
 	const repBoundary = repBoundaryShape?.simple_shape?.coordinates[0][0].map(
 		(coordinate) => {
 			// console.log("coordinate", coordinate);
 			const latLngObj = { lat: coordinate[1], lng: coordinate[0] };
 			// console.log("latLngObj", latLngObj);
 			return boundaryArr.unshift(latLngObj);
-		}
-	);
+		})
 
 	// console.log("boundaryArr", boundaryArr);
 

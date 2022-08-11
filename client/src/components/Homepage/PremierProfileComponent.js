@@ -10,46 +10,20 @@ import {
 import { v4 as uuidv4, v4 } from "uuid";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 
-export const RepProfileComponent = (rep) => {
+export const PremierProfileComponent = (rep) => {
 	//import map shapes from context
-	const { allRepsBoundaryShapes, repBoundaryShape, setRepBoundaryShape } =
-		useContext(RepresentativesContext);
-	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
-	// console.log("rep",rep.rep.district_name)
+	const { repBoundaryShape, setRepBoundaryShape } = useContext(
+		RepresentativesContext
+	);
 
-	//find boundary that matches representative
-
-	if (allRepsBoundaryShapes === null) {
-		return <div>Loading...</div>;
-	}
-
-	const boundaryShape = allRepsBoundaryShapes.filter((shape) => {
-		// console.log("shape.name", shape.name);
-		return shape.name === rep.rep.district_name;
-	});
-	
-	// if(boundaryShape === []){
-	// 	setRepBoundaryShape(rep.rep.geometry)
-	// }
-	console.log("BoundaryShape", repBoundaryShape.name === undefined);
+	console.log("BoundaryShape", repBoundaryShape);
 
 	//Create string for mailto: email link
 	const mailTo = "mailto: " + rep.rep.email;
 
 	return (
-		<Wrapper onClick={() => setRepBoundaryShape(boundaryShape[0])}>
-			<RepType>
-				{rep.rep.elected_office}
-				{rep.rep.elected_office.includes("Premier") ||
-				rep.rep.elected_office.includes("Prime") ? (
-					<></>
-				) : (
-					<>
-						<RepSpan> of </RepSpan>
-						{rep.rep.district_name}
-					</>
-				)}
-			</RepType>
+		<Wrapper onClick={() => setRepBoundaryShape(rep.rep.geometry)}>
+			<RepType>{rep.rep.elected_office}</RepType>
 			<ImgWrap>
 				<Img src={rep.rep.photo_url} alt={rep.rep.name} />
 			</ImgWrap>

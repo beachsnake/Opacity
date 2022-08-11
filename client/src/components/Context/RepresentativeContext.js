@@ -26,7 +26,6 @@ export const RepresentativesProvider = ({ children }) => {
 				// console.log("mayorsData", mayorsData);
 				setMayors(mayorsData.data[0].mayors);
 				//check local storage and setUserLocation to value.
-				//if loacalstorage.length === 0 display message please return to landing page to select address.
 				setUserLocation(JSON.parse(localStorage.getItem("userLocation")));
 				if (userLocation !== null) {
 					return (
@@ -74,7 +73,7 @@ export const RepresentativesProvider = ({ children }) => {
 	}, [userLocation]);
 
 	//CONSOLE LOGS
-	// console.log("premiers", premiers);
+	console.log("premiers", premiers);
 	// console.log("mayors", mayors);
 	// console.log("userLocation", userLocation?.lat)
 	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)

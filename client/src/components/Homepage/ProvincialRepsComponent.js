@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import { RepProfileComponent } from "./RepProfileComponent";
+import { PremierProfileComponent } from "./PremierProfileComponent";
 import { v4 as uuidv4, v4 } from "uuid";
 
 //TODO Create profile for Premier that uses info from premiers
@@ -37,7 +38,9 @@ const ProvincialRepsComponent = () => {
 				{provincialReps.map((rep) => {
 					return <RepProfileComponent key={v4()} rep={rep} />;
 				})}
-				<RepProfileComponent rep={premier} />
+				{/* <RepProfileComponent rep={premier} /> */}
+				<PremierProfileComponent rep={premier} />
+
 			</Container>
 		</Wrapper>
 	);

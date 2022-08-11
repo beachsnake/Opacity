@@ -5,7 +5,7 @@ const { MongoClient } = require("mongodb");
 const premiers = require("./server/data/premiers.json");
 const mayors = require("./server/data/mayors.json");
 // const {provinces} = require("./server/data/provinces.js");
-const provincesGeoJSON = require("./server/data/canada_provinces.geojson")
+// const provincesGeoJSON = require("./server/data/canada_provinces.geojson")
 //Get API Key
 require("dotenv").config();
 const { MONGO_URI } = process.env;
@@ -35,9 +35,9 @@ const batchImport = async () => {
 		//import mayor information
 		const result2 = await db.collection("mayors").insertMany(mayors);
 		console.log("mayors", result2);
-		//import province polygons
-		const result3 = await db.collection("provinces").insertMany(provinces);
-		console.log("provinces", result3);
+		// //import province polygons
+		// const result3 = await db.collection("provinces").insertMany(provinces);
+		// console.log("provinces", result3);
 
 		// if (result.acknowledged === true && result2.acknowledged === true) {
 		// 	console.log("success");
