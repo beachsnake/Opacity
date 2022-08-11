@@ -39672,7 +39672,8 @@ const provinces = [
 		],
 	},
 	{
-		Manitoba: [
+		name: "Manitoba",
+		shape: [
 			{ lat: 60.000129, lng: -94.811438 },
 			{ lat: 59.602501, lng: -94.833335 },
 			{ lat: 59.348327, lng: -94.66556999999884 },
@@ -39693,7 +39694,8 @@ const provinces = [
 		],
 	},
 	{
-		Saskatchewan: [
+		name: "Saskachewan",
+		shape: [
 			{ lat: 60.00006, lng: -102.850002 },
 			{ lat: 60.0, lng: -102.0 },
 			{ lat: 55.812801, lng: -102.0 },
@@ -39704,7 +39706,8 @@ const provinces = [
 		],
 	},
 	{
-		NewBrunswick: [
+		name: "New Brunswick",
+		shape: [
 			{ lat: 48.022835, lng: -66.414329999999893 },
 			{ lat: 47.863888, lng: -65.764443 },
 			{ lat: 47.599998, lng: -65.6944199999989 },
@@ -39769,7 +39772,8 @@ const provinces = [
 		],
 	},
 	{
-		Newfoundland: [
+		name: "Newfoundland",
+		shape: [
 			{ lat: 55.0000604, lng: -67.4224881 },
 			{ lat: 54.9997775, lng: -67.4222794 },
 			{ lat: 54.9990315, lng: -67.4217291 },
@@ -53384,7 +53388,8 @@ const provinces = [
 		],
 	},
 	{
-		Prince: [
+		name: "Prince Edward Island",
+		shape: [
 			{ lat: 47.050277, lng: -63.989724 },
 			{ lat: 46.880555, lng: -63.97361 },
 			{ lat: 46.745067, lng: -64.174172 },

@@ -27,6 +27,15 @@ export const RepresentativesProvider = ({ children }) => {
 				setMayors(mayorsData.data[0].mayors);
 				//check local storage and setUserLocation to value.
 				//if loacalstorage.length === 0 display message please return to landing page to select address.
+				setUserLocation(JSON.parse(localStorage.getItem("userLocation")));
+				if (userLocation !== null) {
+					return (
+						<div>
+							Something Went Wrong! Please return to the previous page and
+							choose a postal code!
+						</div>
+					);
+				}
 			} catch (err) {
 				setRepsStatus("Error");
 			}
