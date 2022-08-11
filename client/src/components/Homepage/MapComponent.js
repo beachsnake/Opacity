@@ -3,7 +3,6 @@ import { useContext, useState, useEffect } from "react";
 import React from "react";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 
-//TODO FIGURE OUT HOW TO IMPORT API KEY FROM ENV SO IT DOESN'T GET SENT TO GIT
 //TODO make color of polygon change based on party affiliation
 
 const MapComponent = () => {
