@@ -4,7 +4,8 @@ const { MongoClient } = require("mongodb");
 // const representativeBios = require("./server/data/representativeBios.json");
 const premiers = require("./server/data/premiers.json");
 const mayors = require("./server/data/mayors.json");
-const {provinces} = require("./server/data/provinces.js");
+// const {provinces} = require("./server/data/provinces.js");
+const provincesGeoJSON = require("./server/data/canada_provinces.geojson")
 //Get API Key
 require("dotenv").config();
 const { MONGO_URI } = process.env;
