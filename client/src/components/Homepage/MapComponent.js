@@ -51,7 +51,7 @@ const MapComponent = () => {
 	const boundaryArr = [];
 	//map though coordinates array and create new objects in this format: {lat: lat, lng: lng } and shift them into boundaryArr
 
-	console.log("repBoundaryShape", repBoundaryShape);
+	// console.log("repBoundaryShape", repBoundaryShape);
 	const repBoundary = repBoundaryShape?.simple_shape?.coordinates[0][0].map(
 		(coordinate) => {
 			// console.log("coordinate", coordinate);

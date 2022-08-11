@@ -34,6 +34,7 @@ const LandingPage = () => {
 			.then((res) => res.json())
 			.then((response) => {
 				// console.log("response", response);
+				//sets local storage
 				setUserLocation(response);
 				nav(`/homepage`);
 			})

@@ -4,7 +4,7 @@ const { MongoClient } = require("mongodb");
 // const representativeBios = require("./server/data/representativeBios.json");
 const premiers = require("./server/data/premiers.json");
 const mayors = require("./server/data/mayors.json");
-const provinces = require("./server/data/provinces.js");
+const {provinces} = require("./server/data/provinces.js");
 //Get API Key
 require("dotenv").config();
 const { MONGO_URI } = process.env;
@@ -35,7 +35,7 @@ const batchImport = async () => {
 		const result2 = await db.collection("mayors").insertMany(mayors);
 		console.log("mayors", result2);
 		//import province polygons
-		const result3 = await db.collection("provinces").insert(provinces);
+		const result3 = await db.collection("provinces").insertMany(provinces);
 		console.log("provinces", result3);
 
 		// if (result.acknowledged === true && result2.acknowledged === true) {

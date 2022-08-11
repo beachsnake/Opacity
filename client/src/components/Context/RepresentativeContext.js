@@ -25,6 +25,8 @@ export const RepresentativesProvider = ({ children }) => {
 				const mayorsData = await getMayors.json();
 				// console.log("mayorsData", mayorsData);
 				setMayors(mayorsData.data[0].mayors);
+				//check local storage and setUserLocation to value.
+				//if loacalstorage.length === 0 display message please return to landing page to select address.
 			} catch (err) {
 				setRepsStatus("Error");
 			}
@@ -51,7 +53,7 @@ export const RepresentativesProvider = ({ children }) => {
 					`/api/get-boundary-shape?lat=${userLocation?.lat}&lng=${userLocation?.lng}`
 				);
 				const repsBoundaries = await getRepsBoundarySets.json();
-				console.log("repsBoundaries", repsBoundaries);
+				// console.log("repsBoundaries", repsBoundaries);
 				setAllRepsBoundaryShapes(repsBoundaries.data.objects);
 				setRepBoundaryShape(repsBoundaries.data.objects);
 				setRepsStatus("Idle");

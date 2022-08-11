@@ -27,12 +27,11 @@ export const RepProfileComponent = (rep) => {
 		// console.log("shape.name", shape.name);
 		return shape.name === rep.rep.district_name;
 	});
-	console.log("BoundaryShape", boundaryShape[0]);
+	// console.log("BoundaryShape", boundaryShape[0]);
 
-	//create onClick function that will change the map to the shape of the representative when clicked
-	// const handleClick = () => {
-	// 	setRepBoundaryShape(boundaryShape)
-	// }
+	//Create string for mailto: email link
+	const mailTo = "mailto: " + rep.rep.email;
+
 
 	return (
 		<Wrapper onClick={() => setRepBoundaryShape(boundaryShape[0])}>
@@ -46,7 +45,6 @@ export const RepProfileComponent = (rep) => {
 						<RepSpan> of </RepSpan>
 						{rep.rep.district_name}
 					</>
-
 				)}
 			</RepType>
 			<ImgWrap>
@@ -63,8 +61,8 @@ export const RepProfileComponent = (rep) => {
 				<Party>
 					<Span>Party Afilliation:</Span> {rep.rep.party_name}
 				</Party>
-				<Email>
-					<FaMailBulk />: {rep.rep.email}
+				<Email href={mailTo}>
+					<FaMailBulk /> Send them an email!
 				</Email>
 				{rep.rep.extra.facebook && (
 					<SocialMedia>
@@ -78,11 +76,13 @@ export const RepProfileComponent = (rep) => {
 				)}
 				<Offices>
 					{rep.rep.offices.map((office) => {
+						const tel = "tel:" + office.tel;
+						console.log("tel",tel,"office.tel", office.tel)
 						return (
 							<Office key={v4()}>
-								<StyledP>
+								<PhoneNumber a={tel}>
 									<FaPhoneSquareAlt />: {office.tel}
-								</StyledP>
+								</PhoneNumber>
 								{office.postal && (
 									<StyledP>
 										<FaMapMarkerAlt />: {office.postal}
@@ -153,13 +153,17 @@ const ElectedBody = styled.p`
 const Party = styled.p`
 	margin-bottom: 5px;
 `;
-const Email = styled.p`
+const Email = styled.a`
 	margin-bottom: 5px;
+	color: black;
 `;
 const SocialMedia = styled.p``;
 const Offices = styled.div`
 	display: flex;
 	flex-direction: column;
+`;
+const PhoneNumber = styled.a`
+color: black;
 `;
 const StyledP = styled.p``;
 const Office = styled.div``;
