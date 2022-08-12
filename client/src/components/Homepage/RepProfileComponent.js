@@ -34,20 +34,6 @@ export const RepProfileComponent = (rep) => {
 		return shape.name === rep.rep.district_name;
 	});
 
-	// check for dupliates of Representatives
-
-	//filter for federal MPs
-	// const federalReps = repsByLocation.filter((rep) => {
-	// 	return rep.elected_office === "MP";
-	// });
-
-	//filter federal reps for representative currently being mapped
-	// const checkDuplicate = federalReps.filter((duplicate) => {
-	// 	return rep.rep.name === duplicate.name;
-	// });
-	//if length of checkDuplicate is > 1 return only first result
-	// console.log("checkDuplicate", checkDuplicate);
-
 	// console.log(rep.rep.photo_url.length)
 	const electedOffice = rep.rep.elected_office.split(" ")[0];
 	// console.log("electedOffice", electedOffice);
