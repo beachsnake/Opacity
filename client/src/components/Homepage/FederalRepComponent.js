@@ -14,6 +14,7 @@ const FederalRepComponent = () => {
 	const federalReps = repsByLocation.filter((rep) => {
 		return rep.elected_office === "MP";
 	});
+	console.log(federalReps)
 	//Create profile for Federal PM by filtering through premiers DB I created in MongoDB
 	const primeMinister = premiers.filter((premier) => {
 		// console.log("premier", premier)
@@ -39,7 +40,12 @@ const FederalRepComponent = () => {
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	/* align-items: center; */
+	background-color: var(--color-white);
+	border-radius: 8px;
+	box-shadow: -7px 11px 9px -7px #311e10;
+	padding: 30px;
+	margin-top: 30px;
 `;
 const TitleBox = styled.div`
 	border-bottom: 2px solid black;

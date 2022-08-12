@@ -8,13 +8,15 @@ export default createGlobalStyle`
   */
 
       :root{
-    --color-white: #FEFEFF;
-    --color-green: #6fceb0;
-    --color-red: #f85b74;
-    --color-orange: #F79D00;
-    --color-light-blue: #b1ceeb;
+    --color-white: #ffffff;
+    --color-green: #157f1f;
+    --color-light-green: #4cb963;
+    --color-red: #f72c25;
+    --color-yellow: #f7b32b;
+    --color-orange: #f06543;
+    --color-light-blue: #3c91e6;
     --color-dark-blue: #133056;
-    --color-black: ##181a19;
+    --color-black: #311e10;
     --font-heading: 'Permanent Marker', Arial, Helvetica, sans-serif;
     --font-body: 'Kosugi', Arial, Helvetica, sans-serif;
     --padding-page: 24px;

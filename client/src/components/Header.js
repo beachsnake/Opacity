@@ -28,28 +28,14 @@ const Wrapper = styled.div`
 	align-items: center;
 	padding-left: 20px;
 	padding-right: 20px;
-	background-color: var(--color-green);
+	margin-bottom: 30px;
+	background-color: var(--color-white);
+	border: 3px solid var(--color-green);
 	min-height: 100px;
 	min-width: 60%;
-	border-radius: 4px;
+	border-radius: 8px;
 `;
-// .popUpWord {
-// 	text-transform: uppercase;
-// 	font: bold 26vmax/.8 Open Sans, Impact;
-// 	background: black;
-// 	display: table;
-// 	color: white;
-//   }
 
-//   .outPop:hover {
-// 	margin: auto;
-
-//   }
-//   .outPop:hover .popUpWord{
-// 	mix-blend-mode: multiply;
-//   }
-
-//   }
 const LogoDiv = styled.div`
 	&:hover {
 		cursor: pointer;
@@ -64,13 +50,13 @@ const LogoDiv = styled.div`
 const CompanyLogo = styled.p`
 	font-size: 24px;
 	font-weight: bold;
-	color: white;
-	opacity: 0.2;
+	color: var(--color-black);
+	opacity: 1;
 	transition-duration: 1000ms;
 	transition-property: opacity;
 
 	&:hover {
-		opacity: 1;
+		opacity: 0.2;
 		cursor: pointer;
 		/* transform: */
 	}
@@ -78,6 +64,7 @@ const CompanyLogo = styled.p`
 const NavBar = styled.div``;
 const StyledLink = styled(Link)`
 	margin-left: 10px;
+	color: var(--color-black);
 `;
 
 export default Header;

@@ -40,7 +40,7 @@ const LandingPage = () => {
 				localStorage.setItem("userLocation", JSON.stringify(response));
 				setUserLocation(response);
 				setNewCenter(response);
-				console.log("newCenter",newCenter)
+				console.log("newCenter", newCenter);
 				nav(`/homepage`);
 			})
 			.catch((error) => {
@@ -61,13 +61,13 @@ const LandingPage = () => {
 		<Wrapper>
 			<Instructions>
 				<Title>Welcome to Opacity!</Title>
-				<StyledP></StyledP>
+				<StyledP>
+					Please enter your postal code to find your representatives:
+				</StyledP>
 			</Instructions>
 
 			<FormWrapper>
-				<FormTitle>
-					Please enter your postal code to find your representatives:
-				</FormTitle>
+				<FormTitle></FormTitle>
 				{/* <AddressForm onSubmit={(ev) => submitFunc(ev)}> */}
 				<AddressForm onSubmit={(ev) => handleChange(ev, postalCode)}>
 					<PostalCode
@@ -104,17 +104,27 @@ const Wrapper = styled.div`
 	align-items: center;
 	min-width: 60%;
 	min-height: 100vh;
-	/* background-color: lightgrey; */
+	/* background-color: var(--color-light-green); */
 	/* border: solid 2px green; */
 `;
 const Instructions = styled.div`
 	display: flex;
+	flex-direction: column;
+	margin-left: -200px;
+	padding: 20px;
+	box-shadow: -7px 11px 9px -7px #311e10;
+	background-color: var(--color-white);
+	border-radius: 8px;
 `;
 const Title = styled.p`
-	margin: 20px;
+	margin-bottom: 10px;
+	font-weight: 400;
 	font-size: 20px;
 `;
-const StyledP = styled.div``;
+const StyledP = styled.div`
+	font-family: "Poppins", sans-serif;
+	font-weight: 100;
+`;
 const FormWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -122,31 +132,32 @@ const FormWrapper = styled.div`
 	align-content: center;
 	margin-top: 20px;
 	padding: 20px;
-	/* border: 2px solid red; */
+	box-shadow: -7px 11px 9px -7px #311e10;
+	/* border: 1px solid var(--color-black); */
 	border-radius: 8px;
 	width: 400px;
-	height: 300px;
 	background-color: white;
 `;
 const FormTitle = styled.p`
 	font-size: large;
-	margin-bottom: 50px;
 `;
 const AddressForm = styled.form`
 	display: flex;
 	flex-direction: column;
+	padding: 10px;
 `;
 const PostalCode = styled.input`
 	color: black;
 	border: 1px solid grey;
-	border-radius: 4px;
+	border-radius: 8px;
 	margin-bottom: 20px;
 	height: 30px;
 `;
 const Submit = styled.input`
 	background-color: var(--color-red);
+	font-size: 20px;
 	border: none;
-	border-radius: 4px;
+	border-radius: 8px;
 	height: 30px;
 `;
 export default LandingPage;

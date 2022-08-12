@@ -28,7 +28,7 @@ const ProvincialRepsComponent = () => {
 		// console.log("premier",premier)
 		return premier.elected_office.includes(userLocation.province);
 	});
-    // console.log(premier)
+	// console.log(premier)
 	return (
 		<Wrapper>
 			<TitleBox>
@@ -40,7 +40,6 @@ const ProvincialRepsComponent = () => {
 				})}
 				{/* <RepProfileComponent rep={premier} /> */}
 				<PremierProfileComponent rep={premier} />
-
 			</Container>
 		</Wrapper>
 	);
@@ -49,13 +48,19 @@ const ProvincialRepsComponent = () => {
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	/* align-items: center; */
+	background-color: var(--color-white);
+	border-radius: 8px;
+	box-shadow: -7px 11px 9px -7px #311e10;
+	padding: 30px;
+	margin-top: 30px;
 `;
 const TitleBox = styled.div`
-	border-bottom: 2px solid black;
+	margin-bottom: 20px;
 `;
 const Title = styled.p`
 	font-size: 20px;
+	font-weight: 400;
 `;
 const Container = styled.div`
 	display: flex;

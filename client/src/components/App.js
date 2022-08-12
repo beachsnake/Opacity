@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
-background-color: var(--color-white);
+background-color: var(--color-light-green);
 `;
 
 export default App;

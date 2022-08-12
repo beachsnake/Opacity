@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import { v4 as uuidv4, v4 } from "uuid";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
+import profile from "../../../src/Imgs/profile.jpeg";
 
 export const PremierProfileComponent = (rep) => {
 	//import map shapes from context
@@ -28,7 +29,11 @@ export const PremierProfileComponent = (rep) => {
 		<Wrapper onClick={() => handleClick()}>
 			<RepType>{rep.rep.elected_office}</RepType>
 			<ImgWrap>
-				<Img src={rep.rep.photo_url} alt={rep.rep.name} />
+				{rep.rep.photo_url.length > 0 ? (
+					<Img src={rep.rep.photo_url} alt={rep.rep.name} />
+				) : (
+					<Img src={profile} alt={rep.rep.name} />
+				)}
 			</ImgWrap>
 			<RepInfo>
 				<Name>
@@ -81,16 +86,18 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: var(--color-light-blue);
-	width: 180px;
+	background-color: var(--color-white);
+	width: 250px;
 	/* height: auto; */
 	/* min-width: 100px; */
 	margin: 0px;
-	border-radius: 4px;
+	border-radius: 8px;
+	border: 1px solid var(--color-black);
+	/* box-shadow: -7px 11px 9px -7px #311e10; */
 `;
 const RepType = styled.p`
-	background-color: var(--color-dark-blue);
-	color: var(--color-white);
+	background-color: var(--color-white);
+	color: var(--color-black);
 	padding: 10px;
 	width: 180px;
 	border-top-left-radius: 4px;
@@ -106,8 +113,8 @@ const ImgWrap = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 4px;
-	background-color: var(--color-light-blue);
+	/* border-radius: 4px; */
+	background-color: var(--color-white);
 `;
 const Img = styled.img`
 	border-radius: 4px;
@@ -119,7 +126,7 @@ const RepInfo = styled.div`
 	/* flex-direction: column; */
 	padding: 5px;
 	width: 180px;
-	background-color: var(--color-light-blue);
+	background-color: var(--color-white);
 `;
 const Span = styled.span`
 	font-weight: bold;
