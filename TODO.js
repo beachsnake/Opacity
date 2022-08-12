@@ -8,6 +8,7 @@
 //TODO IF REPRESENTATIVE HAS NO COORDINATES, SET DEFAULT TO MAYOR'S BOUNDARYSET OR SOMETHING ELSE.
 //TODO FIX BUG IN CALGARY AND REGINA WHERE REP IMG NOT FOUND. SHOULD REVERT TO DEFAULT PROFILE PIC.
 //TODO IF THERE ARE NO REPRESENTATIVES IN BRANCH OF GOVERNMENT, DISPLAY ERROR MESSAGE OR DISPLAY NOTHING.
+//FIX ROUTING OF POLYGONS IN PREMIERS ARRAY.
 
 //TODO MAKE SURE PROVINCIAL POLYGONS ARE WORKING:
 // === polygons are working:
@@ -15,11 +16,11 @@
 
 //"Quebec" H2V4J1,
 //"Alberta" T1Y 7J9,
-//"Ontario",
+//"Ontario" M5J 0A1,
 //"Nova Scotia" B3J 1Y4,change zoom to be closer
 //"New Brunswick" E1C 0R9, change zoom to be closer
 //"Manitoba" R2M 3T9,
-//"British Columbia" V8T1Y3,
+//"British Columbia" V8T1Y3, FIND POLYGON FOR ISLANDS AND ADD THEM
 //"Prince Edward Island" C0A 1Y0, Zoom for Federal MP needs to be lower
 //duplicate Provincial MLA/Premier bug needs to be fixed?
 //"Saskatchewan" S4P 0P9 MLA boundary doesn't exist. set default to local mayor

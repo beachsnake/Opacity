@@ -13,17 +13,21 @@ import profile from "../../../src/Imgs/profile.jpeg";
 
 export const PremierProfileComponent = (rep) => {
 	//import map shapes from context
-	const { repBoundaryShape, setRepBoundaryShape, zoom, setZoom, setUserLocation } =
-		useContext(RepresentativesContext);
+	const {
+		repBoundaryShape,
+		setRepBoundaryShape,
+		zoom,
+		setZoom,
+		setUserLocation,
+	} = useContext(RepresentativesContext);
 
-    
 	// console.log("rep", rep.rep.geometry.coordinates[0]);
-    console.log("rep", rep.rep);
+	console.log("rep", rep.rep);
 
 	const handleClick = () => {
-        // setUserLocation()
+		// setUserLocation()
 		setZoom(3.5);
-		setRepBoundaryShape(rep.rep.geometry.coordinates[0][0]);
+		setRepBoundaryShape(rep.rep.geometry.coordinates);
 	};
 
 	//Create string for mailto: email link
@@ -156,14 +160,14 @@ const Party = styled.p`
 const Email = styled.a`
 	margin-bottom: 5px;
 	color: black;
-    &:hover {
+	&:hover {
 		color: var(--color-light-blue);
 	}
 `;
 const SocialMediaBox = styled.div``;
 const SocialMedia = styled.a`
 	color: var(--color-black);
-    &:hover {
+	&:hover {
 		color: var(--color-light-blue);
 	}
 `;
