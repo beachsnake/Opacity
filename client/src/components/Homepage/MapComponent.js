@@ -68,7 +68,7 @@ const MapComponent = () => {
 		: [{ lat: 0, lng: 0 }];
 
 	//*CONSOLE LOGS
-	// console.log("repBoundary", repBoundary);
+	console.log("repBoundary", repBoundary);
 	// console.log("boundaryArr", boundaryArr);
 	// console.log("repBoundary", repBoundary);
 	// console.log(

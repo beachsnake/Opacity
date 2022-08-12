@@ -86,7 +86,7 @@ export const RepresentativesProvider = ({ children }) => {
 	//CONSOLE LOGS
 	// console.log("premiers", premiers);
 	// console.log("mayors", mayors);
-	// console.log("userLocation", userLocation?.lat)
+	console.log("userLocation", userLocation)
 	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
 	// console.log("repBoundaryShape", repBoundaryShape);
 

@@ -41,8 +41,8 @@ export const RepProfileComponent = (rep) => {
 	const handleClick = () => {
 		//check is rep is mayor and then change zoom accordingly
 		electedOffice === "Maire" || electedOffice === "Mayor"
-			? setZoom(10)
-			: setZoom(12);
+			? setZoom(9)
+			: setZoom(11);
 		// setZoom(10);
 		setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
 	};

@@ -17,7 +17,9 @@ export const PremierProfileComponent = (rep) => {
 		useContext(RepresentativesContext);
 
     
-	// console.log("rep", rep);
+	// console.log("rep", rep.rep.geometry.coordinates[0]);
+    console.log("rep", rep.rep);
+
 	const handleClick = () => {
         // setUserLocation()
 		setZoom(3.5);
