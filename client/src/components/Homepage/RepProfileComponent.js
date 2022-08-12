@@ -20,7 +20,6 @@ export const RepProfileComponent = (rep) => {
 		setZoom,
 		setNewCenter,
 	} = useContext(RepresentativesContext);
-	const [display, setDisplay] = useState("none");
 	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
 	// console.log("rep",rep.rep.district_name)
 
@@ -47,7 +46,7 @@ export const RepProfileComponent = (rep) => {
 	// }
 	// console.log(rep.rep.photo_url.length)
 	const handleClick = () => {
-		setZoom(11);
+		setZoom(10);
 		setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
 	};
 	//Create string for mailto: email link
@@ -195,6 +194,9 @@ const Party = styled.p`
 const Email = styled.a`
 	margin-bottom: 5px;
 	color: black;
+	&:hover {
+		color: var(--color-light-blue);
+	}
 `;
 const Offices = styled.div`
 	display: flex;
@@ -203,6 +205,10 @@ const Offices = styled.div`
 const SocialMediaBox = styled.div``;
 const SocialMedia = styled.a`
 	color: var(--color-black);
+
+	&:hover {
+		color: var(--color-light-blue);
+	}
 `;
 const PhoneNumber = styled.a`
 	color: black;

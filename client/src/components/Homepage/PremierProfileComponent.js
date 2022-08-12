@@ -152,10 +152,16 @@ const Party = styled.p`
 const Email = styled.a`
 	margin-bottom: 5px;
 	color: black;
+    &:hover {
+		color: var(--color-light-blue);
+	}
 `;
 const SocialMediaBox = styled.div``;
 const SocialMedia = styled.a`
 	color: var(--color-black);
+    &:hover {
+		color: var(--color-light-blue);
+	}
 `;
 const Offices = styled.div`
 	display: flex;
