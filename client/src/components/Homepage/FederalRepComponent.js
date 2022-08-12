@@ -15,7 +15,7 @@ const FederalRepComponent = () => {
 		// return rep.elected_office === "MP";
 		return rep.representative_set_name === "House of Commons"
 	});
-	console.log("federalReps",federalRep)
+	// console.log("federalReps",federalRep)
 
 	//Create profile for Federal PM by filtering through premiers DB I created in MongoDB
 	const primeMinister = premiers.filter((premier) => {

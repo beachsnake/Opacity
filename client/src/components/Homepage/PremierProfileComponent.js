@@ -18,14 +18,17 @@ export const PremierProfileComponent = (rep) => {
 		setRepBoundaryShape,
 		zoom,
 		setZoom,
+		userLocation,
 		setUserLocation,
+		newCenter,
+		setNewCenter,
 	} = useContext(RepresentativesContext);
 
 	// console.log("rep", rep.rep.geometry.coordinates[0]);
 	console.log("rep", rep.rep);
 
 	const handleClick = () => {
-		// setUserLocation()
+		// setUserLocation(rep.rep.location);
 		setZoom(3.5);
 		setRepBoundaryShape(rep.rep.geometry.coordinates);
 	};

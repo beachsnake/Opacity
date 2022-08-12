@@ -37,6 +37,9 @@ const MapComponent = () => {
 		lat: userLocation.lat,
 		lng: userLocation.lng,
 	};
+	// console.log("newCenter lat", newCenter.lat);
+	// console.log("newCenter lng", newCenter.lng);
+	console.log("userLoction", userLocation);
 	//start map script and use API key
 	const { isLoaded } = useJsApiLoader({
 		id: "google-map-script",
@@ -68,7 +71,7 @@ const MapComponent = () => {
 		: [{ lat: 0, lng: 0 }];
 
 	//*CONSOLE LOGS
-	console.log("repBoundary", repBoundary);
+	// console.log("repBoundary", repBoundary);
 	// console.log("boundaryArr", boundaryArr);
 	// console.log("repBoundary", repBoundary);
 	// console.log(
@@ -90,7 +93,6 @@ const MapComponent = () => {
 			mapContainerStyle={containerStyle}
 			center={center}
 			zoom={zoom}
-			// mapId="6ca0558664ecf852"
 			onLoad={onLoad}
 			// onUnmount={onUnmount}
 		>
