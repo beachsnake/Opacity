@@ -4,6 +4,15 @@ import React from "react";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 
 //TODO make color of polygon change based on party affiliation
+/* eslint-disable no-undef */
+/* global google */
+
+//Styling for Map
+const containerStyle = {
+	minWidth: "73vw",
+	height: "50vh",
+	borderRadius: "8px",
+};
 
 const MapComponent = () => {
 	//create state for map
@@ -16,19 +25,13 @@ const MapComponent = () => {
 		zoom,
 		newCenter,
 	} = useContext(RepresentativesContext);
-	console.log(userLocation);
+	// console.log(userLocation);
 	//*CREATE MAP
 
 	//get API key from .env
 	const mapsKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 	// console.log("mapsKey", mapsKey);
 
-	//Styling for Map
-	const containerStyle = {
-		minWidth: "73vw",
-		height: "50vh",
-		borderRadius: "8px",
-	};
 	//default starting position of map set to userLoacation
 	const center = {
 		lat: userLocation.lat,
@@ -39,34 +42,6 @@ const MapComponent = () => {
 		id: "google-map-script",
 		googleMapsApiKey: mapsKey,
 	});
-
-	//FORMAT REPRESENTATIVE BOUNDARY DATA FROM CONTEXT AND USE IN POLYGON IN MAP
-
-	//create empty array to put formatted coordinates
-	const boundaryArr = [];
-	//map though coordinates array and create new objects in this format: {lat: lat, lng: lng } and shift them into boundaryArr
-
-	// console.log("repBoundaryShape", repBoundaryShape);
-
-	//ALL REPS
-	const repBoundary = repBoundaryShape
-		? repBoundaryShape.map((coordinate) => {
-				// console.log("coordinate", coordinate);
-				const latLngObj = { lat: coordinate[1], lng: coordinate[0] };
-				// console.log("latLngObj", latLngObj);
-				return latLngObj;
-		  })
-		: [];
-	// console.log("repBoundary", repBoundary);
-
-	// console.log("boundaryArr", boundaryArr);
-
-	// console.log("repBoundary", repBoundary);
-	// console.log(
-	// 	"allRepsBoundaryShapes",
-	// 	allRepsBoundaryShapes[0].simple_shape.coordinates[0]
-	// );
-
 	//define polygon styling
 	const options = {
 		fillColor: "blue",
@@ -80,23 +55,43 @@ const MapComponent = () => {
 		geodesic: false,
 		zIndex: 1,
 	};
-	const q = "ChIJ2WrMN9MDDUsRpY9Doiq3aJk";
-	// const onLoad = React.useCallback(function callback(map) {
-	// 	const bounds = new window.google.maps.LatLngBounds(center);
-	// 	map.fitBounds(bounds);
-	// 	setMap(map);
-	// }, []);
+	//FORMAT REPRESENTATIVE BOUNDARY DATA FROM CONTEXT AND USE IN POLYGON IN MAP
 
-	// const onUnmount = React.useCallback(function callback(map) {
-	// 	setMap(null);
-	// }, []);
+	//map though coordinates array and create new objects in this format: {lat: lat, lng: lng }
+	const repBoundary = repBoundaryShape
+		? repBoundaryShape.map((coordinate) => {
+				// console.log("coordinate", coordinate);
+				const latLngObj = { lat: coordinate[1], lng: coordinate[0] };
+				// console.log("latLngObj", latLngObj);
+				return latLngObj;
+		  })
+		: [{ lat: 0, lng: 0 }];
+
+	//*CONSOLE LOGS
+	// console.log("repBoundary", repBoundary);
+	// console.log("boundaryArr", boundaryArr);
+	// console.log("repBoundary", repBoundary);
+	// console.log(
+	// 	"allRepsBoundaryShapes",
+	// 	allRepsBoundaryShapes[0].simple_shape.coordinates[0]
+	// );
+
+	const onLoad = React.useCallback(
+		function callback(map) {
+			map = new window.google.maps.LatLngBounds(center);
+			// map.fitBounds(bounds);
+			setMap(map);
+		},
+		[repBoundaryShape]
+	);
 
 	return isLoaded ? (
 		<GoogleMap
 			mapContainerStyle={containerStyle}
 			center={center}
 			zoom={zoom}
-			// onLoad={onLoad}
+			// mapId="6ca0558664ecf852"
+			onLoad={onLoad}
 			// onUnmount={onUnmount}
 		>
 			<Polygon paths={repBoundary} options={options} />

@@ -13,11 +13,13 @@ import profile from "../../../src/Imgs/profile.jpeg";
 
 export const PremierProfileComponent = (rep) => {
 	//import map shapes from context
-	const { repBoundaryShape, setRepBoundaryShape, zoom, setZoom, newCenter } =
+	const { repBoundaryShape, setRepBoundaryShape, zoom, setZoom, setUserLocation } =
 		useContext(RepresentativesContext);
 
+    
 	// console.log("rep", rep);
 	const handleClick = () => {
+        // setUserLocation()
 		setZoom(3.5);
 		setRepBoundaryShape(rep.rep.geometry.coordinates[0][0]);
 	};

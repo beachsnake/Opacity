@@ -62,7 +62,8 @@ export const RepresentativesProvider = ({ children }) => {
 					`/api/get-representatives?lat=${userLocation.lat}&lng=${userLocation.lng}`
 				);
 				const repsData = await getRepsByLocaiton.json();
-				// console.log("repsData", repsData);
+				console.log("repsData", repsData);
+
 				//put data into state
 				setRepsByLocation(repsData.data.objects);
 

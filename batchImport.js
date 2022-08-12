@@ -29,12 +29,27 @@ const batchImport = async () => {
 		// 	.insertMany(representativeBios);
 		// console.log("representatives", result);
 
+		// const legault = premiers[0].premiers.find((premier) => {
+		// 	return premier.name === "François Legault";
+		// });
+		// // console.log(legault);
+		// const smallMap = [];
+		// for(i=0;i<legault.geometry.coordinates.length;i=i+10){
+		// 	smallMap.push(legault[i])
+		// }
+		// const mapFilter = await legault.geometry.coordinates.filter(
+		// 	(coordinate, index) => {
+		// 		return index % 2 === 0;
+		// 	}
+		// );
+		// console.log(smallMap);
+
 		//import premiers
 		const result = await db.collection("premiers").insertMany(premiers);
 		console.log("premiers", result);
 		//import mayor information
 		const result2 = await db.collection("mayors").insertMany(mayors);
-		console.log("mayors", result2);
+		// console.log("mayors", result2);
 		// //import province polygons
 		// const result3 = await db.collection("provinces").insertMany(provinces);
 		// console.log("provinces", result3);

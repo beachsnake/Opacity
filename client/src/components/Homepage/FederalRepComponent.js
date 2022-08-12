@@ -11,10 +11,12 @@ const FederalRepComponent = () => {
 	//get user's local representatives
 	const { repsByLocation, premiers } = useContext(RepresentativesContext);
 	//Filter for provincial representatives. need to iclude MPP, MNA, MLA
-	const federalReps = repsByLocation.filter((rep) => {
-		return rep.elected_office === "MP";
+	const federalRep = repsByLocation.filter((rep) => {
+		// return rep.elected_office === "MP";
+		return rep.representative_set_name === "House of Commons"
 	});
-	console.log(federalReps)
+	console.log("federalReps",federalRep)
+
 	//Create profile for Federal PM by filtering through premiers DB I created in MongoDB
 	const primeMinister = premiers.filter((premier) => {
 		// console.log("premier", premier)
@@ -27,11 +29,12 @@ const FederalRepComponent = () => {
 				<Title>Federal</Title>
 			</TitleBox>
 			<Container>
-				{federalReps.map((rep) => {
+				{/* {federalReps.map((rep) => {
 					// console.log("rep", rep);
 					return <RepProfileComponent key={v4()} rep={rep} />;
-				})}
-				<RepProfileComponent rep={primeMinister[0]} />
+				})} */}
+				<RepProfileComponent key={v4()} rep={federalRep[0]}/>
+				<RepProfileComponent key={v4()} rep={primeMinister[0]} />
 				{/* <PremierProfileComponent rep={primeMinister[0]} /> */}
 			</Container>
 		</Wrapper>

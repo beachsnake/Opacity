@@ -14,6 +14,7 @@ import profile from "../../../src/Imgs/profile.jpeg";
 export const RepProfileComponent = (rep) => {
 	//import map shapes from context
 	const {
+		repsByLocation,
 		allRepsBoundaryShapes,
 		repBoundaryShape,
 		setRepBoundaryShape,
@@ -24,7 +25,6 @@ export const RepProfileComponent = (rep) => {
 	// console.log("rep",rep.rep.district_name)
 
 	//find boundary that matches representative
-
 	if (allRepsBoundaryShapes === null) {
 		return <div>Loading...</div>;
 	}
@@ -33,20 +33,31 @@ export const RepProfileComponent = (rep) => {
 		// console.log("shape.name", shape.name);
 		return shape.name === rep.rep.district_name;
 	});
-	//TODO find way to filter out mayor and then change zoom and center accordingly
 
-	const mayor =
-		rep.rep.elected_office === "Maire" || rep.rep.elected_office === "Mayor";
-	// console.log(mayor);
-	// if (
-	// 	rep?.rep?.elected_office.includes("Maire") ||
-	// 	rep?.rep?.elected_office.includes("Mayor")
-	// ) {
-	// 	setNewZoom(9);
-	// }
+	// check for dupliates of Representatives
+
+	//filter for federal MPs
+	// const federalReps = repsByLocation.filter((rep) => {
+	// 	return rep.elected_office === "MP";
+	// });
+
+	//filter federal reps for representative currently being mapped
+	// const checkDuplicate = federalReps.filter((duplicate) => {
+	// 	return rep.rep.name === duplicate.name;
+	// });
+	//if length of checkDuplicate is > 1 return only first result
+	// console.log("checkDuplicate", checkDuplicate);
+
 	// console.log(rep.rep.photo_url.length)
+	const electedOffice = rep.rep.elected_office.split(" ")[0];
+	// console.log("electedOffice", electedOffice);
+
 	const handleClick = () => {
-		setZoom(10);
+		//check is rep is mayor and then change zoom accordingly
+		electedOffice === "Maire" || electedOffice === "Mayor"
+			? setZoom(10)
+			: setZoom(12);
+		// setZoom(10);
 		setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
 	};
 	//Create string for mailto: email link
@@ -61,8 +72,8 @@ export const RepProfileComponent = (rep) => {
 					<></>
 				) : (
 					<>
-						{/* <RepSpan> of </RepSpan> */}
-						{/* {rep.rep.district_name} */}
+						<RepSpan> of </RepSpan>
+						{rep.rep.district_name}
 					</>
 				)}
 			</RepType>
@@ -155,7 +166,9 @@ const RepType = styled.p`
 	border-top-right-radius: 4px;
 `;
 const RepSpan = styled.span`
-	color: white;
+	color: var(--color-black);
+	margin-left: 3px;
+	margin-right: 3px;
 `;
 const ImgWrap = styled.div`
 	width: 180px;
