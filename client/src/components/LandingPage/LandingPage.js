@@ -8,7 +8,9 @@ import { useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
 	//import userLocation from Context
-	const { userLocation, setUserLocation } = useContext(RepresentativesContext);
+	const { userLocation, setUserLocation, newCenter, setNewCenter } = useContext(
+		RepresentativesContext
+	);
 	//create state for form value:
 	const [postalCode, setPostalCode] = useState("");
 	// console.log("postalCode", postalCode);
@@ -37,6 +39,8 @@ const LandingPage = () => {
 				//sets local storage
 				localStorage.setItem("userLocation", JSON.stringify(response));
 				setUserLocation(response);
+				setNewCenter(response);
+				console.log("newCenter",newCenter)
 				nav(`/homepage`);
 			})
 			.catch((error) => {

@@ -3,12 +3,22 @@ import { createContext, useEffect, useState } from "react";
 export const RepresentativesContext = createContext();
 
 export const RepresentativesProvider = ({ children }) => {
+	//premiers dataset
 	const [premiers, setPremiers] = useState(null);
+	//mayors dataset
 	const [mayors, setMayors] = useState(null);
+	//userLocation/lat,lng and province from postalcode on landing page.
 	const [userLocation, setUserLocation] = useState(null);
+	//List of reps based on userLocation
 	const [repsByLocation, setRepsByLocation] = useState(null);
+	//Boundary shapes based on userLocation
 	const [allRepsBoundaryShapes, setAllRepsBoundaryShapes] = useState(null);
+	//Boundary shape/Polygon data that is set when representative is clicked on. Used in MapComponent to generate polygon.
 	const [repBoundaryShape, setRepBoundaryShape] = useState(null);
+	//map zoom and center states that are changed when representative profile is clicked.
+	const [zoom, setZoom] = useState(12);
+	const [newCenter, setNewCenter] = useState(null);
+
 	const [getRepsStatus, setRepsStatus] = useState("Loading");
 
 	//Context & fetches to retrieve information we need from Mongo
@@ -73,7 +83,7 @@ export const RepresentativesProvider = ({ children }) => {
 	}, [userLocation]);
 
 	//CONSOLE LOGS
-	console.log("premiers", premiers);
+	// console.log("premiers", premiers);
 	// console.log("mayors", mayors);
 	// console.log("userLocation", userLocation?.lat)
 	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
@@ -103,6 +113,10 @@ export const RepresentativesProvider = ({ children }) => {
 				setAllRepsBoundaryShapes,
 				repBoundaryShape,
 				setRepBoundaryShape,
+				zoom,
+				setZoom,
+				newCenter,
+				setNewCenter,
 			}}
 		>
 			{children}

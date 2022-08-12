@@ -9,10 +9,14 @@ const MapComponent = () => {
 	//create state for map
 	const [map, setMap] = useState(null);
 	//get userLocation and electoral boundaries from RepresentativesContext
-	const { userLocation, allRepsBoundaryShapes, repBoundaryShape } = useContext(
-		RepresentativesContext
-	);
-
+	const {
+		userLocation,
+		allRepsBoundaryShapes,
+		repBoundaryShape,
+		zoom,
+		newCenter,
+	} = useContext(RepresentativesContext);
+	console.log(userLocation);
 	//*CREATE MAP
 
 	//get API key from .env
@@ -44,35 +48,16 @@ const MapComponent = () => {
 
 	// console.log("repBoundaryShape", repBoundaryShape);
 
-	//check to see if the rep clicked is a premier or not. The routing to get the map coordinates is different because the premiers are in a DB, while the other representatives come from an API
-
-	// if(repBoundaryShape.geometry.type === "MultiPolygon"){
-	// 	const repBoundary = repBoundaryShape.coordinates[0].map(
-	// 		(coordinate) => {
-	// 			// console.log("coordinate", coordinate);
-	// 			const latLngObj = { lat: coordinate[1], lng: coordinate[0] };
-	// 			// console.log("latLngObj", latLngObj);
-	// 			return boundaryArr.unshift(latLngObj);
-	// 		})
-	// } 
-	
-	// if(repBoundaryShape.name.length > 0){
-	// 	const repBoundary = repBoundaryShape?.simple_shape?.coordinates[0][0].map(
-	// 	(coordinate) => {
-	// 		// console.log("coordinate", coordinate);
-	// 		const latLngObj = { lat: coordinate[1], lng: coordinate[0] };
-	// 		// console.log("latLngObj", latLngObj);
-	// 		return boundaryArr.unshift(latLngObj);
-	// 	})
-	// }
-	
-	const repBoundary = repBoundaryShape?.simple_shape?.coordinates[0][0].map(
-		(coordinate) => {
-			// console.log("coordinate", coordinate);
-			const latLngObj = { lat: coordinate[1], lng: coordinate[0] };
-			// console.log("latLngObj", latLngObj);
-			return boundaryArr.unshift(latLngObj);
-		})
+	//ALL REPS
+	const repBoundary = repBoundaryShape
+		? repBoundaryShape.map((coordinate) => {
+				// console.log("coordinate", coordinate);
+				const latLngObj = { lat: coordinate[1], lng: coordinate[0] };
+				// console.log("latLngObj", latLngObj);
+				return latLngObj;
+		  })
+		: [];
+	// console.log("repBoundary", repBoundary);
 
 	// console.log("boundaryArr", boundaryArr);
 
@@ -95,7 +80,7 @@ const MapComponent = () => {
 		geodesic: false,
 		zIndex: 1,
 	};
-
+	const q = "ChIJ2WrMN9MDDUsRpY9Doiq3aJk";
 	// const onLoad = React.useCallback(function callback(map) {
 	// 	const bounds = new window.google.maps.LatLngBounds(center);
 	// 	map.fitBounds(bounds);
@@ -110,11 +95,11 @@ const MapComponent = () => {
 		<GoogleMap
 			mapContainerStyle={containerStyle}
 			center={center}
-			zoom={12}
+			zoom={zoom}
 			// onLoad={onLoad}
 			// onUnmount={onUnmount}
 		>
-			<Polygon paths={boundaryArr} options={options} />
+			<Polygon paths={repBoundary} options={options} />
 		</GoogleMap>
 	) : (
 		<></>

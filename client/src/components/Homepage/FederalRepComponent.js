@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import { RepProfileComponent } from "./RepProfileComponent";
+import { PremierProfileComponent } from "./PremierProfileComponent";
 import { v4 as uuidv4, v4 } from "uuid";
 
 //TODO Create profile for PM that uses info from premiers
@@ -13,12 +14,12 @@ const FederalRepComponent = () => {
 	const federalReps = repsByLocation.filter((rep) => {
 		return rep.elected_office === "MP";
 	});
-    //Create profile for Federal PM by filtering through premiers DB I created in MongoDB
-    const primeMinister = premiers.filter((premier) => {
-        // console.log("premier", premier)
-        return premier.name === "Justin Trudeau"
-    })
-    // console.log(primeMinister[0])    
+	//Create profile for Federal PM by filtering through premiers DB I created in MongoDB
+	const primeMinister = premiers.filter((premier) => {
+		// console.log("premier", premier)
+		return premier.name === "Justin Trudeau";
+	});
+	// console.log(primeMinister[0])
 	return (
 		<Wrapper>
 			<TitleBox>
@@ -29,7 +30,8 @@ const FederalRepComponent = () => {
 					// console.log("rep", rep);
 					return <RepProfileComponent key={v4()} rep={rep} />;
 				})}
-                <RepProfileComponent rep={primeMinister[0]}/>
+				<RepProfileComponent rep={primeMinister[0]} />
+				{/* <PremierProfileComponent rep={primeMinister[0]} /> */}
 			</Container>
 		</Wrapper>
 	);

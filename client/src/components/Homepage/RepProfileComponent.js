@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import {
 	FaFacebook,
@@ -12,8 +12,14 @@ import { RepresentativesContext } from "../Context/RepresentativeContext";
 
 export const RepProfileComponent = (rep) => {
 	//import map shapes from context
-	const { allRepsBoundaryShapes, repBoundaryShape, setRepBoundaryShape } =
-		useContext(RepresentativesContext);
+	const {
+		allRepsBoundaryShapes,
+		repBoundaryShape,
+		setRepBoundaryShape,
+		setZoom,
+		setNewCenter,
+	} = useContext(RepresentativesContext);
+	const [newZoom, setNewZoom] = useState(0);
 	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
 	// console.log("rep",rep.rep.district_name)
 
@@ -27,17 +33,27 @@ export const RepProfileComponent = (rep) => {
 		// console.log("shape.name", shape.name);
 		return shape.name === rep.rep.district_name;
 	});
-	
-	// if(boundaryShape === []){
-	// 	setRepBoundaryShape(rep.rep.geometry)
-	// }
-	console.log("BoundaryShape", repBoundaryShape.name === undefined);
+	//TODO find way to filter out mayor and then change zoom and center accordingly
 
+	const mayor =
+		rep.rep.elected_office === "Maire" || rep.rep.elected_office === "Mayor";
+	// console.log(mayor);
+	// if (
+	// 	rep?.rep?.elected_office.includes("Maire") ||
+	// 	rep?.rep?.elected_office.includes("Mayor")
+	// ) {
+	// 	setNewZoom(9);
+	// }
+
+	const handleClick = () => {
+		setZoom(11);
+		setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
+	};
 	//Create string for mailto: email link
 	const mailTo = "mailto: " + rep.rep.email;
 
 	return (
-		<Wrapper onClick={() => setRepBoundaryShape(boundaryShape[0])}>
+		<Wrapper onClick={() => handleClick()}>
 			<RepType>
 				{rep.rep.elected_office}
 				{rep.rep.elected_office.includes("Premier") ||

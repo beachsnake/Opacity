@@ -43,8 +43,7 @@ const getLatLng = async (req, res) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				// console.log("data", data.results[0].formatted_address.split(" "));
-
+				console.log(data)
 				//Filter through data to find name of Province. We need this string in the frontend to render the provincial premier associated with the postal code.
 
 				//create array of province names to use in .find()
@@ -72,11 +71,6 @@ const getLatLng = async (req, res) => {
 				const lat = data.results[0].geometry.location.lat;
 				const lng = data.results[0].geometry.location.lng;
 
-				//TODO DELETE THIS OLD CODE TO GET 2 LETTER PROVINCE CODE
-				//We only need the two letter province code in the frontend, so we'll split the formatted_address and take only the two letter province code for our response.
-				// const addressArr = data.results[0].formatted_address.split(" ");
-				// const province = addressArr[1];
-				// console.log("province", province);
 
 				res.status(200).json({
 					lat: lat,

@@ -14,7 +14,7 @@ import { v4 as uuidv4, v4 } from "uuid";
 
 const Homepage = () => {
 	//import relevant data from RepresentativesContext
-	const { premiers, mayors, repsByLocation, userLocation } = useContext(
+	const { repsByLocation } = useContext(
 		RepresentativesContext
 	);
 	//*CONSOLE LOGS

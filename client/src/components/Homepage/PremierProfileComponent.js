@@ -12,17 +12,20 @@ import { RepresentativesContext } from "../Context/RepresentativeContext";
 
 export const PremierProfileComponent = (rep) => {
 	//import map shapes from context
-	const { repBoundaryShape, setRepBoundaryShape } = useContext(
-		RepresentativesContext
-	);
+	const { repBoundaryShape, setRepBoundaryShape, zoom, setZoom, newCenter } =
+		useContext(RepresentativesContext);
 
-	console.log("BoundaryShape", repBoundaryShape);
+	// console.log("rep", rep);
+	const handleClick = () => {
+		setZoom(3.5);
+		setRepBoundaryShape(rep.rep.geometry.coordinates[0][0]);
+	};
 
 	//Create string for mailto: email link
 	const mailTo = "mailto: " + rep.rep.email;
 
 	return (
-		<Wrapper onClick={() => setRepBoundaryShape(rep.rep.geometry)}>
+		<Wrapper onClick={() => handleClick()}>
 			<RepType>{rep.rep.elected_office}</RepType>
 			<ImgWrap>
 				<Img src={rep.rep.photo_url} alt={rep.rep.name} />
