@@ -48,10 +48,11 @@ const Wrapper = styled.div`
 	margin-top: 30px;
 `;
 const TitleBox = styled.div`
-	border-bottom: 2px solid black;
+	margin-bottom: 20px;
 `;
 const Title = styled.p`
 	font-size: 20px;
+	font-weight: 400;
 `;
 const Container = styled.div`
 	display: flex;

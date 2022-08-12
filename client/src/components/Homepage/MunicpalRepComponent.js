@@ -30,15 +30,19 @@ const MunicpalRepComponent = () => {
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
+	position: relative;
 	/* align-items: center; */
 	background-color: var(--color-white);
 	border-radius: 8px;
 	box-shadow: -7px 11px 9px -7px #311e10;
 	padding: 30px;
 	margin-top: 30px;
+	/* margin-left: 30px; */
+	min-width: 60%;
 `;
 const TitleBox = styled.div`
 	margin-bottom: 20px;
+	/* min-width: 60%; */
 	/* border-bottom: 2px solid black; */
 `;
 const Title = styled.p`
@@ -50,6 +54,8 @@ const Container = styled.div`
 	flex-flow: wrap;
 	justify-content: center;
 	gap: 20px;
+	/* min-width: 60%; */
 	color: white;
+	/* padding:200px; */
 `;
 export default MunicpalRepComponent;

@@ -50,14 +50,18 @@ export const PremierProfileComponent = (rep) => {
 					<FaMailBulk /> Send them an email!
 				</Email>
 				{rep.rep.extra.facebook && (
-					<SocialMedia>
-						<FaFacebook />: {rep.rep.extra.facebook}
-					</SocialMedia>
+					<SocialMediaBox>
+						<SocialMedia href={rep.rep.extra.facebook}>
+							<FaFacebook />: facebook
+						</SocialMedia>
+					</SocialMediaBox>
 				)}
 				{rep.rep.extra.twitter && (
-					<SocialMedia>
-						<FaTwitter />: {rep.rep.extra.twitter}
-					</SocialMedia>
+					<SocialMediaBox>
+						<SocialMedia href={rep.rep.extra.twitter}>
+							<FaTwitter />: Twitter
+						</SocialMedia>
+					</SocialMediaBox>
 				)}
 				<Offices>
 					{rep.rep.offices.map((office) => {
@@ -84,22 +88,27 @@ export const PremierProfileComponent = (rep) => {
 
 const Wrapper = styled.div`
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	align-items: center;
 	background-color: var(--color-white);
-	width: 250px;
+	min-width: 250px;
 	/* height: auto; */
 	/* min-width: 100px; */
 	margin: 0px;
 	border-radius: 8px;
-	border: 1px solid var(--color-black);
+	border: 3px solid var(--color-black);
 	/* box-shadow: -7px 11px 9px -7px #311e10; */
 `;
 const RepType = styled.p`
+	display: flex;
+	justify-content: center;
 	background-color: var(--color-white);
+	font-size: 18px;
+	font-weight: 400;
 	color: var(--color-black);
 	padding: 10px;
-	width: 180px;
+	width: 100%;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 `;
@@ -122,10 +131,10 @@ const Img = styled.img`
 	width: 120px;
 `;
 const RepInfo = styled.div`
-	/* display: flex; */
-	/* flex-direction: column; */
-	padding: 5px;
-	width: 180px;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	width: 240px;
 	background-color: var(--color-white);
 `;
 const Span = styled.span`
@@ -144,7 +153,10 @@ const Email = styled.a`
 	margin-bottom: 5px;
 	color: black;
 `;
-const SocialMedia = styled.p``;
+const SocialMediaBox = styled.div``;
+const SocialMedia = styled.a`
+	color: var(--color-black);
+`;
 const Offices = styled.div`
 	display: flex;
 	flex-direction: column;

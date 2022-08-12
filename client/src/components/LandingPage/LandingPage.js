@@ -110,7 +110,7 @@ const Wrapper = styled.div`
 const Instructions = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-left: -200px;
+	/* margin-left: -200px; */
 	padding: 20px;
 	box-shadow: -7px 11px 9px -7px #311e10;
 	background-color: var(--color-white);

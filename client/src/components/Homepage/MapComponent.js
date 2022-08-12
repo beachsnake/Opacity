@@ -25,9 +25,9 @@ const MapComponent = () => {
 
 	//Styling for Map
 	const containerStyle = {
-		width: "400px",
-		height: "400px",
-		borderRadius: "4px",
+		minWidth: "73vw",
+		height: "50vh",
+		borderRadius: "8px",
 	};
 	//default starting position of map set to userLoacation
 	const center = {

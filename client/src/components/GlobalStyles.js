@@ -15,7 +15,7 @@ export default createGlobalStyle`
     --color-yellow: #f7b32b;
     --color-orange: #f06543;
     --color-light-blue: #3c91e6;
-    --color-dark-blue: #133056;
+    --color-dark-blue: #414288;
     --color-black: #311e10;
     --font-heading: 'Permanent Marker', Arial, Helvetica, sans-serif;
     --font-body: 'Kosugi', Arial, Helvetica, sans-serif;

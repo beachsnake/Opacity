@@ -20,7 +20,7 @@ export const RepProfileComponent = (rep) => {
 		setZoom,
 		setNewCenter,
 	} = useContext(RepresentativesContext);
-	const [newZoom, setNewZoom] = useState(0);
+	const [display, setDisplay] = useState("none");
 	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
 	// console.log("rep",rep.rep.district_name)
 
@@ -62,8 +62,8 @@ export const RepProfileComponent = (rep) => {
 					<></>
 				) : (
 					<>
-						<RepSpan> of </RepSpan>
-						{rep.rep.district_name}
+						{/* <RepSpan> of </RepSpan> */}
+						{/* {rep.rep.district_name} */}
 					</>
 				)}
 			</RepType>
@@ -79,6 +79,10 @@ export const RepProfileComponent = (rep) => {
 					<Span>Name:</Span>
 					{rep.rep.name}
 				</Name>
+				<Name>
+					<Span>District: </Span>
+					{rep.rep.district_name}
+				</Name>
 				<ElectedBody>
 					<Span>Elected to:</Span> {rep.rep.representative_set_name}
 				</ElectedBody>
@@ -89,14 +93,18 @@ export const RepProfileComponent = (rep) => {
 					<FaMailBulk /> Send them an email!
 				</Email>
 				{rep.rep.extra.facebook && (
-					<SocialMedia>
-						<FaFacebook />: {rep.rep.extra.facebook}
-					</SocialMedia>
+					<SocialMediaBox>
+						<SocialMedia href={rep.rep.extra.facebook}>
+							<FaFacebook />: facebook
+						</SocialMedia>
+					</SocialMediaBox>
 				)}
 				{rep.rep.extra.twitter && (
-					<SocialMedia>
-						<FaTwitter />: {rep.rep.extra.twitter}
-					</SocialMedia>
+					<SocialMediaBox>
+						<SocialMedia href={rep.rep.extra.twitter}>
+							<FaTwitter />: Twitter
+						</SocialMedia>
+					</SocialMediaBox>
 				)}
 				<Offices>
 					{rep.rep.offices.map((office) => {
@@ -123,22 +131,27 @@ export const RepProfileComponent = (rep) => {
 
 const Wrapper = styled.div`
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	align-items: center;
 	background-color: var(--color-white);
-	width: 250px;
+	min-width: 250px;
 	/* height: auto; */
 	/* min-width: 100px; */
 	margin: 0px;
 	border-radius: 8px;
-	border:1px solid var(--color-black);
+	border: 3px solid var(--color-black);
 	/* box-shadow: -7px 11px 9px -7px #311e10; */
 `;
 const RepType = styled.p`
+	display: flex;
+	justify-content: center;
 	background-color: var(--color-white);
+	font-size: 18px;
+	font-weight: 400;
 	color: var(--color-black);
 	padding: 10px;
-	width: 180px;
+	width: 100%;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 `;
@@ -147,7 +160,7 @@ const RepSpan = styled.span`
 `;
 const ImgWrap = styled.div`
 	width: 180px;
-	height: 180px;
+	/* height: 180px; */
 	padding-top: 10px;
 	display: flex;
 	justify-content: center;
@@ -161,10 +174,10 @@ const Img = styled.img`
 	width: 120px;
 `;
 const RepInfo = styled.div`
-	/* display: flex; */
-	/* flex-direction: column; */
-	padding: 5px;
-	width: 180px;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	width: 250px;
 	background-color: var(--color-white);
 `;
 const Span = styled.span`
@@ -183,10 +196,13 @@ const Email = styled.a`
 	margin-bottom: 5px;
 	color: black;
 `;
-const SocialMedia = styled.p``;
 const Offices = styled.div`
 	display: flex;
 	flex-direction: column;
+`;
+const SocialMediaBox = styled.div``;
+const SocialMedia = styled.a`
+	color: var(--color-black);
 `;
 const PhoneNumber = styled.a`
 	color: black;
