@@ -22,9 +22,9 @@ export const RepProfileComponent = (rep) => {
 		setNewCenter,
 		userLocation,
 	} = useContext(RepresentativesContext);
-	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
+	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes);
 	// console.log("rep",rep.rep.district_name)
-	// console.log(rep.rep.name)
+	console.log(rep.rep.photo_url);
 	//find boundary that matches representative
 	if (allRepsBoundaryShapes === null || repsByLocation === null) {
 		return <div>Loading...</div>;
@@ -35,14 +35,23 @@ export const RepProfileComponent = (rep) => {
 		return shape.name === rep?.rep?.district_name;
 	});
 
-	// console.log(rep.rep.photo_url.length)
-
-	// Take first word from reps elected_office to sort reps for different map centers and zooms onClick 
+	// Take first word from reps elected_office to sort reps for different map centers and zooms onClick
 	const electedOffice = rep?.rep?.elected_office.split(" ")[0];
+	//declare rep name to change map zoom of P.E.I. MLA & Newfoundland MHA
+	const repName = rep?.rep?.name;
+	console.log("repName", repName);
+	// console.log("boundaryShape", boundaryShape[0]?.simple_shape?.coordinates[0][0])
+	//declare repSetName to change map zoom of Newfoundland Councillors
+	const repSetName = rep?.rep?.representative_set_name;
 
 	const handleClick = () => {
 		//check is rep is mayor and then change zoom accordingly
-		electedOffice === "Maire" || electedOffice === "Mayor"
+		electedOffice === "Maire" ||
+		electedOffice === "Mayor" ||
+		repName === "Dennis King" ||
+		repName === "Heath MacDonald" ||
+		repName === "Joanne Thompson" ||
+		repSetName === "St. John's City Council"
 			? setZoom(9)
 			: electedOffice === "Prime"
 			? setZoom(3)
@@ -51,7 +60,10 @@ export const RepProfileComponent = (rep) => {
 		electedOffice === "Prime"
 			? setNewCenter(rep.rep.location)
 			: setNewCenter(userLocation);
-		setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
+		//There is a routing problem for the boundary shape of the MHA of Newfoundland, so we will check if this rep is being clicked and change the routing accordingly:
+		repName === "John Abbott"
+			? setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[3][0])
+			: setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
 	};
 	//Create string for mailto: email link to open email client when user clicks on email link.
 	const mailTo = "mailto: " + rep?.rep?.email;
