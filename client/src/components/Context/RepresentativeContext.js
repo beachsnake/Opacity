@@ -37,7 +37,8 @@ export const RepresentativesProvider = ({ children }) => {
 				setMayors(mayorsData.data[0].mayors);
 				//check local storage and setUserLocation to value.
 				setUserLocation(JSON.parse(localStorage.getItem("userLocation")));
-				if (userLocation !== null) {
+				setUserLocation(JSON.parse(localStorage.getItem("newCenter")));
+				if (userLocation !== null || newCenter === null) {
 					return (
 						<div>
 							Something Went Wrong! Please return to the previous page and

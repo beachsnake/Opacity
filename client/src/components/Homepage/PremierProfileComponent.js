@@ -28,7 +28,7 @@ export const PremierProfileComponent = (rep) => {
 	console.log("rep", rep.rep);
 
 	const handleClick = () => {
-		// setUserLocation(rep.rep.location);
+		setNewCenter(rep.rep.location);
 		setZoom(3.5);
 		setRepBoundaryShape(rep.rep.geometry.coordinates);
 	};

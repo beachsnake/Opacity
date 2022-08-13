@@ -33,12 +33,24 @@ const MapComponent = () => {
 	// console.log("mapsKey", mapsKey);
 
 	//default starting position of map set to userLoacation
+	// const center = {
+	// 	lat: newCenter?.lat,
+	// 	lng: newCenter?.lng,
+	// };
 	const center = {
-		lat: userLocation.lat,
-		lng: userLocation.lng,
+		lat: userLocation?.lat,
+		lng: userLocation?.lng,
 	};
-	// console.log("newCenter lat", newCenter.lat);
-	// console.log("newCenter lng", newCenter.lng);
+	console.log("center", center);
+	// if (newCenter) {
+	// 	const center = {
+	// 		lat: newCenter.lat,
+	// 		lng: newCenter.lng,
+	// 	};
+	// }
+
+	console.log("newCenter lat", newCenter?.lat);
+	console.log("newCenter lng", newCenter?.lng);
 	console.log("userLoction", userLocation);
 	//start map script and use API key
 	const { isLoaded } = useJsApiLoader({
@@ -89,15 +101,17 @@ const MapComponent = () => {
 	);
 
 	return isLoaded ? (
-		<GoogleMap
-			mapContainerStyle={containerStyle}
-			center={center}
-			zoom={zoom}
-			onLoad={onLoad}
-			// onUnmount={onUnmount}
-		>
-			<Polygon paths={repBoundary} options={options} />
-		</GoogleMap>
+		<>
+			<GoogleMap
+				mapContainerStyle={containerStyle}
+				center={center}
+				zoom={zoom}
+				// onLoad={onLoad}
+				// onUnmount={onUnmount}
+			>
+				<Polygon paths={repBoundary} options={options} />
+			</GoogleMap>
+		</>
 	) : (
 		<></>
 	);

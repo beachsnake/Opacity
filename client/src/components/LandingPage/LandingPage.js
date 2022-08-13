@@ -38,9 +38,10 @@ const LandingPage = () => {
 				console.log("response", response);
 				//sets local storage
 				localStorage.setItem("userLocation", JSON.stringify(response));
-				setUserLocation(response);
+				localStorage.setItem("newCenter", JSON.stringify(response));
 				setNewCenter(response);
-				console.log("newCenter", newCenter);
+				setUserLocation(response);
+				// console.log("newCenter", newCenter);
 				nav(`/homepage`);
 			})
 			.catch((error) => {
