@@ -27,7 +27,7 @@ export const PremierProfileComponent = (rep) => {
 	// console.log("rep", rep.rep.geometry.coordinates[0]);
 	//put premier's province in variable to change zoom based on province onClick
 	const province = rep.rep.location.province;
-	// console.log("rep", rep.rep.location.province);
+	console.log("rep", rep.rep.location.province);
 
 	const handleClick = () => {
 		setNewCenter(rep.rep.location);
@@ -35,7 +35,7 @@ export const PremierProfileComponent = (rep) => {
 			? setZoom(5.5)
 			: province === "Prince Edward Island"
 			? setZoom(7.5)
-			: setZoom(3.5);
+			: setZoom(3.75);
 		// setZoom(3.5);
 		setRepBoundaryShape(rep.rep.geometry.coordinates);
 	};
