@@ -25,11 +25,18 @@ export const PremierProfileComponent = (rep) => {
 	} = useContext(RepresentativesContext);
 
 	// console.log("rep", rep.rep.geometry.coordinates[0]);
-	console.log("rep", rep.rep);
+	//put premier's province in variable to change zoom based on province onClick
+	const province = rep.rep.location.province;
+	// console.log("rep", rep.rep.location.province);
 
 	const handleClick = () => {
 		setNewCenter(rep.rep.location);
-		setZoom(3.5);
+		province === "Nova Scotia" || province === "New Brunswick"
+			? setZoom(5.5)
+			: province === "Prince Edward Island"
+			? setZoom(7.5)
+			: setZoom(3.5);
+		// setZoom(3.5);
 		setRepBoundaryShape(rep.rep.geometry.coordinates);
 	};
 

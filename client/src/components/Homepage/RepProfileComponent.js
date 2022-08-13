@@ -24,20 +24,21 @@ export const RepProfileComponent = (rep) => {
 	} = useContext(RepresentativesContext);
 	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
 	// console.log("rep",rep.rep.district_name)
-
+	// console.log(rep.rep.name)
 	//find boundary that matches representative
-	if (allRepsBoundaryShapes === null) {
+	if (allRepsBoundaryShapes === null || repsByLocation === null) {
 		return <div>Loading...</div>;
 	}
 
 	const boundaryShape = allRepsBoundaryShapes.filter((shape) => {
 		// console.log("shape.name", shape.name);
-		return shape.name === rep.rep.district_name;
+		return shape.name === rep?.rep?.district_name;
 	});
 
 	// console.log(rep.rep.photo_url.length)
-	const electedOffice = rep.rep.elected_office.split(" ")[0];
-	// console.log("electedOffice", electedOffice);
+
+	// Take first word from reps elected_office to sort reps for different map centers and zooms onClick 
+	const electedOffice = rep?.rep?.elected_office.split(" ")[0];
 
 	const handleClick = () => {
 		//check is rep is mayor and then change zoom accordingly
@@ -46,74 +47,70 @@ export const RepProfileComponent = (rep) => {
 			: electedOffice === "Prime"
 			? setZoom(3)
 			: setZoom(11);
-		
+		//check if rep is Prime Minister and adjust map center loacation accordingly
 		electedOffice === "Prime"
 			? setNewCenter(rep.rep.location)
-			: setNewCenter(userLocation)
-		// electedOffice === "Maire" || electedOffice === "Mayor"
-		// 	? setZoom(9)
-		// 	: setZoom(11);
-		// setNewCenter(userLocation);
+			: setNewCenter(userLocation);
 		setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
 	};
-	//Create string for mailto: email link
-	const mailTo = "mailto: " + rep.rep.email;
+	//Create string for mailto: email link to open email client when user clicks on email link.
+	const mailTo = "mailto: " + rep?.rep?.email;
 
 	return (
 		<Wrapper onClick={() => handleClick()}>
 			<RepType>
-				{rep.rep.elected_office}
-				{rep.rep.elected_office.includes("Premier") ||
-				rep.rep.elected_office.includes("Prime") ? (
+				{rep?.rep?.elected_office}
+				{rep?.rep?.elected_office.includes("Premier") ||
+				rep?.rep?.elected_office.includes("Prime") ? (
 					<></>
 				) : (
 					<>
 						<RepSpan> of </RepSpan>
-						{rep.rep.district_name}
+						{rep?.rep?.district_name}
 					</>
 				)}
 			</RepType>
 			<ImgWrap>
-				{rep.rep.photo_url.length > 0 ? (
+				{rep?.rep?.photo_url?.length > 0 ? (
 					<Img src={rep.rep.photo_url} alt={rep.rep.name} />
 				) : (
-					<Img src={profile} alt={rep.rep.name} />
+					<Img src={profile} alt={rep?.rep?.name} />
 				)}
 			</ImgWrap>
 			<RepInfo>
 				<Name>
 					<Span>Name:</Span>
-					{rep.rep.name}
+					{rep?.rep?.name}
 				</Name>
 				<Name>
 					<Span>District: </Span>
-					{rep.rep.district_name}
+					{rep?.rep?.district_name}
 				</Name>
 				<ElectedBody>
-					<Span>Elected to:</Span> {rep.rep.representative_set_name}
+					<Span>Elected to:</Span> {rep?.rep?.representative_set_name}
 				</ElectedBody>
 				<Party>
-					<Span>Party Afilliation:</Span> {rep.rep.party_name}
+					<Span>Party Afilliation:</Span> {rep?.rep?.party_name}
 				</Party>
 				<Email href={mailTo}>
 					<FaMailBulk /> Send them an email!
 				</Email>
-				{rep.rep.extra.facebook && (
+				{rep?.rep?.extra.facebook && (
 					<SocialMediaBox>
-						<SocialMedia href={rep.rep.extra.facebook}>
+						<SocialMedia href={rep?.rep?.extra.facebook}>
 							<FaFacebook />: facebook
 						</SocialMedia>
 					</SocialMediaBox>
 				)}
-				{rep.rep.extra.twitter && (
+				{rep?.rep?.extra.twitter && (
 					<SocialMediaBox>
-						<SocialMedia href={rep.rep.extra.twitter}>
+						<SocialMedia href={rep?.rep?.extra.twitter}>
 							<FaTwitter />: Twitter
 						</SocialMedia>
 					</SocialMediaBox>
 				)}
 				<Offices>
-					{rep.rep.offices.map((office) => {
+					{rep?.rep?.offices.map((office) => {
 						const tel = "tel:" + office.tel;
 						// console.log("tel",tel,"office.tel", office.tel)
 						return (

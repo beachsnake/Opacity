@@ -38,7 +38,7 @@ export const RepresentativesProvider = ({ children }) => {
 				//check local storage and setUserLocation to value.
 				setUserLocation(JSON.parse(localStorage.getItem("userLocation")));
 				setNewCenter(JSON.parse(localStorage.getItem("newCenter")));
-				if (userLocation !== null || newCenter === NaN) {
+				if (userLocation !== null || newCenter === null) {
 					return (
 						<div>
 							Something Went Wrong! Please return to the previous page and
@@ -77,6 +77,9 @@ export const RepresentativesProvider = ({ children }) => {
 				setAllRepsBoundaryShapes(repsBoundaries.data.objects);
 				setRepBoundaryShape(repsBoundaries.data.objects);
 				setRepsStatus("Idle");
+				// if(repsByLocation === null || allRepsBoundaryShapes === null || repBoundaryShape === null) {
+				// 	return <div>Loading</div>
+				// }
 			} catch (err) {
 				setRepsStatus("Error");
 			}

@@ -28,7 +28,7 @@ const ProvincialRepsComponent = () => {
 		// console.log("premier",premier)
 		return premier.elected_office.includes(userLocation.province);
 	});
-	console.log(premier)
+	// console.log(premier)
 	return (
 		<Wrapper>
 			<TitleBox>

@@ -14,6 +14,7 @@
 //TODO MAKE SURE PROVINCIAL POLYGONS ARE WORKING:
 // === polygons are working:
 //? === polygons AND zoom working
+//Make zoom revert to userLocation on unMount
 
 //"Quebec" H2V4J1,
 //"Alberta" T1Y 7J9,
@@ -25,9 +26,8 @@
 //"Prince Edward Island" C0A 1Y0, Zoom for Federal MP needs to be lower
 //duplicate Provincial MLA/Premier bug needs to be fixed?
 //"Saskatchewan" S4P 0P9 MLA boundary doesn't exist. set default to local mayor
-//"Newfoundland and Labrador" A1C 1G9 Councillor zoom should be same as Mayor 
+//"Newfoundland and Labrador" A1C 1G9 Councillor zoom should be same as Mayor
 //*TERRITORIES - currently not able to find representatives with postal code. Check to see if address works better.
-"Yukon" Y1A 2A7;
-"Nunavut" X0A 0H0;
-"Nortwest Territories" X1A 2R3;
-
+// "Yukon" Y1A 2A7;
+// "Nunavut" X0A 0H0;
+// "Nortwest Territories" X1A 2R3;
