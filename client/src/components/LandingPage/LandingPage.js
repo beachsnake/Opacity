@@ -41,7 +41,8 @@ const LandingPage = () => {
 				localStorage.setItem("newCenter", JSON.stringify(response));
 				setNewCenter(response);
 				setUserLocation(response);
-				// console.log("newCenter", newCenter);
+				console.log("newCenter landing page", newCenter);
+				console.log("userLocation landing page", userLocation)
 				nav(`/homepage`);
 			})
 			.catch((error) => {

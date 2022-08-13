@@ -20,6 +20,7 @@ export const RepProfileComponent = (rep) => {
 		setRepBoundaryShape,
 		setZoom,
 		setNewCenter,
+		userLocation,
 	} = useContext(RepresentativesContext);
 	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
 	// console.log("rep",rep.rep.district_name)
@@ -42,8 +43,17 @@ export const RepProfileComponent = (rep) => {
 		//check is rep is mayor and then change zoom accordingly
 		electedOffice === "Maire" || electedOffice === "Mayor"
 			? setZoom(9)
+			: electedOffice === "Prime"
+			? setZoom(3)
 			: setZoom(11);
-		// setZoom(10);
+		
+		electedOffice === "Prime"
+			? setNewCenter(rep.rep.location)
+			: setNewCenter(userLocation)
+		// electedOffice === "Maire" || electedOffice === "Mayor"
+		// 	? setZoom(9)
+		// 	: setZoom(11);
+		// setNewCenter(userLocation);
 		setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
 	};
 	//Create string for mailto: email link

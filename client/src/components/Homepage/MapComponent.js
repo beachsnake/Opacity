@@ -33,25 +33,25 @@ const MapComponent = () => {
 	// console.log("mapsKey", mapsKey);
 
 	//default starting position of map set to userLoacation
-	// const center = {
-	// 	lat: newCenter?.lat,
-	// 	lng: newCenter?.lng,
-	// };
 	const center = {
-		lat: userLocation?.lat,
-		lng: userLocation?.lng,
+		lat: newCenter?.lat,
+		lng: newCenter?.lng,
 	};
+	// const center = {
+	// 	lat: userLocation?.lat,
+	// 	lng: userLocation?.lng,
+	// };
 	console.log("center", center);
 	// if (newCenter) {
-	// 	const center = {
-	// 		lat: newCenter.lat,
-	// 		lng: newCenter.lng,
-	// 	};
+	// const center = {
+	// 	lat: newCenter.lat,
+	// 	lng: newCenter.lng,
+	// };
 	// }
 
-	console.log("newCenter lat", newCenter?.lat);
-	console.log("newCenter lng", newCenter?.lng);
-	console.log("userLoction", userLocation);
+	console.log("newCenter lat", Number(newCenter?.lat));
+	console.log("newCenter lng", Number(newCenter?.lng));
+	console.log("userLoaction", Number(userLocation.lat));
 	//start map script and use API key
 	const { isLoaded } = useJsApiLoader({
 		id: "google-map-script",
