@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { RepProfileComponent } from "./RepProfileComponent";
 import { v4 as uuidv4, v4 } from "uuid";
 
@@ -18,7 +19,10 @@ const MunicpalRepComponent = () => {
 			<TitleBox>
 				<Title>Municipal</Title>
 			</TitleBox>
-			<Container>
+			<Container 
+				layout
+				// transition={{ layout: { duration: 4, type: "spring" } }}
+				>
 				{MunicipalReps.map((rep) => {
 					// console.log("rep", rep);
 					return <RepProfileComponent key={v4()} rep={rep} />;
