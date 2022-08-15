@@ -73,7 +73,7 @@ export const RepProfileComponent = (rep) => {
 	//declare repSetName to change map zoom of Newfoundland Councillors
 	const repSetName = rep?.rep?.representative_set_name;
 	// console.log("repName", repName)
-	console.log("zoom", zoom);
+	// console.log("zoom", zoom);
 
 	const handleClick = (name) => {
 		//set isOpen to opposit value to expand or collapse the rep information div
@@ -177,15 +177,17 @@ export const RepProfileComponent = (rep) => {
 						<TitleSpan>Party</TitleSpan>
 						<Span>{rep?.rep?.party_name}</Span>
 					</Party>
-					<Website>
-						<RepWebsite href={rep?.rep?.url}>Website</RepWebsite>
+					<Website whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+						<RepWebsite href={rep?.rep?.url} target="_blank">
+							Website
+						</RepWebsite>
 						{/* <Span>{rep?.rep?.url}</Span> */}
 					</Website>
-					<EmailBox
-						whileHover={{ scale: 1.1 }}
-						whileTap={{ scale: 0.9, color: "var(--color-red)" }}
-					>
-						<Email style={{ color: "var(--color-light-blue)" }} href={mailTo}>
+					<EmailBox whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+						<Email
+							style={{ color: "var(--color-light-blue)", marginBottom: "10px" }}
+							href={mailTo}
+						>
 							Send an email!
 						</Email>
 						<Span>
@@ -194,8 +196,8 @@ export const RepProfileComponent = (rep) => {
 					</EmailBox>
 					{rep?.rep?.extra.facebook && (
 						<SocialMediaBox>
-							<TitleSpan>facebook</TitleSpan>
-							<SocialMedia href={rep?.rep?.extra.facebook}>
+							{/* <TitleSpan>facebook</TitleSpan> */}
+							<SocialMedia href={rep?.rep?.extra.facebook} target="_blank">
 								<FaFacebook style={{ color: "var(--color-light-blue)" }} />:
 								facebook
 							</SocialMedia>
@@ -203,8 +205,8 @@ export const RepProfileComponent = (rep) => {
 					)}
 					{rep?.rep?.extra.twitter && (
 						<SocialMediaBox>
-							<TitleSpan>twitter</TitleSpan>
-							<SocialMedia href={rep?.rep?.extra.twitter}>
+							{/* <TitleSpan>twitter</TitleSpan> */}
+							<SocialMedia href={rep?.rep?.extra.twitter} target="_blank">
 								<FaTwitter style={{ color: "var(--color-light-blue)" }} />:
 								Twitter
 							</SocialMedia>
@@ -213,18 +215,23 @@ export const RepProfileComponent = (rep) => {
 					<Offices>
 						{rep?.rep?.offices.map((office) => {
 							const tel = "tel:" + office.tel;
-							// console.log("tel",tel,"office.tel", office.tel)
+							const address =
+								"https://www.google.com/maps/search/?api=1&query=" +
+								`${office.postal}`;
+							console.log("tel", tel, "office.tel", typeof Number(office.tel));
 							return (
 								<Office key={v4()}>
-									<PhoneNumber a={tel}>
+									<PhoneNumber href={tel} target="_blank">
 										<FaPhoneSquareAlt style={{ color: "var(--color-green)" }} />
 										: {office.tel}
 									</PhoneNumber>
 									{office.postal && (
-										<StyledP>
-											<FaMapMarkerAlt style={{ color: "var(--color-red)" }} />:{" "}
-											{office.postal}
-										</StyledP>
+										<OfficeBox>
+											<OfficeAddress href={address} target="_blank">
+												<FaMapMarkerAlt style={{ color: "var(--color-red)" }} />
+												: {office.postal}
+											</OfficeAddress>
+										</OfficeBox>
 									)}
 								</Office>
 							);
@@ -340,18 +347,17 @@ const Party = styled.div`
 	align-items: center;
 	margin-bottom: 5px;
 `;
-const Website = styled.div`
+const Website = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 5px;
 `;
-const RepWebsite = styled(motion.a)`
+const RepWebsite = styled.a`
 	font-size: 16px;
 	color: var(--color-light-blue);
 	font-family: var(--font-heading);
 	margin-bottom: 10px;
-	border-bottom: 1px solid var(--color-light-blue);
 `;
 const EmailBox = styled(motion.div)``;
 const Email = styled(motion.a)`
@@ -366,6 +372,14 @@ const Offices = styled.div`
 	display: flex;
 	flex-direction: column;
 `;
+const OfficeBox = styled.div``;
+const OfficeAddress = styled.a`
+	color: black;
+	&:hover {
+		color: var(--color-light-blue);
+	}
+`;
+
 const SocialMediaBox = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -381,6 +395,9 @@ const SocialMedia = styled.a`
 `;
 const PhoneNumber = styled.a`
 	color: black;
+	&:hover {
+		color: var(--color-light-blue);
+	}
 `;
 const StyledP = styled.p``;
 const Office = styled.div``;

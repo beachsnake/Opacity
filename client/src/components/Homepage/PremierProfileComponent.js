@@ -59,7 +59,7 @@ export const PremierProfileComponent = (rep) => {
 		>
 			<RepType
 			//  layout
-			 >
+			>
 				{rep?.rep?.elected_office}
 				{rep?.rep?.elected_office.includes("Premier") ||
 				rep?.rep?.elected_office.includes("Prime") ? (
@@ -71,7 +71,7 @@ export const PremierProfileComponent = (rep) => {
 					</>
 				)}
 			</RepType>
-			<ImgWrap 
+			<ImgWrap
 			// layout
 			>
 				{rep?.rep?.photo_url?.length > 0 ? (
@@ -112,7 +112,9 @@ export const PremierProfileComponent = (rep) => {
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9, color: "var(--color-red)" }}
 					>
-						<RepWebsite href={rep?.rep?.url}>Website</RepWebsite>
+						<RepWebsite href={rep?.rep?.url} target="_blank">
+							Website
+						</RepWebsite>
 					</Website>
 					<EmailBox
 						whileHover={{ scale: 1.1 }}
@@ -128,7 +130,7 @@ export const PremierProfileComponent = (rep) => {
 					{rep?.rep?.extra.facebook && (
 						<SocialMediaBox>
 							<TitleSpan>facebook</TitleSpan>
-							<SocialMedia href={rep?.rep?.extra.facebook}>
+							<SocialMedia href={rep?.rep?.extra.facebook} target="_blank">
 								<FaFacebook style={{ color: "var(--color-light-blue)" }} />:
 								facebook
 							</SocialMedia>
@@ -137,7 +139,7 @@ export const PremierProfileComponent = (rep) => {
 					{rep?.rep?.extra.twitter && (
 						<SocialMediaBox>
 							<TitleSpan>twitter</TitleSpan>
-							<SocialMedia href={rep?.rep?.extra.twitter}>
+							<SocialMedia href={rep?.rep?.extra.twitter} target="_blank">
 								<FaTwitter style={{ color: "var(--color-light-blue)" }} />:
 								Twitter
 							</SocialMedia>
@@ -146,7 +148,7 @@ export const PremierProfileComponent = (rep) => {
 					<Offices>
 						{rep?.rep?.offices.map((office) => {
 							const tel = "tel:" + office.tel;
-							// console.log("tel",tel,"office.tel", office.tel)
+							console.log("tel",tel,"office.tel", office.tel)
 							return (
 								<Office key={v4()}>
 									<PhoneNumber a={tel}>
