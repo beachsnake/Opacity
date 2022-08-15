@@ -8,11 +8,13 @@ const MunicpalRepComponent = () => {
 	//get user's local representatives
 	const { repsByLocation, mayors } = useContext(RepresentativesContext);
 	//Filter for municipal representatives. need to exclude MPP, MNA, MLA, and MP
-	const MunicipalReps = repsByLocation.filter((rep) => {
+	const municipalReps = repsByLocation.filter((rep) => {
 		// console.log("repFilter", rep.elected_office);
 		return rep.elected_office.length > 3;
 	});
-	// console.log("MunicipalReps", MunicipalReps);
+	//check to see if there are any municipal reps in database
+
+	console.log("MunicipalReps", municipalReps.length);
 	return (
 		<Wrapper>
 			<TitleBox>
@@ -22,10 +24,28 @@ const MunicpalRepComponent = () => {
 				layout
 				// transition={{ layout: { duration: 4, type: "spring" } }}
 			>
-				{MunicipalReps.map((rep) => {
+				{municipalReps.length > 0 ? (
+					municipalReps.map((rep) => {
+						// console.log("rep", rep);
+						return <RepProfileComponent key={v4()} rep={rep} />;
+					})
+				) : (
+					<StyledP>
+						We currently don't have any municipal representatives to display for
+						this area! We are constantly working to increase our database, if
+						you'd like to make a request to get more representatives'
+						information for this area you can do so
+						<a href="mailto:requests@opacity.ca" target="_blank">
+							{" "}
+							here!
+						</a>
+						.
+					</StyledP>
+				)}
+				{/* {municipalReps.map((rep) => {
 					// console.log("rep", rep);
 					return <RepProfileComponent key={v4()} rep={rep} />;
-				})}
+				})} */}
 			</Container>
 		</Wrapper>
 	);
@@ -37,7 +57,6 @@ const Wrapper = styled.div`
 	border-radius: 8px;
 	box-shadow: -7px 11px 9px -7px #311e10;
 	margin-top: 30px;
-
 `;
 const TitleBox = styled.div`
 	display: flex;
@@ -68,5 +87,10 @@ const Container = styled.div`
 	/* min-width: 60%; */
 	color: white;
 	/* padding:200px; */
+`;
+const StyledP = styled.div`
+	font-family: "Poppins", sans-serif;
+	font-weight: 100;
+	margin-top: 20px;
 `;
 export default MunicpalRepComponent;
