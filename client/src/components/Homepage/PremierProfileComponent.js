@@ -50,14 +50,16 @@ export const PremierProfileComponent = (rep) => {
 
 	return (
 		<Wrapper
-			layout
-			transition={{ layout: { duration: 1.5, type: "spring" } }}
+			// layout
+			// transition={{ layout: { duration: 1.5, type: "spring" } }}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			style={{ borderRadius: "8px" }}
 			// onClick={() => handleClick()}
 		>
-			<RepType layout>
+			<RepType
+			//  layout
+			 >
 				{rep?.rep?.elected_office}
 				{rep?.rep?.elected_office.includes("Premier") ||
 				rep?.rep?.elected_office.includes("Prime") ? (
@@ -69,14 +71,16 @@ export const PremierProfileComponent = (rep) => {
 					</>
 				)}
 			</RepType>
-			<ImgWrap layout>
+			<ImgWrap 
+			// layout
+			>
 				{rep?.rep?.photo_url?.length > 0 ? (
 					<Img src={rep.rep.photo_url} alt={rep.rep.name} />
 				) : (
 					<Img src={profile} alt={rep?.rep?.name} />
 				)}
 				<SeeInfo
-					layout
+					// layout
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
 					onClick={() => handleClick()}
@@ -86,7 +90,7 @@ export const PremierProfileComponent = (rep) => {
 			</ImgWrap>
 			{isOpen && (
 				<RepInfo
-					layout
+					// layout
 					// transition={{ layout: { duration: 4, type: "spring" } }}
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}

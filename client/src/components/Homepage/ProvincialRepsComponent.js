@@ -38,6 +38,7 @@ const ProvincialRepsComponent = () => {
 				{provincialReps.map((rep) => {
 					return <RepProfileComponent key={v4()} rep={provincialReps[0]} />;
 				})}
+				{/* <RepProfileComponent rep={provincialReps[0]} /> */}
 				{/* <RepProfileComponent rep={premier} /> */}
 				<PremierProfileComponent rep={premier} />
 			</Container>
