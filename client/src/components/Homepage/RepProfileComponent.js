@@ -24,11 +24,33 @@ export const RepProfileComponent = (rep) => {
 		setZoom,
 		setNewCenter,
 		userLocation,
+		isOpen,
+		setIsOpen,
 	} = useContext(RepresentativesContext);
 
+	const [image, setImage] = useState(rep?.rep?.photo_url);
+
 	//Create state for expanding profile information
-	const [isOpen, setIsOpen] = useState(false);
+	// const [isOpen, setIsOpen] = useState(false);
+
+	// useEffect(() => {
+	// 	setIsOpen(!isOpen);
+	// }, [zoom]);
+
 	// console.log("isOpen", isOpen);
+	// console.log("rep.rep", rep.rep);
+
+	// check if rep is Municipal Rep. If municipalRep === false, rep being mapped is municipal rep.
+	// const municipalRep = repsByLocation.every((rep) => {
+	// 	return (
+	// 		rep.elected_office === "MNA" ||
+	// 		rep.elected_office === "MPP" ||
+	// 		rep.elected_office === "MLA" ||
+	// 		rep.elected_office === "MHA" ||
+	// 		rep.elected_office === "MP"
+	// 	);
+	// });
+	// console.log("municipalRep", municipalRep);
 
 	//find boundary that matches representative
 	if (allRepsBoundaryShapes === null || repsByLocation === null) {
@@ -51,13 +73,13 @@ export const RepProfileComponent = (rep) => {
 	//declare repSetName to change map zoom of Newfoundland Councillors
 	const repSetName = rep?.rep?.representative_set_name;
 	// console.log("repName", repName)
+	console.log("zoom", zoom);
 
-	const handleClick = () => {
+	const handleClick = (name) => {
 		//set isOpen to opposit value to expand or collapse the rep information div
-		setIsOpen(!isOpen);
-		// console.log("isOpen", isOpen, e.target.value);
-		console.log("zoom", zoom);
-		// console.log("e.target", e);
+		isOpen === name ? setIsOpen(null) : setIsOpen(name);
+		console.log("isOpen in", isOpen);
+		// console.log("zoom", zoom);
 		//check is rep is mayor and then change zoom accordingly
 		electedOffice === "Maire" ||
 		electedOffice === "Mayor" ||
@@ -79,22 +101,12 @@ export const RepProfileComponent = (rep) => {
 		repName === "John Abbott"
 			? setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[3][0])
 			: setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
-
-		// if (e.target.innerText.split(" ")[0] === electedOffice) {
-		// 	setIsOpen(!isOpen);
-		// }
-		// const eventTarget = e.target.innerText.split("");
-		// const newTarget = e.target.innerText.includes(electedOffice);
-		// if (newTarget) {
-		// 	setIsOpen(!isOpen);
-		// }
-		// console.log("newEventTarget", newTarget);
-		// // console.log("e.target", e.target.innerText.split(""));
-		// console.log("electedOffice", electedOfficeLength);
 	};
 	//Create string for mailto: email link to open email client when user clicks on email link.
 	const mailTo = "mailto: " + rep?.rep?.email;
 
+	// console.log("isOpen out", isOpen);
+	console.log("profile", profile);
 	return (
 		<Wrapper
 			layout
@@ -118,7 +130,16 @@ export const RepProfileComponent = (rep) => {
 			</RepType>
 			<ImgWrap layout>
 				{rep?.rep?.photo_url?.length > 0 ? (
-					<Img src={rep.rep.photo_url} alt={rep.rep.name} />
+					<Img
+						src={image}
+						onError={(e) => {
+							if (e.target.onerror === null) {
+								setImage(profile);
+								console.log("image", image);
+							}
+						}}
+						alt={rep.rep.name}
+					/>
 				) : (
 					<Img src={profile} alt={rep?.rep?.name} />
 				)}
@@ -126,12 +147,12 @@ export const RepProfileComponent = (rep) => {
 					layout
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
-					onClick={() => handleClick()}
+					onClick={() => handleClick(rep.rep.name)}
 				>
 					Representative Information
 				</SeeInfo>
 			</ImgWrap>
-			{isOpen && (
+			{isOpen === rep?.rep?.name && (
 				<RepInfo
 					layout
 					// transition={{ layout: { duration: 4, type: "spring" } }}
@@ -151,6 +172,10 @@ export const RepProfileComponent = (rep) => {
 						<TitleSpan>Party</TitleSpan>
 						<Span>{rep?.rep?.party_name}</Span>
 					</Party>
+					<Website>
+						<RepWebsite href={rep?.rep?.url}>Website</RepWebsite>
+						{/* <Span>{rep?.rep?.url}</Span> */}
+					</Website>
 					<EmailBox
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9, color: "var(--color-red)" }}
@@ -219,6 +244,7 @@ const Wrapper = styled(motion.div)`
 	border-right: 2px solid var(--color-light-blue);
 	border-bottom: 2px solid var(--color-light-blue);
 	overflow: hidden;
+	height: fit-content;
 	/* box-shadow: -7px 11px 9px -7px #311e10; */
 `;
 const RepType = styled(motion.p)`
@@ -277,10 +303,6 @@ const RepInfo = styled(motion.div)`
 	width: 250px;
 	background-color: var(--color-white);
 `;
-const Leaf = styled.img`
-	width: 20px;
-	color: var(--color-light-blue);
-`;
 const TitleSpan = styled.span`
 	font-size: 16px;
 	color: var(--color-light-blue);
@@ -312,6 +334,19 @@ const Party = styled.div`
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 5px;
+`;
+const Website = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 5px;
+`;
+const RepWebsite = styled(motion.a)`
+	font-size: 16px;
+	color: var(--color-light-blue);
+	font-family: var(--font-heading);
+	margin-bottom: 10px;
+	border-bottom: 1px solid var(--color-light-blue);
 `;
 const EmailBox = styled(motion.div)``;
 const Email = styled(motion.a)`

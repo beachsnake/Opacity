@@ -104,6 +104,12 @@ export const PremierProfileComponent = (rep) => {
 						<TitleSpan>Party</TitleSpan>
 						<Span>{rep?.rep?.party_name}</Span>
 					</Party>
+					<Website
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9, color: "var(--color-red)" }}
+					>
+						<RepWebsite href={rep?.rep?.url}>Website</RepWebsite>
+					</Website>
 					<EmailBox
 						whileHover={{ scale: 1.1 }}
 						whileTap={{ scale: 0.9, color: "var(--color-red)" }}
@@ -172,6 +178,7 @@ const Wrapper = styled(motion.div)`
 	border-right: 2px solid var(--color-light-blue);
 	border-bottom: 2px solid var(--color-light-blue);
 	overflow: hidden;
+	height: fit-content;
 	/* box-shadow: -7px 11px 9px -7px #311e10; */
 `;
 const RepType = styled(motion.p)`
@@ -265,6 +272,18 @@ const Party = styled.div`
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: 5px;
+`;
+const Website = styled(motion.div)`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 5px;
+`;
+const RepWebsite = styled(motion.a)`
+	font-size: 16px;
+	color: var(--color-light-blue);
+	font-family: var(--font-heading);
+	margin-bottom: 10px;
 `;
 const EmailBox = styled(motion.div)``;
 const Email = styled(motion.a)`

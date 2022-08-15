@@ -35,7 +35,7 @@ const Homepage = () => {
 			</MapWrapper>
 			<>
 				<Container>
-					<MunicpalRepComponent />
+				<MunicpalRepComponent />
 				</Container>
 				<Container>
 					<ProvincialRepsComponent />
@@ -50,15 +50,20 @@ const Homepage = () => {
 
 const Wrapper = styled.div`
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	align-items: center;
 	width: clamp(50%, 75vw, 90%);
 `;
 const MapWrapper = styled.div`
+	/* position: fixed; */
 	margin-top: 30px;
 	border: 3px solid var(--color-light-blue);
+	/* background-color: var(--color-light-white); */
 	padding: 10px;
 	border-radius: 8px;
+	z-index: 2;
+	/* width: clamp(50%, 75vw, 90%); */
 `;
 const Container = styled.div`
 	display: flex;

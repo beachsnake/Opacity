@@ -18,6 +18,8 @@ export const RepresentativesProvider = ({ children }) => {
 	//map zoom and center states that are changed when representative profile is clicked.
 	const [zoom, setZoom] = useState(12);
 	const [newCenter, setNewCenter] = useState(null);
+	//Create state for expanding profile information
+	const [isOpen, setIsOpen] = useState(false);
 
 	const [getRepsStatus, setRepsStatus] = useState("Loading");
 
@@ -122,6 +124,8 @@ export const RepresentativesProvider = ({ children }) => {
 				setZoom,
 				newCenter,
 				setNewCenter,
+				isOpen,
+				setIsOpen,
 			}}
 		>
 			{children}
