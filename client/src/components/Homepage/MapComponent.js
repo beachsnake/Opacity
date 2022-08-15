@@ -12,6 +12,7 @@ const containerStyle = {
 	minWidth: "73vw",
 	height: "50vh",
 	borderRadius: "8px",
+	// width: clamp("50%", "75vw", "90%"),
 };
 
 const MapComponent = () => {

@@ -8,7 +8,6 @@ import SignUpPage from "./SignUpPage/SignUpPage";
 import { LogInPage } from "./LogInPage/LogInPage";
 import AboutPage from "./AboutPage/AboutPage";
 
-
 function App() {
 	return (
 		<>
@@ -19,9 +18,9 @@ function App() {
 					<Routes>
 						<Route exact path="/" element={<LandingPage />} />
 						<Route exact path="/homepage" element={<Homepage />} />
-            <Route exact path="/sign-up" element={<SignUpPage />} />
-            <Route exact path="/log-in" element={<LogInPage />} />
-            <Route exact path="/about" element={<AboutPage />} />
+						<Route exact path="/sign-up" element={<SignUpPage />} />
+						<Route exact path="/log-in" element={<LogInPage />} />
+						<Route exact path="/about" element={<AboutPage />} />
 					</Routes>
 				</Wrapper>
 			</Router>
@@ -30,10 +29,13 @@ function App() {
 }
 
 const Wrapper = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-background-color: var(--color-white);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 20px;
+	background-color: var(--color-white);
+	border: 5px dashed var(--color-red);
+	border-top: none;
 `;
 
 export default App;

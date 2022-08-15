@@ -10,7 +10,7 @@ const Header = () => {
 		<Wrapper>
 			{/* <CompanyLogo to="/">Opacity</CompanyLogo> */}
 			<LogoDiv
-				whileHover={{ scale: 1.1, opacity: 0.2, cursor: "pointer" }}
+				whileHover={{ scale: 1.1, opacity: 0.2, cursor: "pointer"}}
 				whileTap={{ scale: 0.8 }}
 				onClick={() => nav("/homepage")}
 			>
@@ -40,32 +40,25 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: center;
+	align-items: flex-end;
 	padding-left: 20px;
 	padding-right: 20px;
+	padding-bottom: 15px;
 	margin-bottom: 30px;
-	background-color: var(--color-yellow);
+	background-color: var(--color-red);
 	/* border: 3px solid var(--color-red); */
 	min-height: 100px;
-	min-width: 73vw;
+	width: clamp(50%, 75vw, 90%);
+	/* min-width: 73vw; */
 	border-radius: 8px;
 `;
 
 const LogoDiv = styled(motion.div)``;
 const CompanyLogo = styled.p`
-	font-size: 24px;
+	font-size: 44px;
 	font-weight: bold;
-	font-family: "Bungee", cursive;
+	font-family: var(--font-heading);
 	color: var(--color-white);
-	opacity: 1;
-	transition-duration: 1000ms;
-	transition-property: opacity;
-
-	/* &:hover {
-		opacity: 0.2;
-		cursor: pointer;
-		/* transform: */
-	} */
 `;
 const NavBar = styled(motion.div)`
 	display: flex;
@@ -74,7 +67,7 @@ const NavBar = styled(motion.div)`
 const StyledLink = styled(Link)`
 	/* margin-right: 10px; */
 	color: var(--color-white);
-	font-family: "Bungee", cursive;
+	font-family: var(--font-heading);
 `;
 
 export default Header;

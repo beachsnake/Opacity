@@ -127,7 +127,7 @@ export const RepProfileComponent = (rep) => {
 					whileTap={{ scale: 0.9 }}
 					onClick={() => handleClick()}
 				>
-					More information
+					Representative Information
 				</SeeInfo>
 			</ImgWrap>
 			{isOpen && (
@@ -138,30 +138,42 @@ export const RepProfileComponent = (rep) => {
 					animate={{ opacity: 1 }}
 					key={rep?.rep?.name}
 				>
-					<Name>
-						<Span>District: </Span>
-						{rep?.rep?.district_name}
-					</Name>
+					<DistrictName>
+						<TitleSpan>District</TitleSpan>
+						<Span>{rep?.rep?.district_name}</Span>
+					</DistrictName>
 					<ElectedBody>
-						<Span>Elected to:</Span> {rep?.rep?.representative_set_name}
+						<TitleSpan>Elected to</TitleSpan>{" "}
+						<Span>{rep?.rep?.representative_set_name}</Span>
 					</ElectedBody>
 					<Party>
-						<Span>Party Afilliation:</Span> {rep?.rep?.party_name}
+						<TitleSpan>Party</TitleSpan>
+						<Span>{rep?.rep?.party_name}</Span>
 					</Party>
-					<Email href={mailTo}>
-						<FaMailBulk /> Send them an email!
-					</Email>
+					<EmailBox
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.9, color: "var(--color-red)" }}
+					>
+						<Email style={{ color: "var(--color-light-blue)" }} href={mailTo}>
+							Send an email!
+						</Email>
+						<Span>
+							<FaMailBulk style={{ color: "var(--color-light-blue)" }} />
+						</Span>
+					</EmailBox>
 					{rep?.rep?.extra.facebook && (
 						<SocialMediaBox>
 							<SocialMedia href={rep?.rep?.extra.facebook}>
-								<FaFacebook />: facebook
+								<FaFacebook style={{ color: "var(--color-light-blue)" }} />:
+								facebook
 							</SocialMedia>
 						</SocialMediaBox>
 					)}
 					{rep?.rep?.extra.twitter && (
 						<SocialMediaBox>
 							<SocialMedia href={rep?.rep?.extra.twitter}>
-								<FaTwitter />: Twitter
+								<FaTwitter style={{ color: "var(--color-light-blue)" }} />:
+								Twitter
 							</SocialMedia>
 						</SocialMediaBox>
 					)}
@@ -172,11 +184,13 @@ export const RepProfileComponent = (rep) => {
 							return (
 								<Office key={v4()}>
 									<PhoneNumber a={tel}>
-										<FaPhoneSquareAlt />: {office.tel}
+										<FaPhoneSquareAlt style={{ color: "var(--color-green)" }} />
+										: {office.tel}
 									</PhoneNumber>
 									{office.postal && (
 										<StyledP>
-											<FaMapMarkerAlt />: {office.postal}
+											<FaMapMarkerAlt style={{ color: "var(--color-red)" }} />:{" "}
+											{office.postal}
 										</StyledP>
 									)}
 								</Office>
@@ -197,9 +211,6 @@ const Wrapper = styled(motion.div)`
 	align-items: center;
 	background-color: var(--color-white);
 	width: 260px;
-	/* height: auto; */
-	/* min-width: 100px; */
-	/* margin-bottom: 0px; */
 	border-radius: 8px;
 	border-left: 2px solid var(--color-light-blue);
 	border-right: 2px solid var(--color-light-blue);
@@ -245,40 +256,64 @@ const Img = styled.img`
 `;
 const SeeInfo = styled(motion.button)`
 	text-decoration: none;
-	background-color: var(--color-white);
+	background-color: var(--color-red);
+	color: var(--color-white);
+	border: none;
 	border-radius: 4px;
 	padding: 2px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	width: 180px;
-	color: black;
 `;
 const RepInfo = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	margin-bottom: 10px;
 	padding: 10px;
 	width: 250px;
 	background-color: var(--color-white);
 `;
-const Span = styled.span`
-	font-weight: bold;
+const TitleSpan = styled.span`
+	font-size: 16px;
+	color: var(--color-light-blue);
+	font-family: var(--font-heading);
+	margin-bottom: 10px;
+	border-bottom: 2px solid var(--color-light-blue);
 `;
-const Name = styled(motion.p)`
+const Span = styled.p`
+	display: flex;
+	justify-content: center;
+	font-size: 16px;
+	margin-bottom: 5px;
+	/* font-weight: bold; */
+`;
+const DistrictName = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	margin-bottom: 5px;
 `;
-const ElectedBody = styled.p`
+const ElectedBody = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	margin-bottom: 5px;
 `;
-const Party = styled.p`
+const Party = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	margin-bottom: 5px;
 `;
-const Email = styled.a`
+const EmailBox = styled(motion.div)``;
+const Email = styled(motion.a)`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: var(--font-heading);
 	margin-bottom: 5px;
 	color: black;
-	&:hover {
-		color: var(--color-light-blue);
-	}
 `;
 const Offices = styled.div`
 	display: flex;

@@ -18,7 +18,7 @@ export default createGlobalStyle`
     --color-light-blue: #3c91e6;
     --color-dark-blue: #414288;
     --color-black: #311e10;
-    --font-heading: 'Permanent Marker', Arial, Helvetica, sans-serif;
+    --font-heading: 'Rubik Mono One', sans-serif;
     --font-body: 'Kosugi', Arial, Helvetica, sans-serif;
     --padding-page: 24px;
       }
@@ -76,13 +76,13 @@ h3,
 label,
 button {
   color: white;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-heading);
   text-align: center;
 }
 p {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
-  font-size: 12px;
+  font-size: 18px;
 }
 a,
 li,
@@ -91,7 +91,7 @@ input {
   font-family: "Poppins", sans-serif;
   font-weight: 100;
   text-decoration: none;
-  color: var(--color-white)
+  color: var(--color-light-blue)
 }
   #root{
     height: 100vh;

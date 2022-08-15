@@ -54,11 +54,12 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: clamp(50%, 75vw, 90%);
 `;
 const MapWrapper = styled.div`
     margin-top: 30px;
-	border: 3px solid var(--color-yellow);
-	padding: 20px;
+	border: 3px solid var(--color-light-blue);
+	padding: 10px;
 	border-radius: 8px;
 `;
 const Container = styled.div`
