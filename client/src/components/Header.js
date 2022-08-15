@@ -50,7 +50,8 @@ const Wrapper = styled.div`
 	min-height: 100px;
 	width: clamp(50%, 75vw, 90%);
 	/* min-width: 73vw; */
-	border-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 `;
 
 const LogoDiv = styled(motion.div)``;

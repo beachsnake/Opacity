@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { RepProfileComponent } from "./RepProfileComponent";
 import { v4 as uuidv4, v4 } from "uuid";
 
@@ -34,16 +33,11 @@ const MunicpalRepComponent = () => {
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	/* position: relative; */
-	/* align-items: center; */
 	background-color: var(--color-white);
 	border-radius: 8px;
 	box-shadow: -7px 11px 9px -7px #311e10;
-	/* padding: 10px; */
 	margin-top: 30px;
-	/* padding: 0px 10px 20px 5px; */
-	/* margin-left: 30px; */
-	/* min-width: 60%; */
+
 `;
 const TitleBox = styled.div`
 	display: flex;

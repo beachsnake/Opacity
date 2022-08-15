@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 //TODO make input display error if not formatted correctly, Or if repsByLocation is empty array
 
@@ -42,7 +43,7 @@ const LandingPage = () => {
 				setNewCenter(response);
 				setUserLocation(response);
 				console.log("newCenter landing page", newCenter);
-				console.log("userLocation landing page", userLocation)
+				console.log("userLocation landing page", userLocation);
 				nav(`/homepage`);
 			})
 			.catch((error) => {
@@ -61,14 +62,14 @@ const LandingPage = () => {
 	};
 	return (
 		<Wrapper>
-			<Instructions>
+			<TitleBox>
 				<Title>Welcome to Opacity!</Title>
+			</TitleBox>
+			<Container>
 				<StyledP>
 					Please enter your postal code to find your representatives:
 				</StyledP>
-			</Instructions>
 
-			<FormWrapper>
 				<FormTitle></FormTitle>
 				{/* <AddressForm onSubmit={(ev) => submitFunc(ev)}> */}
 				<AddressForm onSubmit={(ev) => handleChange(ev, postalCode)}>
@@ -82,6 +83,8 @@ const LandingPage = () => {
 					/>
 					{validPostal.test(postalCode) ? (
 						<Submit
+							whileHover={{ scale: 1.1 }}
+							whileTap={{ scale: 0.9 }}
 							type="submit"
 							disabled={false}
 							style={{ cursor: "pointer" }}
@@ -89,6 +92,8 @@ const LandingPage = () => {
 					) : (
 						<>
 							<Submit
+								whileHover={{ scale: 1.1 }}
+								whileTap={{ scale: 0.9 }}
 								type="submit"
 								disabled={true}
 								style={{ cursor: "not-allowed" }}
@@ -96,7 +101,7 @@ const LandingPage = () => {
 						</>
 					)}
 				</AddressForm>
-			</FormWrapper>
+			</Container>
 		</Wrapper>
 	);
 };
@@ -104,7 +109,7 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	min-width: 60%;
+	width: clamp(50%, 75vw, 90%);
 	min-height: 100vh;
 	/* background-color: var(--color-light-green); */
 	/* border: solid 2px green; */
@@ -114,31 +119,50 @@ const Instructions = styled.div`
 	flex-direction: column;
 	/* margin-left: -200px; */
 	padding: 20px;
-	box-shadow: -7px 11px 9px -7px #311e10;
 	background-color: var(--color-white);
 	border-radius: 8px;
+	box-shadow: -7px 11px 9px -7px #311e10;
+`;
+const Container = styled.div`
+	display: flex;
+	flex-flow: wrap;
+	justify-content: center;
+	gap: 20px;
+	padding: 10px;
+	width: 60%;
+	border-left: 3px solid var(--color-red);
+	border-right: 3px solid var(--color-red);
+	border-bottom: 3px solid var(--color-red);
+	/* min-width: 60%; */
+	color: white;
+	/* padding:200px; */
+`;
+const TitleBox = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--color-red);
+	width: 60%;
+	padding: 10px;
+	/* height: 30px; */
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border: 2px solid var(--color-red);
 `;
 const Title = styled.p`
-	margin-bottom: 10px;
+	font-size: 30px;
 	font-weight: 400;
-	font-size: 20px;
+	font-family: var(--font-heading);
+	color: var(--color-white);
 `;
+// const Title = styled.p`
+// 	margin-bottom: 10px;
+// 	font-weight: 400;
+// 	font-size: 20px;
+// `;
 const StyledP = styled.div`
 	font-family: "Poppins", sans-serif;
 	font-weight: 100;
-`;
-const FormWrapper = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-content: center;
-	margin-top: 20px;
-	padding: 20px;
-	box-shadow: -7px 11px 9px -7px #311e10;
-	/* border: 1px solid var(--color-black); */
-	border-radius: 8px;
-	width: 400px;
-	background-color: white;
 `;
 const FormTitle = styled.p`
 	font-size: large;
@@ -148,15 +172,18 @@ const AddressForm = styled.form`
 	flex-direction: column;
 	padding: 10px;
 `;
-const PostalCode = styled.input`
+const PostalCode = styled(motion.input)`
+	font-family: var(--font-body);
 	color: black;
 	border: 1px solid grey;
 	border-radius: 8px;
 	margin-bottom: 20px;
 	height: 30px;
 `;
-const Submit = styled.input`
+const Submit = styled(motion.input)`
 	background-color: var(--color-red);
+	color: var(--color-white);
+	font-family: var(--font-heading);
 	font-size: 20px;
 	border: none;
 	border-radius: 8px;
