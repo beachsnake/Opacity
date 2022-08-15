@@ -24,9 +24,7 @@ export const RepProfileComponent = (rep) => {
 		setNewCenter,
 		userLocation,
 	} = useContext(RepresentativesContext);
-	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes);
-	// console.log("rep", rep.rep);
-	// console.log(rep.rep.photo_url);
+
 	//Create state for expanding profile information
 	const [isOpen, setIsOpen] = useState(false);
 	// console.log("isOpen", isOpen);
@@ -56,7 +54,7 @@ export const RepProfileComponent = (rep) => {
 	const handleClick = () => {
 		//set isOpen to opposit value to expand or collapse the rep information div
 		setIsOpen(!isOpen);
-		console.log("isOpen", isOpen);
+		// console.log("isOpen", isOpen, e.target.value);
 		console.log("zoom", zoom);
 		// console.log("e.target", e);
 		//check is rep is mayor and then change zoom accordingly
@@ -99,7 +97,7 @@ export const RepProfileComponent = (rep) => {
 	return (
 		<Wrapper
 			layout
-			transition={{ layout: { duration: 2.5, type: "spring" } }}
+			transition={{ layout: { duration: 1.5, type: "spring" } }}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			style={{ borderRadius: "8px" }}
@@ -112,8 +110,8 @@ export const RepProfileComponent = (rep) => {
 					<></>
 				) : (
 					<>
-						<RepSpan> of </RepSpan>
-						{rep?.rep?.district_name}
+						{/* <RepSpan> of </RepSpan>
+						<RepSpan>{rep?.rep?.district_name}</RepSpan> */}
 					</>
 				)}
 			</RepType>
@@ -123,11 +121,16 @@ export const RepProfileComponent = (rep) => {
 				) : (
 					<Img src={profile} alt={rep?.rep?.name} />
 				)}
-				<SeeInfo layout whileTap={{ scale: 0.9 }} onClick={() => handleClick()}>
+				<SeeInfo
+					layout
+					whileHover={{ scale: 1.1 }}
+					whileTap={{ scale: 0.9 }}
+					onClick={() => handleClick()}
+				>
 					More information
 				</SeeInfo>
 			</ImgWrap>
-			{isOpen === true && (
+			{isOpen && (
 				<RepInfo
 					layout
 					// transition={{ layout: { duration: 4, type: "spring" } }}
@@ -135,10 +138,6 @@ export const RepProfileComponent = (rep) => {
 					animate={{ opacity: 1 }}
 					key={rep?.rep?.name}
 				>
-					<Name>
-						<Span>Name:</Span>
-						{rep?.rep?.name}
-					</Name>
 					<Name>
 						<Span>District: </Span>
 						{rep?.rep?.district_name}
@@ -186,6 +185,7 @@ export const RepProfileComponent = (rep) => {
 					</Offices>
 				</RepInfo>
 			)}
+			<RepType>{rep?.rep?.name}</RepType>
 		</Wrapper>
 	);
 };
@@ -196,29 +196,32 @@ const Wrapper = styled(motion.div)`
 	flex-direction: column;
 	align-items: center;
 	background-color: var(--color-white);
-	min-width: 250px;
+	width: 260px;
 	/* height: auto; */
 	/* min-width: 100px; */
-	margin: 0px;
+	/* margin-bottom: 0px; */
 	border-radius: 8px;
-	border: 3px solid var(--color-black);
+	border-left: 2px solid var(--color-light-blue);
+	border-right: 2px solid var(--color-light-blue);
+	border-bottom: 2px solid var(--color-light-blue);
 	overflow: hidden;
 	/* box-shadow: -7px 11px 9px -7px #311e10; */
 `;
 const RepType = styled(motion.p)`
 	display: flex;
 	justify-content: center;
-	background-color: var(--color-white);
+	background-color: var(--color-light-blue);
 	font-size: 18px;
 	font-weight: 400;
-	color: var(--color-black);
+	color: var(--color-white);
 	padding: 10px;
 	width: 100%;
+	height: auto;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 `;
 const RepSpan = styled.span`
-	color: var(--color-black);
+	color: var(--color-white);
 	margin-left: 3px;
 	margin-right: 3px;
 `;

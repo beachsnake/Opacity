@@ -34,15 +34,16 @@ const MunicpalRepComponent = () => {
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	position: relative;
+	/* position: relative; */
 	/* align-items: center; */
 	background-color: var(--color-white);
+	border: 3px solid var(--color-yellow);
 	border-radius: 8px;
 	box-shadow: -7px 11px 9px -7px #311e10;
 	padding: 30px;
 	margin-top: 30px;
 	/* margin-left: 30px; */
-	min-width: 60%;
+	/* min-width: 60%; */
 `;
 const TitleBox = styled.div`
 	margin-bottom: 20px;

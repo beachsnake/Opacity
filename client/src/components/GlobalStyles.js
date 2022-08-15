@@ -9,10 +9,11 @@ export default createGlobalStyle`
 
       :root{
     --color-white: #ffffff;
-    --color-green: #157f1f;
-    --color-light-green: #4cb963;
-    --color-red: #f72c25;
+    /* --color-green: #157f1f; */
+    --color-green: #4cb963;
+    --color-red: #E85F5C;
     --color-yellow: #f7b32b;
+    --color-yello2: #F9C254;
     --color-orange: #f06543;
     --color-light-blue: #3c91e6;
     --color-dark-blue: #414288;

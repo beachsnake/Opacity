@@ -57,6 +57,9 @@ const Wrapper = styled.div`
 `;
 const MapWrapper = styled.div`
     margin-top: 30px;
+	border: 3px solid var(--color-yellow);
+	padding: 20px;
+	border-radius: 8px;
 `;
 const Container = styled.div`
 	display: flex;

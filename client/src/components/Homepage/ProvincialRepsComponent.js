@@ -12,7 +12,7 @@ const ProvincialRepsComponent = () => {
 	const { repsByLocation, premiers, userLocation } = useContext(
 		RepresentativesContext
 	);
-	// console.log("userLocation", userLocation);
+
 	//Filter for provincial representatives. need to iclude MPP, MNA, MLA
 	const provincialReps = repsByLocation.filter((rep) => {
 		return (
@@ -22,7 +22,7 @@ const ProvincialRepsComponent = () => {
 			rep.elected_office === "MHA"
 		);
 	});
-
+	console.log("provincial Reps", provincialReps[0]);
 	//Create profile for Provincial Premier by filtering through premiers DB I created in MongoDB
 	const premier = premiers.find((premier) => {
 		// console.log("premier",premier)
@@ -36,7 +36,7 @@ const ProvincialRepsComponent = () => {
 			</TitleBox>
 			<Container>
 				{provincialReps.map((rep) => {
-					return <RepProfileComponent key={v4()} rep={rep} />;
+					return <RepProfileComponent key={v4()} rep={provincialReps[0]} />;
 				})}
 				{/* <RepProfileComponent rep={premier} /> */}
 				<PremierProfileComponent rep={premier} />
