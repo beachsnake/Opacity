@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Header from "./Header";
 import Homepage from "./Homepage/Homepage";
 import LandingPage from "./LandingPage/LandingPage";
+import Footer from "./Footer";
 import SignUpPage from "./SignUpPage/SignUpPage";
 import { LogInPage } from "./LogInPage/LogInPage";
 import AboutPage from "./AboutPage/AboutPage";
@@ -22,6 +23,7 @@ function App() {
 						<Route exact path="/log-in" element={<LogInPage />} />
 						<Route exact path="/about" element={<AboutPage />} />
 					</Routes>
+					<Footer />
 				</Wrapper>
 			</Router>
 		</>
@@ -32,9 +34,9 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding-bottom: 20px;
 	background-color: var(--color-white);
-	border: 5px dashed var(--color-red);
+	border-left: 5px dashed var(--color-red);
+	border-right: 5px dashed var(--color-red);
 	border-top: none;
 `;
 
