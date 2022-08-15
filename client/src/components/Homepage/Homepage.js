@@ -14,9 +14,7 @@ import { v4 as uuidv4, v4 } from "uuid";
 
 const Homepage = () => {
 	//import relevant data from RepresentativesContext
-	const { repsByLocation } = useContext(
-		RepresentativesContext
-	);
+	const { repsByLocation } = useContext(RepresentativesContext);
 	//*CONSOLE LOGS
 	// console.log("repsByLocation", repsByLocation);
 
@@ -32,9 +30,9 @@ const Homepage = () => {
 
 	return (
 		<Wrapper>
-            <MapWrapper>
-                <MapComponent />
-            </MapWrapper>
+			<MapWrapper>
+				<MapComponent />
+			</MapWrapper>
 			<>
 				<Container>
 					<MunicpalRepComponent />
@@ -57,7 +55,7 @@ const Wrapper = styled.div`
 	width: clamp(50%, 75vw, 90%);
 `;
 const MapWrapper = styled.div`
-    margin-top: 30px;
+	margin-top: 30px;
 	border: 3px solid var(--color-light-blue);
 	padding: 10px;
 	border-radius: 8px;

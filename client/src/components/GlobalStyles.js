@@ -19,7 +19,7 @@ export default createGlobalStyle`
     --color-dark-blue: #414288;
     --color-black: #311e10;
     --font-heading: 'Rubik Mono One', sans-serif;
-    --font-body: 'Kosugi', Arial, Helvetica, sans-serif;
+    --font-body: 'Rubik', sans-serif;
     --padding-page: 24px;
       }
 
@@ -80,15 +80,15 @@ button {
   text-align: center;
 }
 p {
-  font-family: "Poppins", sans-serif;
+  font-family:'Rubik', sans-serif;
   font-weight: 100;
-  font-size: 18px;
+  font-size: 16px;
 }
 a,
 li,
 blockquote,
 input {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Rubik', sans-serif;;
   font-weight: 100;
   text-decoration: none;
   color: var(--color-light-blue)
@@ -97,7 +97,7 @@ input {
     height: 100vh;
   }
   .font-link {
-    font-family: 'Molle', cursive;
+    font-family: 'Rubik', sans-serif;
     text-decoration: none;
 }
 `;

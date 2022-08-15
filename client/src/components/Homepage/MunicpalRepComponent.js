@@ -60,7 +60,7 @@ const Title = styled.p`
 	font-size: 40px;
 	font-weight: 400;
 	font-family: var(--font-heading);
-	color: var(--color-white)
+	color: var(--color-white);
 `;
 const Container = styled.div`
 	display: flex;

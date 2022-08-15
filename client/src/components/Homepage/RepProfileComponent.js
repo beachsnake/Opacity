@@ -10,6 +10,7 @@ import {
 import { v4 as uuidv4, v4 } from "uuid";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import profile from "../../../src/Imgs/profile.jpeg";
+import leaf from "../../../src/Imgs/maple-leaf.png";
 import { motion } from "framer-motion";
 
 export const RepProfileComponent = (rep) => {
@@ -163,6 +164,7 @@ export const RepProfileComponent = (rep) => {
 					</EmailBox>
 					{rep?.rep?.extra.facebook && (
 						<SocialMediaBox>
+							<TitleSpan>facebook</TitleSpan>
 							<SocialMedia href={rep?.rep?.extra.facebook}>
 								<FaFacebook style={{ color: "var(--color-light-blue)" }} />:
 								facebook
@@ -171,6 +173,7 @@ export const RepProfileComponent = (rep) => {
 					)}
 					{rep?.rep?.extra.twitter && (
 						<SocialMediaBox>
+							<TitleSpan>twitter</TitleSpan>
 							<SocialMedia href={rep?.rep?.extra.twitter}>
 								<FaTwitter style={{ color: "var(--color-light-blue)" }} />:
 								Twitter
@@ -274,17 +277,21 @@ const RepInfo = styled(motion.div)`
 	width: 250px;
 	background-color: var(--color-white);
 `;
+const Leaf = styled.img`
+	width: 20px;
+	color: var(--color-light-blue);
+`;
 const TitleSpan = styled.span`
 	font-size: 16px;
 	color: var(--color-light-blue);
 	font-family: var(--font-heading);
 	margin-bottom: 10px;
-	border-bottom: 2px solid var(--color-light-blue);
+	border-bottom: 1px solid var(--color-light-blue);
 `;
 const Span = styled.p`
 	display: flex;
 	justify-content: center;
-	font-size: 16px;
+	font-size: 15px;
 	margin-bottom: 5px;
 	/* font-weight: bold; */
 `;
@@ -319,8 +326,13 @@ const Offices = styled.div`
 	display: flex;
 	flex-direction: column;
 `;
-const SocialMediaBox = styled.div``;
+const SocialMediaBox = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
 const SocialMedia = styled.a`
+	margin-bottom: 10px;
 	color: var(--color-black);
 
 	&:hover {
