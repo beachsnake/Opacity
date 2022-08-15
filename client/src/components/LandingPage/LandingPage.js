@@ -67,7 +67,7 @@ const LandingPage = () => {
 			</TitleBox>
 			<Container>
 				<StyledP>
-					Please enter your postal code to find your representatives:
+					Please enter your postal code to find representatives near you:
 				</StyledP>
 
 				<FormTitle></FormTitle>
@@ -146,15 +146,19 @@ const TitleBox = styled.div`
 	width: clamp(50%, 75vw, 90%);
 `;
 const Title = styled.p`
-	/* justify-content: center; */
-	font-size: 30px;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 26px;
 	font-weight: 400;
 	font-family: var(--font-heading);
 	color: var(--color-white);
+	min-height:70px;
 `;
 const StyledP = styled.div`
 	font-family: "Poppins", sans-serif;
 	font-weight: 100;
+	margin-top: 20px;
 `;
 const FormTitle = styled.p`
 	font-size: large;
@@ -162,7 +166,7 @@ const FormTitle = styled.p`
 const AddressForm = styled.form`
 	display: flex;
 	flex-direction: column;
-	padding: 10px;
+	margin-bottom: 20px;
 `;
 const PostalCode = styled(motion.input)`
 	font-family: var(--font-body);

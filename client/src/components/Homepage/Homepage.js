@@ -71,6 +71,7 @@ const Container = styled.div`
 	justify-content: center;
 	gap: 20px;
 	color: white;
+	width: clamp(50%, 75vw, 90%);
 `;
 const Map = styled.div``;
 const Municipal = styled.div``;

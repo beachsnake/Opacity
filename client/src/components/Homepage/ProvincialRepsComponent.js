@@ -56,6 +56,7 @@ const Wrapper = styled.div`
 	box-shadow: -7px 11px 9px -7px #311e10;
 	/* padding: 10px; */
 	margin-top: 30px;
+	/* width: clamp(50%, 75vw, 90%); */
 	/* padding: 0px 10px 20px 5px; */
 	/* margin-left: 30px; */
 	/* min-width: 60%; */
@@ -72,6 +73,9 @@ const TitleBox = styled.div`
 	/* border-bottom: 2px solid var(--color-red); */
 `;
 const Title = styled.p`
+	/* @media (max-width: 768px) {
+	font-size: 30px;
+  } */
 	font-size: 40px;
 	font-weight: 400;
 	font-family: var(--font-heading);
