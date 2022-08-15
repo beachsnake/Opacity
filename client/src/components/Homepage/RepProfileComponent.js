@@ -41,15 +41,15 @@ export const RepProfileComponent = (rep) => {
 	// console.log("rep.rep", rep.rep);
 
 	// check if rep is Municipal Rep. If municipalRep === false, rep being mapped is municipal rep.
-	// const municipalRep = repsByLocation.every((rep) => {
-	// 	return (
-	// 		rep.elected_office === "MNA" ||
-	// 		rep.elected_office === "MPP" ||
-	// 		rep.elected_office === "MLA" ||
-	// 		rep.elected_office === "MHA" ||
-	// 		rep.elected_office === "MP"
-	// 	);
-	// });
+	const provincialRep = repsByLocation.filter((rep) => {
+		return (
+			rep.elected_office === "MNA" ||
+			rep.elected_office === "MPP" ||
+			rep.elected_office === "MLA" ||
+			rep.elected_office === "MHA" ||
+			rep.elected_office === "MP"
+		);
+	});
 	// console.log("municipalRep", municipalRep);
 
 	//find boundary that matches representative
@@ -66,7 +66,7 @@ export const RepProfileComponent = (rep) => {
 	const electedOffice = rep?.rep?.elected_office.split(" ")[0];
 	const electedOfficeLength = rep?.rep?.elected_office.split(" ")[0].length;
 
-	//declare rep name to change map zoom of P.E.I. MLA & Newfoundland MHA
+	//declare rep name to change map zoom of P.E.I. MLA & Newfoundland MHA, and Prime Minister
 	const repName = rep?.rep?.name;
 	// console.log("repName", repName);
 	// console.log("boundaryShape", boundaryShape[0]?.simple_shape?.coordinates[0][0])
@@ -98,15 +98,20 @@ export const RepProfileComponent = (rep) => {
 			: setNewCenter(userLocation);
 
 		//There is a routing problem for the boundary shape of the MHA of Newfoundland, so we will check if this rep is being clicked and change the routing accordingly:
+		// repName === "John Abbott"
+		// 	? setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[3][0])
+		// 	: setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
 		repName === "John Abbott"
 			? setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[3][0])
+			: repName === "Justin Trudeau"
+			? setRepBoundaryShape(null)
 			: setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
 	};
 	//Create string for mailto: email link to open email client when user clicks on email link.
 	const mailTo = "mailto: " + rep?.rep?.email;
 
 	// console.log("isOpen out", isOpen);
-	console.log("profile", profile);
+	// console.log("profile", profile);
 	return (
 		<Wrapper
 			layout
@@ -135,7 +140,7 @@ export const RepProfileComponent = (rep) => {
 						onError={(e) => {
 							if (e.target.onerror === null) {
 								setImage(profile);
-								console.log("image", image);
+								// console.log("image", image);
 							}
 						}}
 						alt={rep.rep.name}

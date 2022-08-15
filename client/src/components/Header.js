@@ -1,21 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
 import { ImSearch } from "react-icons/im";
 import { motion } from "framer-motion";
+import { RepresentativesContext } from "./Context/RepresentativeContext";
 
 const Header = () => {
+	//import context
+	const { userLocation } = useContext(RepresentativesContext);
 	let nav = useNavigate();
 	return (
 		<Wrapper>
-			{/* <CompanyLogo to="/">Opacity</CompanyLogo> */}
-			<LogoDiv
-				whileHover={{ scale: 1.1, opacity: 0.2, cursor: "pointer"}}
-				whileTap={{ scale: 0.8 }}
-				onClick={() => nav("/homepage")}
-			>
-				<CompanyLogo>Opacity</CompanyLogo>
-			</LogoDiv>
+			{userLocation === null ? (
+				<LogoDiv
+					whileHover={{ scale: 1.1, opacity: 0.2, cursor: "pointer" }}
+					whileTap={{ scale: 0.8 }}
+					onClick={() => nav("/")}
+				>
+					<CompanyLogo>Opacity</CompanyLogo>
+				</LogoDiv>
+			) : (
+				<LogoDiv
+					whileHover={{ scale: 1.1, opacity: 0.2, cursor: "pointer" }}
+					whileTap={{ scale: 0.8 }}
+					onClick={() => nav("/homepage")}
+				>
+					<CompanyLogo>Opacity</CompanyLogo>
+				</LogoDiv>
+			)}
+
 			<NavBar
 				whileHover={{ scale: 1.1, opacity: 0.2 }}
 				whileTap={{ scale: 0.8 }}
@@ -54,7 +67,9 @@ const Wrapper = styled.div`
 	border-bottom-right-radius: 8px;
 `;
 
-const LogoDiv = styled(motion.div)``;
+const LogoDiv = styled(motion.div)`
+	width: clamp(50%, 75vw, 90%);
+`;
 const CompanyLogo = styled.p`
 	font-size: 44px;
 	font-weight: bold;
@@ -64,11 +79,13 @@ const CompanyLogo = styled.p`
 const NavBar = styled(motion.div)`
 	display: flex;
 	align-items: center;
+	width: clamp(50%, 75vw, 90%);
 `;
 const StyledLink = styled(Link)`
 	/* margin-right: 10px; */
 	color: var(--color-white);
 	font-family: var(--font-heading);
+	width: clamp(50%, 75vw, 90%);
 `;
 
 export default Header;

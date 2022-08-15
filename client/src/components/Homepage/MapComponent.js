@@ -100,7 +100,8 @@ const MapComponent = () => {
 		},
 		[repBoundaryShape]
 	);
-
+	
+	console.log("repBoundary", repBoundary)
 	return isLoaded ? (
 		<>
 			<GoogleMap

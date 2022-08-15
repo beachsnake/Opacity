@@ -22,7 +22,7 @@ const ProvincialRepsComponent = () => {
 			rep.elected_office === "MHA"
 		);
 	});
-	console.log("provincial Reps", provincialReps[0]);
+	// console.log("provincial Reps", provincialReps[0]);
 	//Create profile for Provincial Premier by filtering through premiers DB I created in MongoDB
 	const premier = premiers.find((premier) => {
 		// console.log("premier",premier)

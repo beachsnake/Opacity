@@ -63,7 +63,7 @@ const LandingPage = () => {
 	return (
 		<Wrapper>
 			<TitleBox>
-				<Title>Welcome to Opacity!</Title>
+				<Title>Make your government less opaque!</Title>
 			</TitleBox>
 			<Container>
 				<StyledP>
@@ -71,12 +71,10 @@ const LandingPage = () => {
 				</StyledP>
 
 				<FormTitle></FormTitle>
-				{/* <AddressForm onSubmit={(ev) => submitFunc(ev)}> */}
 				<AddressForm onSubmit={(ev) => handleChange(ev, postalCode)}>
 					<PostalCode
 						type="text"
 						onChange={(ev) => setPostalCode(ev.target.value.toUpperCase())}
-						// onChange={(ev) => handleChange(ev.target.value)}
 						value={postalCode}
 						placeholder="ex: K1A 0A6"
 						required
@@ -125,41 +123,35 @@ const Instructions = styled.div`
 `;
 const Container = styled.div`
 	display: flex;
-	flex-flow: wrap;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 	gap: 20px;
 	padding: 10px;
 	width: 60%;
-	border-left: 3px solid var(--color-red);
-	border-right: 3px solid var(--color-red);
-	border-bottom: 3px solid var(--color-red);
-	/* min-width: 60%; */
+	border-left: 3px solid var(--color-light-blue);
+	border-right: 3px solid var(--color-light-blue);
+	border-bottom: 3px solid var(--color-light-blue);
 	color: white;
-	/* padding:200px; */
+	width: clamp(50%, 75vw, 90%);
 `;
 const TitleBox = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: var(--color-red);
-	width: 60%;
+	background-color: var(--color-light-blue);
 	padding: 10px;
-	/* height: 30px; */
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
-	border: 2px solid var(--color-red);
+	border: 2px solid var(--color-light-blue);
+	width: clamp(50%, 75vw, 90%);
 `;
 const Title = styled.p`
+	/* justify-content: center; */
 	font-size: 30px;
 	font-weight: 400;
 	font-family: var(--font-heading);
 	color: var(--color-white);
 `;
-// const Title = styled.p`
-// 	margin-bottom: 10px;
-// 	font-weight: 400;
-// 	font-size: 20px;
-// `;
 const StyledP = styled.div`
 	font-family: "Poppins", sans-serif;
 	font-weight: 100;
