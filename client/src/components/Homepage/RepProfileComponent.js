@@ -179,7 +179,7 @@ export const RepProfileComponent = (rep) => {
 								<>
 									<OfficeSpan key={v4()}>Office {index + 1}</OfficeSpan>
 									<Office key={v4()}>
-										<PhoneNumber href={tel} target="_blank">
+										<PhoneNumber href={tel}>
 											<FaPhoneSquareAlt
 												style={{ color: "var(--color-green)" }}
 											/>

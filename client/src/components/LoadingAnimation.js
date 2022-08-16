@@ -9,7 +9,7 @@ const LoadingAnimation = () => {
 				animate={{
 					rotate: 360,
 					borderRadius: "50%",
-					x: 500,
+					x: 250,
 				}}
 				initial={{
 					x: 0,
@@ -30,7 +30,7 @@ const LoadingAnimation = () => {
 				animate={{
 					rotate: 360,
 					borderRadius: "50%",
-					x: -500,
+					x: -250,
 				}}
 				initial={{
 					x: 0,

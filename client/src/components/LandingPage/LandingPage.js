@@ -112,15 +112,7 @@ const Wrapper = styled.div`
 	/* background-color: var(--color-light-green); */
 	/* border: solid 2px green; */
 `;
-const Instructions = styled.div`
-	display: flex;
-	flex-direction: column;
-	/* margin-left: -200px; */
-	padding: 20px;
-	background-color: var(--color-white);
-	border-radius: 8px;
-	box-shadow: -7px 11px 9px -7px #311e10;
-`;
+
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -146,14 +138,19 @@ const TitleBox = styled.div`
 	width: clamp(50%, 75vw, 90%);
 `;
 const Title = styled.p`
-	display:flex;
+	@media (max-width: 768px) {
+		display: flex;
+		align-items: center;
+		font-size: 20px;
+	}
+	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-size: 26px;
 	font-weight: 400;
 	font-family: var(--font-heading);
 	color: var(--color-white);
-	min-height:70px;
+	min-height: 70px;
 `;
 const StyledP = styled.div`
 	font-family: "Poppins", sans-serif;
