@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import LoadingAnimation from "../LoadingAnimation";
 
 export const RepresentativesContext = createContext();
 
@@ -82,9 +83,6 @@ export const RepresentativesProvider = ({ children }) => {
 				setAllRepsBoundaryShapes(repsBoundaries.data.objects);
 				// setRepBoundaryShape(repsBoundaries.data.objects);
 				setRepsStatus("Idle");
-				// if(repsByLocation === null || allRepsBoundaryShapes === null || repBoundaryShape === null) {
-				// 	return <div>Loading</div>
-				// }
 			} catch (err) {
 				setRepsStatus("Error");
 			}
@@ -105,7 +103,7 @@ export const RepresentativesProvider = ({ children }) => {
 	}
 
 	if (premiers === null || mayors === null) {
-		return <div>Loading...</div>;
+		return <LoadingAnimation />;
 	}
 
 	return (
