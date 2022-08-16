@@ -3,8 +3,7 @@
 const fetch = (...args) =>
 	import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
-//USE UUID TO GENERATE ID NUMBERS FOR RESPONSES
-const { v4: uuidv4 } = require("uuid");
+//THIS HANDLER WAS USED TO POPULATE THE MAYORS AND PREMIERS DATASETS. I CHANGED THE NAME IN THE FETCH AND USED INSOMNIA TO FETCH THE REPRESENTATIVE DATA AND PUT IT INTO MY DATASET.
 
 const getRepsByName = async (req, res) => {
 	//get lat & lng from req.query

@@ -64,7 +64,7 @@ export const RepProfileComponent = (rep) => {
 		repSetName === "St. John's City Council"
 			? setZoom(9.5)
 			: electedOffice === "Prime"
-			? setZoom(3)
+			? setZoom(2.75)
 			: setZoom(11);
 
 		//check if rep is Prime Minister and adjust map center loacation accordingly
@@ -192,7 +192,7 @@ export const RepProfileComponent = (rep) => {
 											: {office.tel}
 										</PhoneNumber>
 										{office.postal && (
-											<OfficeBox>
+											<OfficeBox key={v4()}>
 												<OfficeAddress href={address} target="_blank">
 													<FaMapMarkerAlt
 														style={{ color: "var(--color-red)" }}

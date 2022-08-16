@@ -1,11 +1,9 @@
 //Import MongoDB
 const { MongoClient } = require("mongodb");
 //Import data
-// const representativeBios = require("./server/data/representativeBios.json");
 const premiers = require("./server/data/premiers.json");
 const mayors = require("./server/data/mayors.json");
-// const {provinces} = require("./server/data/provinces.js");
-// const provincesGeoJSON = require("./server/data/canada_provinces.geojson")
+
 //Get API Key
 require("dotenv").config();
 const { MONGO_URI } = process.env;
@@ -15,6 +13,8 @@ const options = {
 	useUnifiedTopology: true,
 };
 
+//THIS FILE BATCH IMPORTS THE MAYORS AND PREMIERS DATASETS I CREATED INTO MONGODB.
+
 const batchImport = async () => {
 	const client = new MongoClient(MONGO_URI, options);
 	try {
@@ -23,26 +23,6 @@ const batchImport = async () => {
 		console.log("connected");
 		// declare db
 		const db = client.db("opacity");
-		// import data
-		// const result = await db
-		// 	.collection("representatives")
-		// 	.insertMany(representativeBios);
-		// console.log("representatives", result);
-
-		// const legault = premiers[0].premiers.find((premier) => {
-		// 	return premier.name === "François Legault";
-		// });
-		// // console.log(legault);
-		// const smallMap = [];
-		// for(i=0;i<legault.geometry.coordinates.length;i=i+10){
-		// 	smallMap.push(legault[i])
-		// }
-		// const mapFilter = await legault.geometry.coordinates.filter(
-		// 	(coordinate, index) => {
-		// 		return index % 2 === 0;
-		// 	}
-		// );
-		// console.log(smallMap);
 
 		//import premiers
 		const result = await db.collection("premiers").insertMany(premiers);
@@ -50,15 +30,6 @@ const batchImport = async () => {
 		//import mayor information
 		const result2 = await db.collection("mayors").insertMany(mayors);
 		// console.log("mayors", result2);
-		// //import province polygons
-		// const result3 = await db.collection("provinces").insertMany(provinces);
-		// console.log("provinces", result3);
-
-		// if (result.acknowledged === true && result2.acknowledged === true) {
-		// 	console.log("success");
-		// } else {
-		// 	console.log("failure");
-		// }
 	} catch (err) {
 		console.log(err.message);
 	} finally {

@@ -125,7 +125,7 @@ export const PremierProfileComponent = (rep) => {
 								`${office.postal}`;
 							return (
 								<>
-									<OfficeSpan>Office {index + 1}</OfficeSpan>
+									<OfficeSpan key={v4()}>Office {index + 1}</OfficeSpan>
 									<Office key={v4()}>
 										<PhoneNumber href={tel} target="_blank">
 											<FaPhoneSquareAlt
@@ -134,7 +134,7 @@ export const PremierProfileComponent = (rep) => {
 											: {office.tel}
 										</PhoneNumber>
 										{office.postal && (
-											<OfficeBox>
+											<OfficeBox key={v4()}>
 												<OfficeAddress href={address} target="_blank">
 													<FaMapMarkerAlt
 														style={{ color: "var(--color-red)" }}

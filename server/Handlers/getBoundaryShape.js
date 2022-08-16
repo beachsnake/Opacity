@@ -31,5 +31,4 @@ const getBoundaryShape = async (req, res) => {
 		res.status(500).json({ status: 500, Message: err.Message });
 	}
 };
-// /boundaries/shape?contains=45.5279592,-73.6145719
 module.exports = { getBoundaryShape };

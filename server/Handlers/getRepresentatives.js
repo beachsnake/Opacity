@@ -3,8 +3,7 @@
 const fetch = (...args) =>
 	import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
-//USE UUID TO GENERATE ID NUMBERS FOR RESPONSES
-const { v4: uuidv4 } = require("uuid");
+//THIS HANDLER GETS THE REPRESENTATIVES BASED ON THE LAT & LNG OF THE USER'S POSTAL CODE RETRIEVED IN THE getLatLng HANDLER.
 
 const getRepresentatives = async (req, res) => {
 	//get lat & lng from req.query

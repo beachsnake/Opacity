@@ -9,6 +9,8 @@ const options = {
 	useUnifiedTopology: true,
 };
 
+//THIS HANDLER RETRIEVES THE DATASET FROM THE MAYORS DB I CREATED AND BATCHIMPORTED INTO MONGODB
+
 const getPremiers = async (req, res) => {
 	//create new client
 	const client = new MongoClient(MONGO_URI, options);

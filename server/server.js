@@ -6,13 +6,11 @@ const morgan = require("morgan");
 
 //REQUIRE/IMPORT HANDLERS
 const { getRepresentatives } = require("./Handlers/getRepresentatives");
-const { getBoundaries } = require("./Handlers/getBoundaries.js");
-const {getBoundaryShape} = require("./Handlers/getBoundaryShape.js")
+const { getBoundaryShape } = require("./Handlers/getBoundaryShape.js");
 const { getLatLng } = require("./Handlers/getLatLng.js");
 const { getRepsByName } = require("./Handlers/getRepsByName.js");
 const { getPremiers } = require("./Handlers/getPremiers.js");
 const { getMayors } = require("./Handlers/getMayors.js");
-const {getProvinceShape} =require("./Handlers/getProvinceShape.js")
 
 express()
 	// Below are methods that are included in express(). We chain them for convenience.
@@ -28,20 +26,16 @@ express()
 	// ---------------------------------
 
 	//* GET
-	//GET electoral boundaries
-	.get("/api/get-boundaries", getBoundaries)
 	//GET electoral boundary shapes
 	.get("/api/get-boundary-shape", getBoundaryShape)
 	//GET Representatives by lat/long
 	.get("/api/get-representatives", getRepresentatives)
-	//GET Representatives by name
+	//GET Representatives by name. This was used to populate my premiers and mayors datasets.
 	.get("/api/get-representatives-by-name", getRepsByName)
 	//GET Premiers from MongoDB
 	.get("/api/get-premiers", getPremiers)
 	//GET Mayors from MongoDB
 	.get("/api/get-mayors", getMayors)
-	//GET Province Shape
-	.get("/api/get-province-shape", getProvinceShape)
 
 	//*POST
 	//find lat/long by Postalcode OR address.
