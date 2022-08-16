@@ -129,7 +129,7 @@ export const PremierProfileComponent = (rep) => {
 					</EmailBox>
 					{rep?.rep?.extra.facebook && (
 						<SocialMediaBox>
-							<TitleSpan>facebook</TitleSpan>
+							{/* <TitleSpan>facebook</TitleSpan> */}
 							<SocialMedia href={rep?.rep?.extra.facebook} target="_blank">
 								<FaFacebook style={{ color: "var(--color-light-blue)" }} />:
 								facebook
@@ -138,7 +138,7 @@ export const PremierProfileComponent = (rep) => {
 					)}
 					{rep?.rep?.extra.twitter && (
 						<SocialMediaBox>
-							<TitleSpan>twitter</TitleSpan>
+							{/* <TitleSpan>twitter</TitleSpan> */}
 							<SocialMedia href={rep?.rep?.extra.twitter} target="_blank">
 								<FaTwitter style={{ color: "var(--color-light-blue)" }} />:
 								Twitter
@@ -146,22 +146,34 @@ export const PremierProfileComponent = (rep) => {
 						</SocialMediaBox>
 					)}
 					<Offices>
-						{rep?.rep?.offices.map((office) => {
+						{rep?.rep?.offices.map((office, index) => {
 							const tel = "tel:" + office.tel;
-							console.log("tel",tel,"office.tel", office.tel)
+							const address =
+								"https://www.google.com/maps/search/?api=1&query=" +
+								`${office.postal}`;
+							// console.log("tel", tel, "office", office);
 							return (
-								<Office key={v4()}>
-									<PhoneNumber a={tel}>
-										<FaPhoneSquareAlt style={{ color: "var(--color-green)" }} />
-										: {office.tel}
-									</PhoneNumber>
-									{office.postal && (
-										<StyledP>
-											<FaMapMarkerAlt style={{ color: "var(--color-red)" }} />:{" "}
-											{office.postal}
-										</StyledP>
-									)}
-								</Office>
+								<>
+									<OfficeSpan>Office {index + 1}</OfficeSpan>
+									<Office key={v4()}>
+										<PhoneNumber href={tel} target="_blank">
+											<FaPhoneSquareAlt
+												style={{ color: "var(--color-green)" }}
+											/>
+											: {office.tel}
+										</PhoneNumber>
+										{office.postal && (
+											<OfficeBox>
+												<OfficeAddress href={address} target="_blank">
+													<FaMapMarkerAlt
+														style={{ color: "var(--color-red)" }}
+													/>
+													: {office.postal}
+												</OfficeAddress>
+											</OfficeBox>
+										)}
+									</Office>
+								</>
 							);
 						})}
 					</Offices>
@@ -303,6 +315,21 @@ const Email = styled(motion.a)`
 const Offices = styled.div`
 	display: flex;
 	flex-direction: column;
+`;
+const OfficeBox = styled.div``;
+const OfficeSpan = styled.span`
+	font-size: 16px;
+	color: var(--color-light-blue);
+	font-family: var(--font-heading);
+	margin-bottom: 10px;
+	margin-top: 10px;
+	border-bottom: 1px solid var(--color-light-blue);
+`;
+const OfficeAddress = styled.a`
+	color: black;
+	&:hover {
+		color: var(--color-light-blue);
+	}
 `;
 const SocialMediaBox = styled.div`
 	display: flex;

@@ -213,27 +213,34 @@ export const RepProfileComponent = (rep) => {
 						</SocialMediaBox>
 					)}
 					<Offices>
-						{rep?.rep?.offices.map((office) => {
+						{rep?.rep?.offices.map((office, index) => {
 							const tel = "tel:" + office.tel;
 							const address =
 								"https://www.google.com/maps/search/?api=1&query=" +
 								`${office.postal}`;
-							console.log("tel", tel, "office.tel", typeof Number(office.tel));
+							// console.log("tel", tel, "office", office);
 							return (
-								<Office key={v4()}>
-									<PhoneNumber href={tel} target="_blank">
-										<FaPhoneSquareAlt style={{ color: "var(--color-green)" }} />
-										: {office.tel}
-									</PhoneNumber>
-									{office.postal && (
-										<OfficeBox>
-											<OfficeAddress href={address} target="_blank">
-												<FaMapMarkerAlt style={{ color: "var(--color-red)" }} />
-												: {office.postal}
-											</OfficeAddress>
-										</OfficeBox>
-									)}
-								</Office>
+								<>
+									<OfficeSpan>Office {index + 1}</OfficeSpan>
+									<Office key={v4()}>
+										<PhoneNumber href={tel} target="_blank">
+											<FaPhoneSquareAlt
+												style={{ color: "var(--color-green)" }}
+											/>
+											: {office.tel}
+										</PhoneNumber>
+										{office.postal && (
+											<OfficeBox>
+												<OfficeAddress href={address} target="_blank">
+													<FaMapMarkerAlt
+														style={{ color: "var(--color-red)" }}
+													/>
+													: {office.postal}
+												</OfficeAddress>
+											</OfficeBox>
+										)}
+									</Office>
+								</>
 							);
 						})}
 					</Offices>
@@ -365,14 +372,22 @@ const Email = styled(motion.a)`
 	flex-direction: column;
 	align-items: center;
 	font-family: var(--font-heading);
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 	color: black;
 `;
 const Offices = styled.div`
 	display: flex;
-	flex-direction: column;
+	flex-direction: column; 
 `;
 const OfficeBox = styled.div``;
+const OfficeSpan = styled.span`
+	font-size: 16px;
+	color: var(--color-light-blue);
+	font-family: var(--font-heading);
+	margin-bottom: 10px;
+	margin-top: 10px;
+	border-bottom: 1px solid var(--color-light-blue);
+`;
 const OfficeAddress = styled.a`
 	color: black;
 	&:hover {
