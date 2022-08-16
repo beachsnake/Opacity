@@ -51,7 +51,7 @@ const MapComponent = () => {
 	const options = {
 		//unfinished map styling
 		// styles: mapStyles,
-		
+
 		//polygon styling
 		fillColor: "blue",
 		fillOpacity: 0.4,

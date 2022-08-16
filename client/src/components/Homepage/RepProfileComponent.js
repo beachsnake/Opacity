@@ -11,6 +11,7 @@ import { v4 as uuidv4, v4 } from "uuid";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 import profile from "../../../src/Imgs/profile.jpeg";
 import { motion } from "framer-motion";
+import LoadingAnimation from "../LoadingAnimation";
 
 export const RepProfileComponent = (rep) => {
 	//import map shapes from context
@@ -32,7 +33,7 @@ export const RepProfileComponent = (rep) => {
 
 	//Show loading screen if required data has not loaded into context
 	if (allRepsBoundaryShapes === null || repsByLocation === null) {
-		return <div>Loading...</div>;
+		return <LoadingAnimation />;
 	}
 	//find boundary that matches representative
 	const boundaryShape = allRepsBoundaryShapes.filter((shape) => {
