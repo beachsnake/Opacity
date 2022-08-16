@@ -47,7 +47,7 @@
 // "Nunavut" X0A 0H0;
 // "Nortwest Territories" X1A 2R3;
 
-"election_info": {
-    "election_date": "November 7, 2022",
-    "election_website": "https://www.elections.gov.nl.ca/elections/"
-},
+// "election_info": {
+//     "election_date": "November 7, 2022",
+//     "election_website": "https://www.elections.gov.nl.ca/elections/"
+// },
