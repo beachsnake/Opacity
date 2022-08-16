@@ -11,9 +11,7 @@ const Header = () => {
 	let nav = useNavigate();
 	return (
 		<Wrapper>
-			<NavBar
-				
-			>
+			<NavBar>
 				{userLocation === null ? (
 					<LogoDiv
 						whileHover={{ opacity: 0.2, cursor: "pointer" }}
@@ -31,8 +29,7 @@ const Header = () => {
 						<CompanyLogo>Opacity</CompanyLogo>
 					</LogoDiv>
 				)}
-				<FindReps whileHover={{ opacity: 0.2 }}
-				whileTap={{ scale: 0.8 }}>
+				<FindReps whileHover={{ opacity: 0.2 }} whileTap={{ scale: 0.8 }}>
 					<StyledLink to="/">Find Your Representatives</StyledLink>
 					<ImSearch
 						style={{
@@ -58,7 +55,7 @@ const Wrapper = styled.div`
 	align-items: flex-end;
 	position: relative;
 	padding-left: 30px;
-	padding-right:30px;
+	padding-right: 30px;
 	/* padding-right: 20px; */
 	padding-bottom: 15px;
 	margin-bottom: 30px;
@@ -66,14 +63,11 @@ const Wrapper = styled.div`
 	/* border: 3px solid var(--color-red); */
 	min-height: 100px;
 	width: clamp(50%, 75vw, 90%);
-	/* height: clamp(50%, 15vh, 90%); */
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 `;
 
-const LogoDiv = styled(motion.div)`
-	/* width: clamp(50%, 75vw, 90%); */
-`;
+const LogoDiv = styled(motion.div)``;
 const CompanyLogo = styled.p`
 	font-size: 44px;
 	font-weight: bold;
@@ -83,17 +77,15 @@ const CompanyLogo = styled.p`
 const NavBar = styled.div`
 	display: flex;
 	@media (max-width: 768px) {
-    flex-direction: column;
-	padding-top: 20px;
-	font-size: 14px;
-  }
+		flex-direction: column;
+		padding-top: 20px;
+		font-size: 14px;
+	}
 	justify-content: space-between;
 	align-items: center;
-	/* width: clamp(50%, 100vw, 90%); */
 	min-width: 100%;
 `;
-const FindReps = styled(motion.div)`
-`;
+const FindReps = styled(motion.div)``;
 const StyledLink = styled(Link)`
 	color: var(--color-white);
 	font-family: var(--font-heading);

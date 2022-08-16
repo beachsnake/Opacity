@@ -45,6 +45,7 @@ const MapComponent = () => {
 	});
 	//define polygon styling
 	const options = {
+		//styles: mapstyles.js
 		fillColor: "blue",
 		fillOpacity: 0.4,
 		strokeColor: "white",

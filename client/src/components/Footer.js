@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 	min-height: 100px;
 	width: clamp(50%, 75vw, 90%);
 	/* min-width: 73vw; */
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
 `;
 export default Footer;

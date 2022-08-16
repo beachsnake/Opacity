@@ -95,7 +95,7 @@ export const RepProfileComponent = (rep) => {
 			transition={{ layout: { duration: 1.5, type: "spring" } }}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
-			style={{ borderRadius: "8px" }}
+			style={{ borderRadius: "20px" }}
 		>
 			<RepType layout>{rep?.rep?.elected_office}</RepType>
 			<ImgWrap layout>
@@ -175,7 +175,7 @@ export const RepProfileComponent = (rep) => {
 							</SocialMedia>
 						</SocialMediaBox>
 					)}
-					<Offices>
+					<Offices key={v4()}>
 						{rep?.rep?.offices.map((office, index) => {
 							const tel = "tel:" + office.tel;
 							const address =
@@ -237,8 +237,6 @@ const RepType = styled(motion.p)`
 	padding: 10px;
 	width: 100%;
 	height: auto;
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
 `;
 const ImgWrap = styled(motion.div)`
 	display: flex;

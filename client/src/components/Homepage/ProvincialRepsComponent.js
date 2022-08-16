@@ -60,8 +60,8 @@ const TitleBox = styled.div`
 	background-color: var(--color-red);
 	width: 100%;
 	padding: 10px;
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
 `;
 const Title = styled.p`
 	@media (max-width: 768px) {
