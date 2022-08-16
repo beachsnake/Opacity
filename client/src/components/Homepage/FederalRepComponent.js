@@ -86,7 +86,7 @@ const ElectionBox = styled.div`
 `;
 const ElectionInfo = styled.p`
 	@media (max-width: 768px) {
-		font-size: 30px;
+		font-size: 18px;
 	}
 	font-size: 26px;
 	font-weight: 400;
@@ -94,6 +94,10 @@ const ElectionInfo = styled.p`
 	color: var(--color-white);
 `;
 const ElectionAnchor = styled.a`
+@media (max-width: 768px) {
+		font-size: 28px;
+		padding: 25vw;
+	}
 	font-size: 26px;
 	color: var(--color-white);
 	font-family: var(--font-heading);
