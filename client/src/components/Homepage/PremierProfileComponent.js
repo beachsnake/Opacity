@@ -87,7 +87,7 @@ export const PremierProfileComponent = (rep) => {
 						whileTap={{ scale: 0.9, color: "var(--color-red)" }}
 					>
 						<RepWebsite href={rep?.rep?.url} target="_blank">
-							{rep?.rep?.last_name}'s Website
+							Personal Website
 						</RepWebsite>
 					</Website>
 					<EmailBox
@@ -304,5 +304,8 @@ const SocialMedia = styled.a`
 `;
 const PhoneNumber = styled.a`
 	color: black;
+	&:hover {
+		color: var(--color-light-blue);
+	}
 `;
 const Office = styled.div``;

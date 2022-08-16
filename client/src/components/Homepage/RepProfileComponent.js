@@ -145,7 +145,7 @@ export const RepProfileComponent = (rep) => {
 					)}
 					<Website whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
 						<RepWebsite href={rep?.rep?.url} target="_blank">
-							{rep?.rep?.last_name}'s Website
+							Personal Website
 						</RepWebsite>
 					</Website>
 					<EmailBox whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
