@@ -3,6 +3,8 @@ import { createContext, useEffect, useState } from "react";
 export const RepresentativesContext = createContext();
 
 export const RepresentativesProvider = ({ children }) => {
+
+	//STATE VARIABLES
 	//premiers dataset
 	const [premiers, setPremiers] = useState(null);
 	//mayors dataset
@@ -27,17 +29,19 @@ export const RepresentativesProvider = ({ children }) => {
 	useEffect(() => {
 		const fetchFunc = async () => {
 			try {
-				//get premiers
+				//get premiers dataset
 				const getPremiers = await fetch("/api/get-premiers");
 				const premiersData = await getPremiers.json();
 				// console.log("premiersData", premiersData);
 				setPremiers(premiersData.data[0].premiers);
-				//get mayors
+
+				//get mayors dataset
 				const getMayors = await fetch("/api/get-mayors");
 				const mayorsData = await getMayors.json();
 				// console.log("mayorsData", mayorsData);
 				setMayors(mayorsData.data[0].mayors);
-				//check local storage and setUserLocation to value.
+
+				//check local storage and setUserLocation to retrieve representatives and newCenter for map component on refresh.
 				setUserLocation(JSON.parse(localStorage.getItem("userLocation")));
 				setNewCenter(JSON.parse(localStorage.getItem("newCenter")));
 				if (userLocation !== null || newCenter === null) {
@@ -66,7 +70,6 @@ export const RepresentativesProvider = ({ children }) => {
 				);
 				const repsData = await getRepsByLocaiton.json();
 				// console.log("repsData", repsData);
-
 				//put data into state
 				setRepsByLocation(repsData.data.objects);
 

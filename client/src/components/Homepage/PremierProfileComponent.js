@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import {
 	FaFacebook,
@@ -14,23 +14,12 @@ import { motion } from "framer-motion";
 
 export const PremierProfileComponent = (rep) => {
 	//import map shapes from context
-	const {
-		repBoundaryShape,
-		setRepBoundaryShape,
-		zoom,
-		setZoom,
-		userLocation,
-		setUserLocation,
-		newCenter,
-		setNewCenter,
-		isOpen,
-		setIsOpen,
-	} = useContext(RepresentativesContext);
+	const { setRepBoundaryShape, setZoom, setNewCenter, isOpen, setIsOpen } =
+		useContext(RepresentativesContext);
 
 	//Create state for expanding profile information
 	// const [isOpen, setIsOpen] = useState(false);
 
-	// console.log("rep", rep.rep.geometry.coordinates[0]);
 	//put premier's province in variable to change zoom based on province onClick
 	const province = rep.rep.location.province;
 	// console.log("rep", rep.rep.location.province);
@@ -39,42 +28,35 @@ export const PremierProfileComponent = (rep) => {
 		//set isOpen to opposit value to expand or collapse the rep information div
 		isOpen === name ? setIsOpen(null) : setIsOpen(name);
 		setNewCenter(rep.rep.location);
+
+		//Given the variety of sizes of each province, adjustments to the map zooms must be made on the following provinces:
 		province === "Nova Scotia" || province === "New Brunswick"
 			? setZoom(5.5)
 			: province === "Prince Edward Island"
 			? setZoom(7.5)
 			: setZoom(3.75);
-		// setZoom(3.5);
+
+		//Sends the Premier's province's map polygon data to MapComponent to be reformatted and displayed on the map on the homepage.
 		setRepBoundaryShape(rep.rep.geometry.coordinates);
 	};
 
-	//Create string for mailto: email link
+	//Create string for mailto: email link so it will open the user's email client onClick.
 	const mailTo = "mailto: " + rep.rep.email;
 
 	return (
 		<Wrapper
-			// layout
-			// transition={{ layout: { duration: 1.5, type: "spring" } }}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			style={{ borderRadius: "8px" }}
-			// onClick={() => handleClick()}
 		>
-			<RepType
-			//  layout
-			>
-				{rep?.rep?.elected_office}
-			</RepType>
-			<ImgWrap
-			// layout
-			>
+			<RepType>{rep?.rep?.elected_office}</RepType>
+			<ImgWrap>
 				{rep?.rep?.photo_url?.length > 0 ? (
 					<Img src={rep.rep.photo_url} alt={rep.rep.name} />
 				) : (
 					<Img src={profile} alt={rep?.rep?.name} />
 				)}
 				<SeeInfo
-					// layout
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
 					onClick={() => handleClick(rep?.rep?.name)}
@@ -84,8 +66,6 @@ export const PremierProfileComponent = (rep) => {
 			</ImgWrap>
 			{isOpen === rep?.rep?.name && (
 				<RepInfo
-					// layout
-					// transition={{ layout: { duration: 4, type: "spring" } }}
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					key={rep?.rep?.name}
@@ -123,7 +103,6 @@ export const PremierProfileComponent = (rep) => {
 					</EmailBox>
 					{rep?.rep?.extra.facebook && (
 						<SocialMediaBox>
-							{/* <TitleSpan>facebook</TitleSpan> */}
 							<SocialMedia href={rep?.rep?.extra.facebook} target="_blank">
 								<FaFacebook style={{ color: "var(--color-light-blue)" }} />:
 								facebook
@@ -132,7 +111,6 @@ export const PremierProfileComponent = (rep) => {
 					)}
 					{rep?.rep?.extra.twitter && (
 						<SocialMediaBox>
-							{/* <TitleSpan>twitter</TitleSpan> */}
 							<SocialMedia href={rep?.rep?.extra.twitter} target="_blank">
 								<FaTwitter style={{ color: "var(--color-light-blue)" }} />:
 								Twitter
@@ -145,7 +123,6 @@ export const PremierProfileComponent = (rep) => {
 							const address =
 								"https://www.google.com/maps/search/?api=1&query=" +
 								`${office.postal}`;
-							// console.log("tel", tel, "office", office);
 							return (
 								<>
 									<OfficeSpan>Office {index + 1}</OfficeSpan>
@@ -206,11 +183,6 @@ const RepType = styled(motion.p)`
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 `;
-const RepSpan = styled.span`
-	color: var(--color-white);
-	margin-left: 3px;
-	margin-right: 3px;
-`;
 const ImgWrap = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
@@ -218,15 +190,12 @@ const ImgWrap = styled(motion.div)`
 	align-items: center;
 	position: relative;
 	width: 180px;
-	/* height: 180px; */
 	padding-top: 10px;
 	margin-bottom: 10px;
-	/* border-radius: 4px; */
 	background-color: var(--color-white);
 `;
 const Img = styled.img`
 	border-radius: 4px;
-	/* height: auto; */
 	width: 120px;
 `;
 const SeeInfo = styled(motion.button)`
@@ -249,10 +218,6 @@ const RepInfo = styled(motion.div)`
 	width: 250px;
 	background-color: var(--color-white);
 `;
-const Leaf = styled.img`
-	width: 20px;
-	color: var(--color-light-blue);
-`;
 const TitleSpan = styled.span`
 	font-size: 16px;
 	color: var(--color-light-blue);
@@ -265,7 +230,6 @@ const Span = styled.p`
 	justify-content: center;
 	font-size: 15px;
 	margin-bottom: 5px;
-	/* font-weight: bold; */
 `;
 const DistrictName = styled.div`
 	display: flex;
@@ -341,5 +305,4 @@ const SocialMedia = styled.a`
 const PhoneNumber = styled.a`
 	color: black;
 `;
-const StyledP = styled.p``;
 const Office = styled.div``;

@@ -1,9 +1,8 @@
 import { GoogleMap, Polygon, useJsApiLoader } from "@react-google-maps/api";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import React from "react";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 
-//TODO make color of polygon change based on party affiliation
 /* eslint-disable no-undef */
 /* global google */
 
@@ -12,12 +11,12 @@ const containerStyle = {
 	minWidth: "73vw",
 	height: "50vh",
 	borderRadius: "8px",
-	// width: clamp("50%", "75vw", "90%"),
 };
 
 const MapComponent = () => {
-	//create state for map
+	//create state for map. Not currently used but I plan on using it to solve some map reloading issues after graduating the bootcamp.
 	const [map, setMap] = useState(null);
+
 	//get userLocation and electoral boundaries from RepresentativesContext
 	const {
 		userLocation,
@@ -38,21 +37,7 @@ const MapComponent = () => {
 		lat: newCenter?.lat,
 		lng: newCenter?.lng,
 	};
-	// const center = {
-	// 	lat: userLocation?.lat,
-	// 	lng: userLocation?.lng,
-	// };
-	// console.log("center", center);
-	// if (newCenter) {
-	// const center = {
-	// 	lat: newCenter.lat,
-	// 	lng: newCenter.lng,
-	// };
-	// }
 
-	// console.log("newCenter lat", Number(newCenter?.lat));
-	// console.log("newCenter lng", Number(newCenter?.lng));
-	// console.log("userLoaction", Number(userLocation.lat));
 	//start map script and use API key
 	const { isLoaded } = useJsApiLoader({
 		id: "google-map-script",
@@ -92,6 +77,7 @@ const MapComponent = () => {
 	// 	allRepsBoundaryShapes[0].simple_shape.coordinates[0]
 	// );
 
+	// Not currently used but I plan on using it to solve some map reloading issues after graduating the bootcamp.
 	const onLoad = React.useCallback(
 		function callback(map) {
 			map = new window.google.maps.LatLngBounds(center);
@@ -100,8 +86,8 @@ const MapComponent = () => {
 		},
 		[repBoundaryShape]
 	);
-	
-	console.log("repBoundary", repBoundary)
+
+	// console.log("repBoundary", repBoundary);
 	return isLoaded ? (
 		<>
 			<GoogleMap

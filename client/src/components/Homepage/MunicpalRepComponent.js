@@ -7,23 +7,22 @@ import { v4 as uuidv4, v4 } from "uuid";
 const MunicpalRepComponent = () => {
 	//get user's local representatives
 	const { repsByLocation, mayors } = useContext(RepresentativesContext);
+
 	//Filter for municipal representatives. need to exclude MPP, MNA, MLA, and MP
 	const municipalReps = repsByLocation.filter((rep) => {
 		// console.log("repFilter", rep.elected_office);
 		return rep.elected_office.length > 3;
 	});
-	//check to see if there are any municipal reps in database
 
-	console.log("MunicipalReps", municipalReps.length);
+	//MUNICIPAL datasets received by Represent API are unreliable, and sometimes returns with no municipal representatives for an area.
+	// For this reason I check to see if there are any municipal reps in database before rendering the data. If there are no representatives to display, I display a message telling the user what went wrong, and providing them with a link to a fake email address to make a request for representative information for their area.
+
 	return (
 		<Wrapper>
 			<TitleBox>
 				<Title>Municipal</Title>
 			</TitleBox>
-			<Container
-				layout
-				// transition={{ layout: { duration: 4, type: "spring" } }}
-			>
+			<Container>
 				{municipalReps.length > 0 ? (
 					municipalReps.map((rep) => {
 						// console.log("rep", rep);
@@ -42,10 +41,6 @@ const MunicpalRepComponent = () => {
 						.
 					</StyledP>
 				)}
-				{/* {municipalReps.map((rep) => {
-					// console.log("rep", rep);
-					return <RepProfileComponent key={v4()} rep={rep} />;
-				})} */}
 			</Container>
 		</Wrapper>
 	);
@@ -64,10 +59,8 @@ const TitleBox = styled.div`
 	background-color: var(--color-red);
 	width: 100%;
 	padding: 10px;
-	/* height: 30px; */
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
-	/* border-bottom: 2px solid var(--color-red); */
 `;
 const Title = styled.p`
 	font-size: 40px;
@@ -84,9 +77,7 @@ const Container = styled.div`
 	border-left: 3px solid var(--color-red);
 	border-right: 3px solid var(--color-red);
 	border-bottom: 3px solid var(--color-red);
-	/* min-width: 60%; */
 	color: white;
-	/* padding:200px; */
 `;
 const StyledP = styled.div`
 	font-family: "Poppins", sans-serif;

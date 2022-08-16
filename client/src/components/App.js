@@ -7,7 +7,7 @@ import LandingPage from "./LandingPage/LandingPage";
 import Footer from "./Footer";
 import SignUpPage from "./SignUpPage/SignUpPage";
 import { LogInPage } from "./LogInPage/LogInPage";
-import AboutPage from "./AboutPage/AboutPage";
+// import AboutPage from "./AboutPage/AboutPage";
 
 function App() {
 	return (
@@ -21,7 +21,7 @@ function App() {
 						<Route exact path="/homepage" element={<Homepage />} />
 						<Route exact path="/sign-up" element={<SignUpPage />} />
 						<Route exact path="/log-in" element={<LogInPage />} />
-						<Route exact path="/about" element={<AboutPage />} />
+
 					</Routes>
 					<Footer />
 				</Wrapper>

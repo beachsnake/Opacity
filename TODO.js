@@ -32,7 +32,7 @@
 //Make zoom revert to userLocation on unMount
 
 //?"Quebec" H2V4J1,
-//?"Alberta" T1Y 7J9,
+//?"Alberta" T1Y 7J9, T1K 8A8,
 //?"Ontario" M5J 0A1,
 //?"Nova Scotia" B3J 1Y4,change zoom to be closer
 //?"New Brunswick" E1C 0R9, change zoom to be closer
