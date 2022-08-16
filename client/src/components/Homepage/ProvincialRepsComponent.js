@@ -4,6 +4,7 @@ import { RepresentativesContext } from "../Context/RepresentativeContext";
 import { RepProfileComponent } from "./RepProfileComponent";
 import { PremierProfileComponent } from "./PremierProfileComponent";
 import { v4 as uuidv4, v4 } from "uuid";
+import { motion } from "framer-motion";
 
 //TODO Create profile for Premier that uses info from premiers
 
@@ -28,7 +29,7 @@ const ProvincialRepsComponent = () => {
 		// console.log("premier",premier)
 		return premier.elected_office.includes(userLocation.province);
 	});
-	// console.log(premier)
+	console.log(premier.election_info.election_date);
 	return (
 		<Wrapper>
 			<TitleBox>
@@ -42,6 +43,22 @@ const ProvincialRepsComponent = () => {
 				{/* <RepProfileComponent rep={premier} /> */}
 				<PremierProfileComponent key={v4()} rep={premier} />
 			</Container>
+			<ElectionBox>
+				<ElectionInfo>
+					Next election is on {premier?.election_info?.election_date}
+				</ElectionInfo>
+				<ElectionInfo>
+					Register to vote{" "}
+					<AnchorButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+						<ElectionAnchor
+							href={premier?.election_info?.election_website}
+							target="_blank"
+						>
+							Here
+						</ElectionAnchor>
+					</AnchorButton>
+				</ElectionInfo>
+			</ElectionBox>
 		</Wrapper>
 	);
 };
@@ -50,7 +67,7 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	background-color: var(--color-white);
-	border-radius: 8px;
+	border-radius: 20px;
 	box-shadow: -7px 11px 9px -7px #311e10;
 	margin-top: 30px;
 `;
@@ -71,6 +88,36 @@ const Title = styled.p`
 	font-weight: 400;
 	font-family: var(--font-heading);
 	color: var(--color-white);
+`;
+const ElectionBox = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--color-red);
+	width: 100%;
+	padding: 15px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+`;
+const ElectionInfo = styled.p`
+	@media (max-width: 768px) {
+		font-size: 30px;
+	}
+	font-size: 26px;
+	font-weight: 400;
+	font-family: var(--font-heading);
+	color: var(--color-white);
+`;
+const ElectionAnchor = styled.a`
+	font-size: 26px;
+	color: var(--color-white);
+	font-family: var(--font-heading);
+	margin-bottom: 10px;
+`;
+const AnchorButton = styled(motion.button)`
+	text-decoration: none;
+	border: none;
+	background: none;
 `;
 const Container = styled.div`
 	display: flex;
