@@ -39,10 +39,6 @@ const Header = () => {
 						}}
 					/>
 				</FindReps>
-
-				{/* <StyledLink to="/sign-up">Sign-up</StyledLink>
-				<StyledLink to="log-in">Log-in</StyledLink>
-				<StyledLink to="about">About</StyledLink> */}
 			</NavBar>
 		</Wrapper>
 	);
@@ -76,6 +72,7 @@ const CompanyLogo = styled.p`
 `;
 const NavBar = styled.div`
 	display: flex;
+	position: relative;
 	@media (max-width: 768px) {
 		flex-direction: column;
 		padding-top: 20px;
@@ -85,7 +82,14 @@ const NavBar = styled.div`
 	align-items: center;
 	min-width: 100%;
 `;
-const FindReps = styled(motion.div)``;
+const FindReps = styled(motion.div)`
+	@media (max-width: 768px) {
+		display: flex;
+		align-items: center;
+		padding: 20px 25vw 0px 25vw;
+		font-size: 14px;
+	}
+`;
 const StyledLink = styled(Link)`
 	color: var(--color-white);
 	font-family: var(--font-heading);
