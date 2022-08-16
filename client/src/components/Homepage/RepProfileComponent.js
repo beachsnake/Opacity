@@ -79,7 +79,7 @@ export const RepProfileComponent = (rep) => {
 	const handleClick = (name) => {
 		//set isOpen to opposit value to expand or collapse the rep information div
 		isOpen === name ? setIsOpen(null) : setIsOpen(name);
-		console.log("isOpen in", isOpen);
+		// console.log("isOpen in", isOpen);
 		// console.log("zoom", zoom);
 		//check is rep is mayor and then change zoom accordingly
 		electedOffice === "Maire" ||
@@ -142,7 +142,7 @@ export const RepProfileComponent = (rep) => {
 					layout
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
-					onClick={() => handleClick(rep.rep.name)}
+					onClick={() => handleClick(rep?.rep?.name)}
 				>
 					Representative Information
 				</SeeInfo>

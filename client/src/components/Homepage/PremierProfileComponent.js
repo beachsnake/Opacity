@@ -23,18 +23,21 @@ export const PremierProfileComponent = (rep) => {
 		setUserLocation,
 		newCenter,
 		setNewCenter,
+		isOpen,
+		setIsOpen,
 	} = useContext(RepresentativesContext);
+
 	//Create state for expanding profile information
-	const [isOpen, setIsOpen] = useState(false);
+	// const [isOpen, setIsOpen] = useState(false);
 
 	// console.log("rep", rep.rep.geometry.coordinates[0]);
 	//put premier's province in variable to change zoom based on province onClick
 	const province = rep.rep.location.province;
 	// console.log("rep", rep.rep.location.province);
 
-	const handleClick = () => {
+	const handleClick = (name) => {
 		//set isOpen to opposit value to expand or collapse the rep information div
-		setIsOpen(!isOpen);
+		isOpen === name ? setIsOpen(null) : setIsOpen(name);
 		setNewCenter(rep.rep.location);
 		province === "Nova Scotia" || province === "New Brunswick"
 			? setZoom(5.5)
@@ -74,12 +77,12 @@ export const PremierProfileComponent = (rep) => {
 					// layout
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
-					onClick={() => handleClick()}
+					onClick={() => handleClick(rep?.rep?.name)}
 				>
 					Representative Information
 				</SeeInfo>
 			</ImgWrap>
-			{isOpen && (
+			{isOpen === rep?.rep?.name && (
 				<RepInfo
 					// layout
 					// transition={{ layout: { duration: 4, type: "spring" } }}
