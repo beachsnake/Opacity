@@ -76,13 +76,6 @@ export const RepProfileComponent = (rep) => {
 		repName === "John Abbott"
 			? setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[3][0])
 			: setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
-
-		//This code was attempting to solve an error when Justin Trudeau had no boundary set data.
-		// repName === "John Abbott"
-		// 	? setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[3][0])
-		// 	: repName === "Justin Trudeau"
-		// 	? setRepBoundaryShape(null)
-		// 	: setRepBoundaryShape(boundaryShape[0]?.simple_shape?.coordinates[0][0]);
 	};
 
 	//Create string for mailto: email link to open email client when user clicks on email link.

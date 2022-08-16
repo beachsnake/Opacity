@@ -3,6 +3,9 @@ import { useContext, useState } from "react";
 import React from "react";
 import { RepresentativesContext } from "../Context/RepresentativeContext";
 
+//Didn't have time to finalize custom map styling, but will keep here so I can keep working on it after the presentation.
+import { mapStyles } from "../mapStyles";
+
 /* eslint-disable no-undef */
 /* global google */
 
@@ -43,9 +46,13 @@ const MapComponent = () => {
 		id: "google-map-script",
 		googleMapsApiKey: mapsKey,
 	});
-	//define polygon styling
+
+	//define map and polygon styling
 	const options = {
-		//styles: mapstyles.js
+		//unfinished map styling
+		// styles: mapStyles,
+		
+		//polygon styling
 		fillColor: "blue",
 		fillOpacity: 0.4,
 		strokeColor: "white",
@@ -95,6 +102,7 @@ const MapComponent = () => {
 				mapContainerStyle={containerStyle}
 				center={center}
 				zoom={zoom}
+				// options={options}
 				// onLoad={onLoad}
 				// onUnmount={onUnmount}
 			>
