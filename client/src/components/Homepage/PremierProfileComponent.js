@@ -165,7 +165,7 @@ const Wrapper = styled(motion.div)`
 	border-radius: 8px;
 	border-left: 2px solid var(--color-light-blue);
 	border-right: 2px solid var(--color-light-blue);
-	border-bottom: 2px solid var(--color-light-blue);
+	/* border-bottom: 2px solid var(--color-light-blue); */
 	overflow: hidden;
 	height: fit-content;
 	/* box-shadow: -7px 11px 9px -7px #311e10; */

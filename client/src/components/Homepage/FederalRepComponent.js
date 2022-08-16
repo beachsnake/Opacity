@@ -37,13 +37,12 @@ const FederalRepComponent = () => {
 					Next election is on {primeMinister[0]?.election_info?.election_date}
 				</ElectionInfo>
 				<ElectionInfo>
-					Register to vote{" "}
 					<AnchorButton whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
 						<ElectionAnchor
 							href={primeMinister[0]?.election_info?.election_website}
 							target="_blank"
 						>
-							Here
+							Register to vote Here
 						</ElectionAnchor>
 					</AnchorButton>
 				</ElectionInfo>
@@ -94,7 +93,7 @@ const ElectionInfo = styled.p`
 	color: var(--color-white);
 `;
 const ElectionAnchor = styled.a`
-@media (max-width: 768px) {
+	@media (max-width: 768px) {
 		font-size: 28px;
 		padding: 25vw;
 	}

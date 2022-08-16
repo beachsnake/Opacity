@@ -31,7 +31,7 @@ const MunicpalRepComponent = () => {
 				) : (
 					<StyledP>
 						We currently don't have any municipal representatives to display for
-						this area! We are constantly working to increase our database, if
+						this area! We are constantly working to increase our database, so if
 						you'd like to make a request to get more representatives'
 						information for this area you can do so
 						<a href="mailto:requests@opacity.ca" target="_blank">

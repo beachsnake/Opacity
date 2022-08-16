@@ -63,7 +63,7 @@ const LandingPage = () => {
 	return (
 		<Wrapper>
 			<TitleBox>
-				<Title>Make your government less opaque!</Title>
+				<Title>Make government less opaque!</Title>
 			</TitleBox>
 			<Container>
 				<StyledP>
