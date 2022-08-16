@@ -39,6 +39,7 @@ export const RepProfileComponent = (rep) => {
 
 	// console.log("isOpen", isOpen);
 	// console.log("rep.rep", rep.rep);
+	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
 
 	// check if rep is Municipal Rep. If municipalRep === false, rep being mapped is municipal rep.
 	const provincialRep = repsByLocation.filter((rep) => {
@@ -87,7 +88,7 @@ export const RepProfileComponent = (rep) => {
 		repName === "Heath MacDonald" ||
 		repName === "Joanne Thompson" ||
 		repSetName === "St. John's City Council"
-			? setZoom(9)
+			? setZoom(9.5)
 			: electedOffice === "Prime"
 			? setZoom(3)
 			: setZoom(11);
@@ -121,18 +122,7 @@ export const RepProfileComponent = (rep) => {
 			style={{ borderRadius: "8px" }}
 			// onClick={() => handleClick()}
 		>
-			<RepType layout>
-				{rep?.rep?.elected_office}
-				{rep?.rep?.elected_office.includes("Premier") ||
-				rep?.rep?.elected_office.includes("Prime") ? (
-					<></>
-				) : (
-					<>
-						{/* <RepSpan> of </RepSpan>
-						<RepSpan>{rep?.rep?.district_name}</RepSpan> */}
-					</>
-				)}
-			</RepType>
+			<RepType layout>{rep?.rep?.elected_office}</RepType>
 			<ImgWrap layout>
 				{rep?.rep?.photo_url?.length > 0 ? (
 					<Img
@@ -221,7 +211,7 @@ export const RepProfileComponent = (rep) => {
 							// console.log("tel", tel, "office", office);
 							return (
 								<>
-									<OfficeSpan>Office {index + 1}</OfficeSpan>
+									<OfficeSpan key={v4()}>Office {index + 1}</OfficeSpan>
 									<Office key={v4()}>
 										<PhoneNumber href={tel} target="_blank">
 											<FaPhoneSquareAlt
@@ -377,7 +367,7 @@ const Email = styled(motion.a)`
 `;
 const Offices = styled.div`
 	display: flex;
-	flex-direction: column; 
+	flex-direction: column;
 `;
 const OfficeBox = styled.div``;
 const OfficeSpan = styled.span`

@@ -35,7 +35,7 @@ const FederalRepComponent = () => {
 				})} */}
 				<RepProfileComponent key={v4()} rep={federalRep[0]}/>
 				<RepProfileComponent key={v4()} rep={primeMinister[0]} />
-				{/* <PremierProfileComponent rep={primeMinister[0]} /> */}
+				{/* <PremierProfileComponent key={v4()} rep={primeMinister[0]} /> */}
 			</Container>
 		</Wrapper>
 	);

@@ -40,7 +40,7 @@ const ProvincialRepsComponent = () => {
 				})}
 				{/* <RepProfileComponent rep={provincialReps[0]} /> */}
 				{/* <RepProfileComponent rep={premier} /> */}
-				<PremierProfileComponent rep={premier} />
+				<PremierProfileComponent key={v4()} rep={premier} />
 			</Container>
 		</Wrapper>
 	);

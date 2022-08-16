@@ -77,7 +77,7 @@ export const RepresentativesProvider = ({ children }) => {
 				const repsBoundaries = await getRepsBoundarySets.json();
 				// console.log("repsBoundaries", repsBoundaries);
 				setAllRepsBoundaryShapes(repsBoundaries.data.objects);
-				setRepBoundaryShape(repsBoundaries.data.objects);
+				// setRepBoundaryShape(repsBoundaries.data.objects);
 				setRepsStatus("Idle");
 				// if(repsByLocation === null || allRepsBoundaryShapes === null || repBoundaryShape === null) {
 				// 	return <div>Loading</div>

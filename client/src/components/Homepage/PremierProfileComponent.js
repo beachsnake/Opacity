@@ -61,15 +61,6 @@ export const PremierProfileComponent = (rep) => {
 			//  layout
 			>
 				{rep?.rep?.elected_office}
-				{rep?.rep?.elected_office.includes("Premier") ||
-				rep?.rep?.elected_office.includes("Prime") ? (
-					<></>
-				) : (
-					<>
-						{/* <RepSpan> of </RepSpan>
-						<RepSpan>{rep?.rep?.district_name}</RepSpan> */}
-					</>
-				)}
 			</RepType>
 			<ImgWrap
 			// layout
