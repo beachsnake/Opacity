@@ -10,7 +10,6 @@ const MunicpalRepComponent = () => {
 
 	//Filter for municipal representatives. need to exclude MPP, MNA, MLA, and MP
 	const municipalReps = repsByLocation.filter((rep) => {
-		// console.log("repFilter", rep.elected_office);
 		return rep.elected_office.length > 3;
 	});
 
@@ -25,7 +24,6 @@ const MunicpalRepComponent = () => {
 			<Container>
 				{municipalReps.length > 0 ? (
 					municipalReps.map((rep) => {
-						// console.log("rep", rep);
 						return <RepProfileComponent key={v4()} rep={rep} />;
 					})
 				) : (

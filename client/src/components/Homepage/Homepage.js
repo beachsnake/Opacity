@@ -9,8 +9,6 @@ import MapComponent from "./MapComponent";
 const Homepage = () => {
 	//import relevant data from RepresentativesContext
 	const { repsByLocation } = useContext(RepresentativesContext);
-	//*CONSOLE LOGS
-	// console.log("repsByLocation", repsByLocation);
 
 	//Check to see if repsByLocation has not loaded, or page was reloaded.
 	if (repsByLocation === null) {
@@ -32,7 +30,7 @@ const Homepage = () => {
 			</MapWrapper>
 			<>
 				<Container>
-				<MunicpalRepComponent />
+					<MunicpalRepComponent />
 				</Container>
 				<Container>
 					<ProvincialRepsComponent />

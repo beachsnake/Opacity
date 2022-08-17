@@ -7,7 +7,6 @@ const fetch = (...args) =>
 const getLatLng = async (req, res) => {
 	//deconstruct req.body so it can be used in fetch
 	const { postalCode, address } = req.body;
-	// console.log("address", address);
 
 	try {
 
@@ -18,6 +17,7 @@ const getLatLng = async (req, res) => {
 			.then((res) => res.json())
 			.then((data) => {
 				console.log(data);
+
 				//Filter through data to find name of Province. We need this string in the frontend to render the provincial premier associated with the postal code.
 
 				//create array of province names to use in .find()

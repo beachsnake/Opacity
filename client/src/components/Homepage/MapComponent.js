@@ -28,12 +28,11 @@ const MapComponent = () => {
 		zoom,
 		newCenter,
 	} = useContext(RepresentativesContext);
-	// console.log(userLocation);
+
 	//*CREATE MAP
 
 	//get API key from .env
 	const mapsKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
-	// console.log("mapsKey", mapsKey);
 
 	//default starting position of map set to userLoacation
 	const center = {
@@ -69,21 +68,10 @@ const MapComponent = () => {
 	//map though coordinates array and create new objects in this format: {lat: lat, lng: lng }
 	const repBoundary = repBoundaryShape
 		? repBoundaryShape.map((coordinate) => {
-				// console.log("coordinate", coordinate);
 				const latLngObj = { lat: coordinate[1], lng: coordinate[0] };
-				// console.log("latLngObj", latLngObj);
 				return latLngObj;
 		  })
 		: [{ lat: 0, lng: 0 }];
-
-	//*CONSOLE LOGS
-	// console.log("repBoundary", repBoundary);
-	// console.log("boundaryArr", boundaryArr);
-	// console.log("repBoundary", repBoundary);
-	// console.log(
-	// 	"allRepsBoundaryShapes",
-	// 	allRepsBoundaryShapes[0].simple_shape.coordinates[0]
-	// );
 
 	// Not currently used but I plan on using it to solve some map reloading issues after graduating the bootcamp.
 	const onLoad = React.useCallback(
@@ -95,7 +83,6 @@ const MapComponent = () => {
 		[repBoundaryShape]
 	);
 
-	// console.log("repBoundary", repBoundary);
 	return isLoaded ? (
 		<>
 			<GoogleMap

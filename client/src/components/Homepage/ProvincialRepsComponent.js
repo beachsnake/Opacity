@@ -26,10 +26,8 @@ const ProvincialRepsComponent = () => {
 
 	//Create profile for Provincial Premier by filtering through premiers DB I created in MongoDB
 	const premier = premiers.find((premier) => {
-		// console.log("premier",premier)
 		return premier.elected_office.includes(userLocation.province);
 	});
-	console.log(premier.election_info.election_date);
 	return (
 		<Wrapper>
 			<TitleBox>

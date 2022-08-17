@@ -9,8 +9,6 @@ const { v4: uuidv4 } = require("uuid");
 const getBoundaryShape = async (req, res) => {
 	//get lat & lng from req.query
 	const { lat, lng } = req.query;
-	// console.log(lat, lng);
-	console.log(req.query);
 
 	//get boundary simple_shape by lat & lng
 	try {

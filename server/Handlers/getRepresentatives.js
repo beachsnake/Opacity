@@ -8,7 +8,6 @@ const fetch = (...args) =>
 const getRepresentatives = async (req, res) => {
 	//get lat & lng from req.query
 	const { lat, lng } = req.query;
-	// console.log("req.query", req.query);
 
 	try {
 		//use lat & lng to get representatives data from Represent API and send back to frontend

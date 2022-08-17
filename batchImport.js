@@ -29,7 +29,7 @@ const batchImport = async () => {
 		console.log("premiers", result);
 		//import mayor information
 		const result2 = await db.collection("mayors").insertMany(mayors);
-		// console.log("mayors", result2);
+		console.log("mayors", result2);
 	} catch (err) {
 		console.log(err.message);
 	} finally {

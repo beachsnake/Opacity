@@ -22,7 +22,6 @@ export const PremierProfileComponent = (rep) => {
 
 	//put premier's province in variable to change zoom based on province onClick
 	const province = rep.rep.location.province;
-	// console.log("rep", rep.rep.location.province);
 
 	const handleClick = (name) => {
 		//set isOpen to opposit value to expand or collapse the rep information div

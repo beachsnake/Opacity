@@ -14,7 +14,6 @@ const LandingPage = () => {
 	);
 	//create state for form value:
 	const [postalCode, setPostalCode] = useState("");
-	// console.log("postalCode", postalCode);
 	//declare variable for useNavigate
 	let nav = useNavigate();
 	//declare RegExp
@@ -36,14 +35,11 @@ const LandingPage = () => {
 		})
 			.then((res) => res.json())
 			.then((response) => {
-				console.log("response", response);
 				//sets local storage
 				localStorage.setItem("userLocation", JSON.stringify(response));
 				localStorage.setItem("newCenter", JSON.stringify(response));
 				setNewCenter(response);
 				setUserLocation(response);
-				console.log("newCenter landing page", newCenter);
-				console.log("userLocation landing page", userLocation);
 				nav(`/homepage`);
 			})
 			.catch((error) => {
@@ -53,7 +49,6 @@ const LandingPage = () => {
 
 	//Create a handler to check that the postal code entered is formatted correctly:
 	const handleChange = (ev, postalCode) => {
-		// console.log(validPostal.test(postalCode));
 		if (validPostal.test(postalCode)) {
 			submitFunc(ev);
 		} else {

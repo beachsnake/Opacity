@@ -37,7 +37,6 @@ export const RepProfileComponent = (rep) => {
 	}
 	//find boundary that matches representative
 	const boundaryShape = allRepsBoundaryShapes.filter((shape) => {
-		// console.log("shape.name", shape.name);
 		return shape.name === rep?.rep?.district_name;
 	});
 
@@ -55,7 +54,6 @@ export const RepProfileComponent = (rep) => {
 	const handleClick = (name) => {
 		//set isOpen to opposit value to expand or collapse the rep information div
 		isOpen === name ? setIsOpen(null) : setIsOpen(name);
-		// console.log("isOpen in", isOpen);
 		//check is rep is mayor and then change zoom accordingly
 		electedOffice === "Maire" ||
 		electedOffice === "Mayor" ||
@@ -82,7 +80,6 @@ export const RepProfileComponent = (rep) => {
 	//Create string for mailto: email link to open email client when user clicks on email link.
 	const mailTo = "mailto: " + rep?.rep?.email;
 
-	// console.log("isOpen out", isOpen);
 	return (
 		<Wrapper
 			layout

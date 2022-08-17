@@ -4,7 +4,6 @@ import LoadingAnimation from "../LoadingAnimation";
 export const RepresentativesContext = createContext();
 
 export const RepresentativesProvider = ({ children }) => {
-
 	//STATE VARIABLES
 	//premiers dataset
 	const [premiers, setPremiers] = useState(null);
@@ -33,13 +32,11 @@ export const RepresentativesProvider = ({ children }) => {
 				//get premiers dataset
 				const getPremiers = await fetch("/api/get-premiers");
 				const premiersData = await getPremiers.json();
-				// console.log("premiersData", premiersData);
 				setPremiers(premiersData.data[0].premiers);
 
 				//get mayors dataset
 				const getMayors = await fetch("/api/get-mayors");
 				const mayorsData = await getMayors.json();
-				// console.log("mayorsData", mayorsData);
 				setMayors(mayorsData.data[0].mayors);
 
 				//check local storage and setUserLocation to retrieve representatives and newCenter for map component on refresh.
@@ -70,7 +67,6 @@ export const RepresentativesProvider = ({ children }) => {
 					`/api/get-representatives?lat=${userLocation.lat}&lng=${userLocation.lng}`
 				);
 				const repsData = await getRepsByLocaiton.json();
-				// console.log("repsData", repsData);
 				//put data into state
 				setRepsByLocation(repsData.data.objects);
 
@@ -79,7 +75,6 @@ export const RepresentativesProvider = ({ children }) => {
 					`/api/get-boundary-shape?lat=${userLocation?.lat}&lng=${userLocation?.lng}`
 				);
 				const repsBoundaries = await getRepsBoundarySets.json();
-				// console.log("repsBoundaries", repsBoundaries);
 				setAllRepsBoundaryShapes(repsBoundaries.data.objects);
 				// setRepBoundaryShape(repsBoundaries.data.objects);
 				setRepsStatus("Idle");
@@ -89,13 +84,6 @@ export const RepresentativesProvider = ({ children }) => {
 		};
 		fetchFunc();
 	}, [userLocation]);
-
-	//CONSOLE LOGS
-	// console.log("premiers", premiers);
-	// console.log("mayors", mayors);
-	// console.log("userLocation", userLocation)
-	// console.log("allRepsBoundaryShapes", allRepsBoundaryShapes)
-	// console.log("repBoundaryShape", repBoundaryShape);
 
 	//Catch errors if fetch fails
 	if (setRepsStatus === "Error") {
