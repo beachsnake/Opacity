@@ -15,7 +15,7 @@ const LoadingAnimation = () => {
 					x: 0,
 				}}
 				transition={{
-					flip: Infinity,
+					repeat: Infinity,
 					duration: 2,
 					ease: "easeInOut",
 				}}
@@ -36,7 +36,7 @@ const LoadingAnimation = () => {
 					x: 0,
 				}}
 				transition={{
-					flip: Infinity,
+					repeat: Infinity,
 					duration: 2,
 					ease: "easeInOut",
 				}}

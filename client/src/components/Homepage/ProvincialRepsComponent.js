@@ -34,11 +34,7 @@ const ProvincialRepsComponent = () => {
 				<Title>Provincial</Title>
 			</TitleBox>
 			<Container>
-				{/* {provincialReps.map((rep) => {
-					return <RepProfileComponent key={v4()} rep={provincialReps[0]} />;
-				})} */}
 				<RepProfileComponent key={v4()} rep={provincialReps[0]} />
-				{/* <RepProfileComponent rep={premier} /> */}
 				<PremierProfileComponent key={v4()} rep={premier} />
 			</Container>
 			<ElectionBox>

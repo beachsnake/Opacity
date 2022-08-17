@@ -180,15 +180,17 @@ export const RepProfileComponent = (rep) => {
 								"https://www.google.com/maps/search/?api=1&query=" +
 								`${office.postal}`;
 							return (
-								<>
+								<React.Fragment key={v4()}>
 									<OfficeSpan key={v4()}>Office {index + 1}</OfficeSpan>
 									<Office key={v4()}>
+										{office.tel && 
 										<PhoneNumber href={tel}>
 											<FaPhoneSquareAlt
 												style={{ color: "var(--color-green)" }}
 											/>
 											: {office.tel}
 										</PhoneNumber>
+										}
 										{office.postal && (
 											<OfficeBox key={v4()}>
 												<OfficeAddress href={address} target="_blank">
@@ -200,7 +202,7 @@ export const RepProfileComponent = (rep) => {
 											</OfficeBox>
 										)}
 									</Office>
-								</>
+								</React.Fragment>
 							);
 						})}
 					</Offices>

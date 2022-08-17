@@ -5,6 +5,7 @@ import ProvincialRepsComponent from "./ProvincialRepsComponent";
 import FederalRepComponent from "./FederalRepComponent";
 import MunicpalRepComponent from "./MunicpalRepComponent";
 import MapComponent from "./MapComponent";
+import LoadingAnimation from "../LoadingAnimation";
 
 const Homepage = () => {
 	//import relevant data from RepresentativesContext
@@ -12,12 +13,7 @@ const Homepage = () => {
 
 	//Check to see if repsByLocation has not loaded, or page was reloaded.
 	if (repsByLocation === null) {
-		return (
-			<div>
-				No Representatives found. Please click on on the Opacity logo and input
-				a valid postal code, or sign up to stop seeing this message.{" "}
-			</div>
-		);
+		return <LoadingAnimation />;
 	}
 
 	//NOTES ON ORGANIZATION:

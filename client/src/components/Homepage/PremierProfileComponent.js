@@ -123,9 +123,11 @@ export const PremierProfileComponent = (rep) => {
 								"https://www.google.com/maps/search/?api=1&query=" +
 								`${office.postal}`;
 							return (
-								<>
-									<OfficeSpan key={v4()}>Office {index + 1}</OfficeSpan>
-									<Office key={v4()}>
+								<React.Fragment key={v4()}>
+									<OfficeSpan style={{ marginBottom: "5px" }}>
+										Office {index + 1}
+									</OfficeSpan>
+									<Office>
 										<PhoneNumber href={tel}>
 											<FaPhoneSquareAlt
 												style={{ color: "var(--color-green)" }}
@@ -133,7 +135,7 @@ export const PremierProfileComponent = (rep) => {
 											: {office.tel}
 										</PhoneNumber>
 										{office.postal && (
-											<OfficeBox key={v4()}>
+											<OfficeBox>
 												<OfficeAddress href={address} target="_blank">
 													<FaMapMarkerAlt
 														style={{ color: "var(--color-red)" }}
@@ -143,7 +145,7 @@ export const PremierProfileComponent = (rep) => {
 											</OfficeBox>
 										)}
 									</Office>
-								</>
+								</React.Fragment>
 							);
 						})}
 					</Offices>
