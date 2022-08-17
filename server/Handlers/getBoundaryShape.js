@@ -3,9 +3,6 @@
 const fetch = (...args) =>
 	import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
-//USE UUID TO GENERATE ID NUMBERS FOR RESPONSES
-const { v4: uuidv4 } = require("uuid");
-
 const getBoundaryShape = async (req, res) => {
 	//get lat & lng from req.query
 	const { lat, lng } = req.query;
