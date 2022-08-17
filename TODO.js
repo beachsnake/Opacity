@@ -47,3 +47,11 @@
 //     "election_date": "November 7, 2022",
 //     "election_website": "https://www.elections.gov.nl.ca/elections/"
 // },
+
+//*POSTAL CODES TO USE FOR PRESENTATION
+
+//MONTREAL H2V4J1 - MY HOME POSTAL CODE. FAMILIAR FACES FOR STUDENTS
+//VANCOUVER V6B 2L3 - GOOD EXAMPLE OF LARGER MUNICIPAL DATASET 
+
+//potential
+//EDMONTON T5K 1H5

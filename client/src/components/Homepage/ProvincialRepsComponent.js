@@ -110,8 +110,7 @@ const ElectionInfo = styled.p`
 `;
 const ElectionAnchor = styled.a`
 	@media (max-width: 768px) {
-		font-size: 28px;
-		padding: 25vw;
+		font-size: 24px;
 	}
 	font-size: 26px;
 	color: var(--color-white);

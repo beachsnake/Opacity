@@ -137,18 +137,25 @@ export const RepProfileComponent = (rep) => {
 							<Span>{rep?.rep?.party_name}</Span>
 						</Party>
 					)}
-					<Website whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-						<RepWebsite href={rep?.rep?.url} target="_blank">
-							Personal Website
-						</RepWebsite>
-					</Website>
+					{rep?.rep?.url && (
+						<Website whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+							<RepWebsite href={rep?.rep?.url} target="_blank">
+								Personal Website
+							</RepWebsite>
+						</Website>
+					)}
 					<EmailBox whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-						<Email
-							style={{ color: "var(--color-light-blue)", marginBottom: "10px" }}
-							href={mailTo}
-						>
-							Send an email!
-						</Email>
+						{rep?.rep?.email && (
+							<Email
+								style={{
+									color: "var(--color-light-blue)",
+									marginBottom: "10px",
+								}}
+								href={mailTo}
+							>
+								Send an email!
+							</Email>
+						)}
 						<Span>
 							<FaMailBulk style={{ color: "var(--color-light-blue)" }} />
 						</Span>
