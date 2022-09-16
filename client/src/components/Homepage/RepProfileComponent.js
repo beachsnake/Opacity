@@ -79,6 +79,7 @@ export const RepProfileComponent = (rep) => {
 
 	//Create string for mailto: email link to open email client when user clicks on email link.
 	const mailTo = "mailto: " + rep?.rep?.email;
+	console.log(rep.rep)
 
 	return (
 		<Wrapper
