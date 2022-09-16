@@ -28,3 +28,12 @@ Opacity is a web application that makes government less opaque by showing users 
   - Email addresses open a user's email client with a new email addressed to the representative
   - Addresses open a browser tab with a google map search of the address
   - When clicked, election dates open a new browser tab to that province's voter registration website.
+  
+  
+ ## Screenshots
+ 
+<img width="40%" alt="Opacity Landing Page" src="https://user-images.githubusercontent.com/104284100/190707167-45e57119-c2d7-4960-9552-0387f3d35d6a.png">
+<img width="40%" alt="Opacity Federal Reps" src="https://user-images.githubusercontent.com/104284100/190707441-1371ae49-b0c8-4fbe-82d0-fb8cc3bedf54.png">
+<img width="40%" alt="Opacity Federal Reps" src="https://user-images.githubusercontent.com/104284100/190705673-c9e5cb9c-43b8-4bd7-9062-cc77353b1743.png">
+
+
